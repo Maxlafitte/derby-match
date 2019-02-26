@@ -5,11 +5,9 @@ class Team < ApplicationRecord
   has_many :scores
 
   validates :name, presence: true
-  validates :ranking, presence: true
+  validates :ranking, presence: true, uniqueness: true
   validates :location, presence: true
   validates :league_id, presence: true
-
-  validates :ranking, uniqueness: true
-
+  validates :user_id, presence: true
   mount_uploader :photo, PhotoUploader
 end
