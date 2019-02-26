@@ -1,5 +1,6 @@
 namespace :scrapp_data do
   desc "scrapp flattrackstat"
+
   task scrapp: :environment do
     [0, 1, 2, 3, 4].each do |page_number|
       url = "http://flattrackstats.com/teams/results/taxonomy\%3A17\%2C11\%2C49?page=#{page_number}"
@@ -32,7 +33,7 @@ namespace :scrapp_data do
 
         if league.valid?
           league.save!
-          puts "league created"
+          puts "League #{league_name} created"
 
           # create teams
         end
@@ -41,4 +42,12 @@ namespace :scrapp_data do
       puts "Created #{League.count} leagues!"
     end
   end
+
+  task test: :environment do
+    league_url = "http://flattrackstats.com/teams/3628"
+    league_html_file = open(league_url).read.encode!('UTF-8', 'UTF-8', :invalid => :replace)
+    league_html_doc = Nokogiri::HTML(league_html_file)
+    p league_html_doc.search('.teamname').attribute('#text')
+  end
+
 end
