@@ -8,6 +8,10 @@
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "email" }%>
+    <%= f.input :derby_name,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "Derby Name" }%>
     <%= f.input :password,
                 required: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
@@ -20,6 +24,6 @@
   <div class="form-actions">
     <%= f.button :submit, "Sign up" %>
   </div>
+<%= render "devise/shared/links" %>
 <% end %>
 
-<%= render "devise/shared/links" %>
