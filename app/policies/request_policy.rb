@@ -1,4 +1,4 @@
-class RequestsPolicy < ApplicationPolicy
+class RequestPolicy < ApplicationPolicy
   # as a user i can see all the requests i've sent and received
   def index?
     record.user == user || record.team.user == user
