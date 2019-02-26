@@ -9,5 +9,4 @@ class Request < ApplicationRecord
   validates :status, presence: true
   validates :start_date, presence: true
   validates :end_date, presence: true
-  # validates :at_home, presence: true
 end

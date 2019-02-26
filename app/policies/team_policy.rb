@@ -4,6 +4,7 @@ class TeamPolicy < ApplicationPolicy
     true
   end
 
+  # necessary to create a request form
   def create?
     true
   end

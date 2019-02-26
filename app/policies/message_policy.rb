@@ -4,10 +4,12 @@ class MessagePolicy < ApplicationPolicy
     record.user == user
   end
 
+  # necessary to create a request form
   def show?
     true
   end
 
+  # necessary to create a request form
   def new?
     true
   end

@@ -17,13 +17,8 @@ class RequestsController < ApplicationController
   def create
     @team = Team.find(params[:team_id])
     authorize @team
-
-
     @request = Request.new(request_params)
-    # authorize @request
     @message = Message.new(message_params)
-    # authorize @message
-    # @message.content = params[:request][:message][:content]
     @message.request = @request
     @message.user = current_user
     @request.team = @team
@@ -36,7 +31,6 @@ class RequestsController < ApplicationController
     end
     @request.save!
     @message.save!
-
   end
 
   def edit

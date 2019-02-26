@@ -1,10 +1,10 @@
 <h1><%= @team.name %></h1>
 
 <div class="team-infos">
-  <p><%= cl_image_tag(@team.photo, height: 250, width: 250,crop: :fill) %></p>
+  <p><%= image_tag(@team.photo, height: 250, width: 250,crop: :fill) %></p>
   <p>League: <%= @team.league.name %></p>
   <p>Ranking: <%= @team.ranking %></p>
-  <p>Location: <%= @team.location %></p>
+  <p>Location: <%= @team.league.location %></p>
 </div>
 
 <div class="contact-info">
