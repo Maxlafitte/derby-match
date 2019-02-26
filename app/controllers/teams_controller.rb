@@ -1,12 +1,11 @@
 class TeamsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
-
   def index
     @teams = policy_scope(Team)
   end
 
   def show
     @team = Team.find(params[:id])
+    @request = Request.new
     authorize @team
   end
 

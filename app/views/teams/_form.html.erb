@@ -1,0 +1,7 @@
+<%= simple_form_for ([@team, @request]) do |f| %>
+  <%= f.input :start_date, as: :string, required: true, input_html: {class: "datepicker"} %>
+  <%= f.input :end_date, as: :string, required: true, input_html: {class: "datepicker"} %>
+  <%= f.input :end_date, as: :string, required: true, input_html: {class: "datepicker"} %>
+  <%= f.input :at_home, label: 'Location', as: :radio_buttons, collection: [['0', current_user.team.location], ['1', @team.location]], label_method: :second, value_method: :first %>
+  <%= f.button :submit, "Send Request",  class: 'btn-gradient' %>
+<% end %>

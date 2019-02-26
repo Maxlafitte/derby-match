@@ -13,5 +13,7 @@
 </div>
 
 <div class="request-form">
-
+  <% if current_user != @team.user %>
+    <%= render 'form', request: @request, team: @team %>
+  <% end %>
 </div>
