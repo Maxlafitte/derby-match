@@ -4,6 +4,14 @@ class MessagePolicy < ApplicationPolicy
     record.user == user
   end
 
+  def show?
+    true
+  end
+
+  def new?
+    true
+  end
+
   # as a user i can send a message
   def create?
     true

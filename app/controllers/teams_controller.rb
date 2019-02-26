@@ -7,6 +7,8 @@ class TeamsController < ApplicationController
     @team = Team.find(params[:id])
     @request = Request.new
     authorize @team
+    @message = Message.new
+    authorize @message
   end
 
   # not sure that we need it since we won't have admin users

@@ -4,6 +4,10 @@ class TeamPolicy < ApplicationPolicy
     true
   end
 
+  def create?
+    true
+  end
+
   # as a user i can see one team
   def show?
     true
