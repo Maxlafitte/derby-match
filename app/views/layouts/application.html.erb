@@ -12,12 +12,8 @@
   <body>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
-    <div class="footer-fixed" style="position: relative; min-height: 94vh;">
-      <div class="yield" style="margin-bottom: 20px;">
-        <%= yield %>
-      </div>
-      <%= render 'shared/footer' %>
-    </div>
+    <%= yield %>
+    <%= render 'shared/footer' %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
   </body>
