@@ -16,12 +16,12 @@ montreuil_logo_url = 'http://flattrackstats.com/sites/default/files/imagecache/p
 beastie_logo_url = 'http://flattrackstats.com/sites/default/files/imagecache/profile/logos/reims.jpg'
 
 puts 'Creating leagues'
-leagues = League.create!([  {name: 'Lomme Roller Girls', logo: lrg_logo_url},
-                            {name: 'Paris Roller Girls', logo: prg_logo_url},
-                            {name: 'Roller Skating Montreuil', logo: montreuil_logo_url},
-                            {name: 'Beastie Derby Girls', logo: beastie_logo_url}
+leagues = League.create!([  {name: 'Lomme Roller Girls', logo: lrg_logo_url, city: 'Lomme', country: 'France'},
+                            {name: 'Paris Roller Girls', logo: prg_logo_url, city: 'Paris', country: 'France'},
+                            {name: 'Roller Skating Montreuil', logo: montreuil_logo_url, city: 'Montreuil', country: 'France'},
+                            {name: 'Beastie Derby Girls', logo: beastie_logo_url, city: 'Reims', country: 'France'}
                           ])
-puts 'Leagues created'
+puts "#{League.count} leagues created"
 
 puts 'Creating users'
 users = User.create!([{email: 'lrg@lrg.com', password: 'azerty', derby_name: 'La terreur de Lomme', photo: 'https://api.adorable.io/avatars/285/abott@adorable.png'},
@@ -29,18 +29,18 @@ users = User.create!([{email: 'lrg@lrg.com', password: 'azerty', derby_name: 'La
                       {email: 'montreuil@montreuil.com', password: 'azerty', derby_name: 'La terreur de Montreuil', photo: 'https://api.adorable.io/avatars/285/abott@adorable.png'},
                       {email: 'beastie@beaste.com', password: 'azerty', derby_name: 'La terreur de Reims', photo: 'https://api.adorable.io/avatars/285/abott@adorable.png'}
                     ])
-puts 'Users created'
+puts "#{User.count} users created"
 
 puts 'Creating teams'
 teams = Team.create!([
-                      {name: 'Bad bunnies', ranking: 11, location: 'Lomme, France', league_id: 1, user_id: 1},
-                      {name: 'Glorious batardes', ranking: 12, location: 'Lomme, France', league_id: 1, user_id: 1},
-                      {name: 'Tétons Flingueurs', ranking: 13, location: 'Lomme, France', league_id: 1, user_id: 1},
-                      {name: 'All stars', ranking: 7, location:'Paris, France', league_id: 2, user_id: 2},
-                      {name: 'Les quedalles', ranking: 83, location:'Paris, France', league_id: 2, user_id: 2},
-                      {name: 'Les sans culottes', ranking: 413, location:'Paris, France', league_id: 2, user_id: 2},
-                      {name: 'Les nasty pécheresses', ranking: 259, location: 'Montreuil, France', league_id: 3, user_id: 3},
-                      {name: 'All stars', ranking: 172, location: 'Reims, France', league_id: 4, user_id: 4}
+                      {name: 'Bad bunnies', ranking: 11, league_id: 1, user_id: 1},
+                      {name: 'Glorious batardes', ranking: 12, league_id: 1, user_id: 1},
+                      {name: 'Tétons Flingueurs', ranking: 13, league_id: 1, user_id: 1},
+                      {name: 'All stars', ranking: 7, league_id: 2, user_id: 2},
+                      {name: 'Les quedalles', ranking: 83, league_id: 2, user_id: 2},
+                      {name: 'Les sans culottes', ranking: 413, league_id: 2, user_id: 2},
+                      {name: 'Les nasty pécheresses', ranking: 259, league_id: 3, user_id: 3},
+                      {name: 'All stars', ranking: 172, league_id: 4, user_id: 4}
                     ])
-puts 'Teams created'
+puts "#{Team.count} teams created"
 
