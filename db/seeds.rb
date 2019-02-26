@@ -18,10 +18,10 @@ beastie_logo_url = 'http://flattrackstats.com/sites/default/files/imagecache/pro
 puts 'Creating leagues'
 
 leagues = League.create!([
-  { name: 'Lomme Roller Girls', logo: lrg_logo_url },
-  { name: 'Paris Roller Girls', logo: prg_logo_url },
-  { name: 'Roller Skating Montreuil', logo: montreuil_logo_url },
-  { name: 'Beastie Derby Girls', logo: beastie_logo_url }
+  { name: 'Lomme Roller Girls', city: "Lomme", country: "France", logo: lrg_logo_url },
+  { name: 'Paris Roller Girls', city: "Paris", country: "France", logo: prg_logo_url },
+  { name: 'Roller Skating Montreuil', city: "Montreuil", country: "France",logo: montreuil_logo_url },
+  { name: 'Beastie Derby Girls', city: "Rouen", country: "France", logo: beastie_logo_url }
 ])
 puts 'Leagues created'
 
@@ -39,14 +39,14 @@ puts "#{User.count} users created"
 puts 'Creating teams'
 
 teams = Team.create!([
-  { name: 'Bad bunnies', ranking: 11, location: 'Lomme, France', league: League.first, user: User.first, photo: lrg_logo_url },
-  { name: 'Glorious batardes', ranking: 12, location: 'Lomme, France', league: League.first, user: User.second, photo: lrg_logo_url },
-  { name: 'Tétons Flingueurs', ranking: 13, location: 'Lomme, France', league: League.first, user: User.third, photo: lrg_logo_url },
-  { name: 'All stars', ranking: 7, location:'Paris, France', league: League.second, user: User.fourth, photo: prg_logo_url },
-  { name: 'Les quedalles', ranking: 83, location:'Paris, France', league: League.second, photo: prg_logo_url },
-  { name: 'Les sans culottes', ranking: 413, location:'Paris, France', league: League.second, photo: prg_logo_url },
-  { name: 'Les nasty pécheresses', ranking: 259, location: 'Montreuil, France', league: League.third, photo: montreuil_logo_url },
-  { name: 'All stars', ranking: 172, location: 'Reims, France', league: League.fourth, photo: beastie_logo_url }
+  { name: 'Bad bunnies', ranking: 11, league: League.first, user: User.first, photo: lrg_logo_url },
+  { name: 'Glorious batardes', ranking: 12, league: League.first, user: User.second, photo: lrg_logo_url },
+  { name: 'Tétons Flingueurs', ranking: 13, league: League.first, user: User.third, photo: lrg_logo_url },
+  { name: 'All stars', ranking: 7, league: League.second, user: User.fourth, photo: prg_logo_url },
+  { name: 'Les quedalles', ranking: 83, league: League.second, photo: prg_logo_url },
+  { name: 'Les sans culottes', ranking: 413, league: League.second, photo: prg_logo_url },
+  { name: 'Les nasty pécheresses', ranking: 259, league: League.third, photo: montreuil_logo_url },
+  { name: 'All stars', ranking: 172, league: League.fourth, photo: beastie_logo_url }
 ])
 
 puts "#{Team.count} teams created"
