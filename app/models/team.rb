@@ -10,4 +10,6 @@ class Team < ApplicationRecord
   validates :league_id, presence: true
 
   validates :ranking, uniqueness: true
+
+  mount_uploader :photo, PhotoUploader
 end
