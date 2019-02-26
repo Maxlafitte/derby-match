@@ -1,4 +1,4 @@
-class TeamsPolicy < ApplicationPolicy
+class TeamPolicy < ApplicationPolicy
   # as a user i can see all the teams
   def index?
     true
