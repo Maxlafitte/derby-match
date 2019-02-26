@@ -1,0 +1,16 @@
+<div>
+  test
+  <div>
+    <% if @user.photo? %>
+      <%= cl_image_tag @user.photo, width: 200, height: 200, crop: :thumb, gravity: :face %>
+    <% else %>
+      <%= image_tag 'avatar.png' %>
+    <% end %>
+  </div>
+
+  <div>
+    <h2><%= @user.derby_name %></h2>
+    <p><%= @user.email %></p>
+    <p><%= @user.team.name %></p>
+  </div>
+</div>
