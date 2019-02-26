@@ -1,4 +1,5 @@
 
+
 <div class="container grid">
   <div class="card-category">
     <div class="card-img">
@@ -21,6 +22,7 @@
     <p>Please contact <%= @team.user.derby_name %> to make a game request.</p>
   </div>
   <div class="request-form">
-
+    <% if current_user != @team.user %>
+    <%= render 'form', request: @request, team: @team %>
+    <% end %>
   </div>
-</div>

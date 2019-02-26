@@ -15,7 +15,22 @@ class RequestsController < ApplicationController
   end
 
   def create
-    # authorize @request
+    @team = Team.find(params[:team_id])
+    authorize @team
+    @request = Request.new(request_params)
+    @message = Message.new(message_params)
+    @message.request = @request
+    @message.user = current_user
+    @request.team = @team
+    @request.user = current_user
+    @request.status = "pending"
+    if params[:at_home] == 0
+      @request.at_home = true
+    else
+      @request.at_home = false
+    end
+    @request.save!
+    @message.save!
   end
 
   def edit
@@ -24,5 +39,15 @@ class RequestsController < ApplicationController
 
   def update
     # authorize @request
+  end
+
+  private
+
+  def request_params
+    params.require(:request).permit(:start_date, :end_date, :team_id, :user_id, :at_home)
+  end
+
+  def message_params
+    params.require(:request).require(:message).permit(:content)
   end
 end
