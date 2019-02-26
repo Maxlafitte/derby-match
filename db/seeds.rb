@@ -16,6 +16,7 @@ montreuil_logo_url = 'http://flattrackstats.com/sites/default/files/imagecache/p
 beastie_logo_url = 'http://flattrackstats.com/sites/default/files/imagecache/profile/logos/reims.jpg'
 
 puts 'Creating leagues'
+
 leagues = League.create!([
   { name: 'Lomme Roller Girls', logo: lrg_logo_url },
   { name: 'Paris Roller Girls', logo: prg_logo_url },
@@ -33,7 +34,7 @@ users = User.create!([
   { email: 'beastie@beaste.com', password: 'azerty', derby_name: 'La terreur de Reims' }
 ])
 
-puts 'Users created'
+puts "#{User.count} users created"
 
 puts 'Creating teams'
 
@@ -48,5 +49,5 @@ teams = Team.create!([
   { name: 'All stars', ranking: 172, location: 'Reims, France', league: League.fourth, photo: beastie_logo_url }
 ])
 
-puts 'Teams created'
+puts "#{Team.count} teams created"
 
