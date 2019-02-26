@@ -9,4 +9,5 @@ class Team < ApplicationRecord
   validates :location, presence: true
   validates :league_id, presence: true
   validates :user_id, presence: true
+  mount_uploader :photo, PhotoUploader
 end
