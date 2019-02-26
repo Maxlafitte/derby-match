@@ -1,0 +1,12 @@
+<div class="big-card d-inline-flex">
+  <div class="user-img">
+    <%=  image_tag @user.photo %>
+    <!-- <img style="width: 200px" src='https://api.adorable.io/avatars/285/abott@adorable.png' alt=""> -->
+  <%#= cl_image_tag @user.photo, width: 200, height: 200, crop: :thumb, gravity: :face %>
+  </div>
+  <div class="user-desc">
+  <h2><%= @user.derby_name %></h2>
+  <p><%= @user.email %></p>
+  <p><%= @user.team.name %></p>
+  </div>
+</div>

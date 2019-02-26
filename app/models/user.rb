@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
   has_one :team
   has_many :requests
   has_many :messages
@@ -10,5 +11,6 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true
   validates :derby_name, presence: true
+
   mount_uploader :photo, PhotoUploader
 end

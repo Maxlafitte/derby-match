@@ -16,6 +16,8 @@ Rails.application.routes.draw do
     resources :games, only: [:index, :show, :new, :create, :edit, :update]
   end
 
-  resources :messages, only: [:create]
+  resources :messages, only: :create
+
+  resources :profiles, only: :show
 
 end
