@@ -8,8 +8,10 @@
 </div>
 
 <div class="contact-info">
-  <p><%#= cl_image_tag(@team.user.photo, height: 50, width: 50,crop: :fill) %></p>
-  <p>Contact: <%= @team.user.derby_name %></p>
+  <% if @team.user.present? %>
+    <p><%= cl_image_tag(@team.user.photo, height: 50, width: 50,crop: :fill) %></p>
+    <p>Contact: <%= @team.user.derby_name %></p>
+  <% end %>
 </div>
 
 <div class="request-form">
