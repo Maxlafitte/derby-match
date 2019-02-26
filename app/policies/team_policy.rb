@@ -4,6 +4,11 @@ class TeamPolicy < ApplicationPolicy
     true
   end
 
+  # necessary to create a request form
+  def create?
+    true
+  end
+
   # as a user i can see one team
   def show?
     true

@@ -1,10 +1,19 @@
 <h1><%= @team.name %></h1>
 
-<p><%= cl_image_tag(@team.photo, height: 250, width: 250,crop: :fill) %></p>
-<p>League: <%= @team.league.name %></p>
-<p>Ranking: <%= @team.ranking %></p>
-<p>Location: <%= @team.location %></p>
+<div class="team-infos">
+  <p><%= image_tag(@team.photo, height: 250, width: 250,crop: :fill) %></p>
+  <p>League: <%= @team.league.name %></p>
+  <p>Ranking: <%= @team.ranking %></p>
+  <p>Location: <%= @team.league.city %>, <%= @team.league.country %></p>
+</div>
 
-<p><%= cl_image_tag(@team.user.photo, height: 50, width: 50,crop: :fill) %></p>
-<p>Contact: <%= @team.user.derby_name %></p>
+<div class="contact-info">
+  <p><%#= cl_image_tag(@team.user.photo, height: 50, width: 50,crop: :fill) %></p>
+  <p>Contact: <%= @team.user.derby_name %></p>
+</div>
 
+<div class="request-form">
+  <% if current_user != @team.user %>
+    <%= render 'form', request: @request, team: @team %>
+  <% end %>
+</div>
