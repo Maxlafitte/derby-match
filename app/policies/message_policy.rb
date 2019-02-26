@@ -1,4 +1,4 @@
-class MessagesPolicy < ApplicationPolicy
+class MessagePolicy < ApplicationPolicy
   # as a user i can see all the messages i've sent and received
   def index?
     record.user == user
