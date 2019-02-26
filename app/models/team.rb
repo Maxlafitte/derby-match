@@ -6,6 +6,5 @@ class Team < ApplicationRecord
 
   validates :name, presence: true
   validates :ranking, presence: true, uniqueness: true
-  validates :location, presence: true
   validates :league, presence: true
 end
