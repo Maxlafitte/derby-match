@@ -24,6 +24,7 @@ namespace :scrapp_data do
         # Path to the league page
         path = element.search('.views-field-title a').attribute('href')
 
+        # We take the URL of the league and scrap in it from now on
         league_url = "http://flattrackstats.com#{path}"
         league_html_file = open(league_url).read.encode!('UTF-8', 'UTF-8', :invalid => :replace)
         league_html_doc = Nokogiri::HTML(league_html_file)
@@ -54,7 +55,7 @@ namespace :scrapp_data do
         if league.valid?
           league.save!
           puts "league created #{league.name}"
-
+          lead_team_name = league_html_doc.search('.teamname').text.strip
           # create teams
         end
       end
@@ -106,12 +107,25 @@ namespace :scrapp_test do
     url = "http://flattrackstats.com/teams/92567"
     html_file = open(url).read.encode!('UTF-8', 'UTF-8', :invalid => :replace)
     html_doc = Nokogiri::HTML(html_file)
+    lead_team_name = html_doc.search('.teamname').text.match(/\((.*)\)/)[1]
+
+    ranking_url = "http://flattrackstats.com/rankings/women/women_europe"
+    ranking_html_file = open(ranking_url).read.encode!('UTF-8', 'UTF-8', :invalid => :replace)
+    ranking_html_doc = Nokogiri::HTML(ranking_html_file)
+
+    ranking_html_doc.search('.rankingscontainer tr').each_with_index do |element, i|
+      next if i == 0
+      p element.children[0].text.match(/\d+/)[0]
+      p element.search('a').children.text
+
+    end
+
     html_doc.search('.relatedteams a').each do |element|
       puts "scrapping...."
       #scraping du nom des équipes de la ligue
       team = element.text.strip
     end
     website = html_doc.search('.website').text.strip
-    p city = html_doc.search('.large').text.strip
+    city = html_doc.search('.large').text.strip
   end
 end
