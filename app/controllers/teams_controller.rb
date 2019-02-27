@@ -28,4 +28,10 @@ class TeamsController < ApplicationController
   # not sure that we need it since we won't have admin users
   def update
   end
+
+  def search
+    @teams = Team.all
+    authorize @teams
+    render :index
+  end
 end
