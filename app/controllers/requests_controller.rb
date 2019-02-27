@@ -45,6 +45,11 @@ class RequestsController < ApplicationController
     authorize @request
     if params[:commit] == "Accept"
       if @request.update(status: "accepted")
+        @game = Game.new
+        @game.request = @request
+        @game.start_date = @request.start_date
+        @game.end_date = @request.end_date
+        @game.save!
         #change once we have the dashboard
         redirect_to teams_path
       else
