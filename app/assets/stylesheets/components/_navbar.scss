@@ -1,11 +1,14 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: $my-orange;
-  font-weight: $my-gray;
 }
 
-.nav-link {
+.logged-nav {
   font-weight: bold;
+  color: white;
+  &:hover {
+    color: $my-yellow;
+  }
 }
 
 
@@ -15,4 +18,10 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+.log-in-nav {
+  color: white;
+  &:hover {
+    color: $my-yellow;
+  }
 }
