@@ -2,8 +2,7 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
     @message.user = current_user
-    raise
-    #authorize @message
+    authorize @message
 
     if @message.save!
       # to change once we have the dashboard
