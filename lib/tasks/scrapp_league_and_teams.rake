@@ -13,11 +13,10 @@ namespace :scrapp_data do
 
         league_name = element.search('.views-field-title a').text.strip
         location = element.search('.views-field-field-team-location-value').text.strip.split(', ')
+        city = location[0]
         if location.length < 2
-          city = location[0]
           country = city
         else
-          city = location[0]
           country = location[1]
         end
 
