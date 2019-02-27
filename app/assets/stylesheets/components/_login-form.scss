@@ -1,0 +1,32 @@
+.form-center {
+  justify-content: center;
+}
+#new_user {
+  background-color: white;
+  opacity: 0.8;
+  padding: 20px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin-top: 100px;
+  opacity: 0.8;
+  a {
+    text-decoration: none;
+    color: black;
+    opacity: 07;
+    align-items: center;
+  }
+  a:hover {
+    opacity: 1;
+  }
+}
+.form-control {
+  border-radius: 4px;
+  background-color: rgba(244, 244, 244, 0.7);
+}
+.customize-links {
+  display: flex;
+  flex-direction: column;
+  a {
+    color: black;
+    text-decoration: none;
+  }
+}
