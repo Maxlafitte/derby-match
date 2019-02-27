@@ -20,6 +20,7 @@
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
     <%= f.input :photo %>
+    <%= f.input :team, :collection => Team.all, input_html: { class: "select2"} %>
     <%= f.input :photo_cache, as: :hidden %>
   </div>
 
