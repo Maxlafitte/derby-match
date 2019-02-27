@@ -9,21 +9,26 @@
   color: $my-gray;
   font-size: 24px;
   font-weight: bold;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   p {
     font-size: 16px;
   }
   .ranking {
-    font-size: 34px;
+    font-size: 55px;
+    font-weight: bold;
+    color: $my-yellow;
   }
   h2 {
     font-weight: bold;
+  }
+  img {
+    margin-top: 10px;
   }
 }
 .card-team-infos {
   display: flex;
   justify-content: space-around;
+  margin-top: 38px;
 }
 .card-img {
   display: flex;
@@ -31,12 +36,3 @@
   flex-direction: column;
   align-items: center;
 }
-.star-ranking {
-  position: relative;
-}
-
-.ranking {
-  position: absolute;
-}
-
-
