@@ -10,7 +10,6 @@ class RequestsController < ApplicationController
     @team = Team.find(params[:team_id])
     @request = Request.find(params[:id])
     authorize @request
-
     @message = Message.new(request: @request)
   end
 
@@ -44,8 +43,28 @@ class RequestsController < ApplicationController
   def update
     @request = Request.find(params[:id])
     authorize @request
-    # if params[:commit] == "Accept" >>
-  end
+    if params[:commit] == "Accept"
+      if @request.update(status: "accepted")
+        #change once we have the dashboard
+        redirect_to teams_path
+      else
+        render :my_bookings
+      end
+    elsif params[:commit] == "Decline"
+      if @request.update(status: "declined")
+        #change once we have the dashboard
+        redirect_to teams_path
+      else
+        render :my_bookings
+      end
+    elsif params[:commit] == "Cancel"
+      if @request.update(status: "cancelled")
+        #change once we have the dashboard
+        redirect_to teams_path
+      else
+        render :my_bookings
+      end
+    end  end
 
   private
 
