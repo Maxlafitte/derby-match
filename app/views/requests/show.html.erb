@@ -1,2 +1,52 @@
-<h1>Requests#show</h1>
-<p>Find me in app/views/requests/show.html.erb</p>
+<!-- if request was sent by me -->
+<h1>Requests to <%= @team.name %></h1>
+
+<div class="team-infos">
+  <p><%= image_tag(@team.photo, height: 250, width: 250,crop: :fill) %></p>
+  <p>League: <%= @team.league.name %></p>
+  <p>Ranking: <%= @team.ranking %></p>
+  <p>Location: <%= @team.league.city %>, <%= @team.league.country %></p>
+</div>
+
+<div class="contact-infos">
+  <p>Contact: <%= @team.user.derby_name %></p>
+  <p>
+    <% if @team.user.photo.present? %>
+      <%= image_tag(@team.user.photo, height: 250, width: 250,crop: :fill) %>
+    <% end %>
+  </p>
+</div>
+
+<div class="request-infos">
+  <p><%= @request.status.upcase %></p>
+  <p>Dates: <%= @request.start_date %> - <%= @request.start_date %></p>
+  <p>
+    Location:
+    <% if @request.at_home == true %>
+      <%= @user.team.league.city %>, <%= @user.team.league.country %>
+    <% else %>
+      <%= @team.league.city %>, <%= @team.league.country %>
+    <% end %>
+
+  </p>
+</div>
+
+<div class="messages">
+  <% @request.messages.each do |message| %>
+  <div class="one-message">
+    <p><%= message.content %></p>
+    <p>From: <%= message.user.derby_name %></p>
+  </div>
+  <div class="message-form">
+    <%= simple_form_for ([@request, @message]), url: messages_path, method: :post do |f| %>
+      <%= f.input :content, label: 'Your reply' %>
+      <%= f.input :request_id, as: :hidden %>
+      <%= f.button :submit, "Send Message",  class: 'btn-gradient' %>
+    <% end %>
+  </div>
+  <% end %>
+</div>
+
+
+<!-- if request was received by me-->
+<h1>Requests from <%= @request.user.team.name %></h1>
