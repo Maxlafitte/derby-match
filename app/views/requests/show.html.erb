@@ -19,14 +19,21 @@
   </div>
 
   <div class="request-infos">
-    <p><%= @request.status.upcase %></p>
+    <div class="booking-state">
+      <p><%= @request.status.upcase %></p>
+      <% if @request.status.upcase == "PENDING" %>
+        <%= simple_form_for @request , url: team_request_path ,method: :patch do |f| %>
+          <%= f.button :submit, value: 'Cancel', class:"btn" %>
+        <% end %>
+      <% end %>
+    </div>
     <p>Dates: <%= @request.start_date %> - <%= @request.start_date %></p>
     <p>
       Location:
       <% if @request.at_home == true %>
-        Home: <%= @user.team.league.city %>, <%= @user.team.league.country %>
+        <%= @current_user.team.league.city %>, <%= @current_user.team.league.country %> (home)
       <% else %>
-        Away: <%= @team.league.city %>, <%= @team.league.country %>
+        <%= @team.league.city %>, <%= @team.league.country %> (away)
       <% end %>
 
     </p>
@@ -71,14 +78,24 @@
   </div>
 
   <div class="request-infos">
-    <p><%= @request.status.upcase %></p>
+    <div class="booking-state">
+      <p><%= @request.status.upcase %></p>
+      <% if @request.status.upcase == "PENDING" %>
+        <%= simple_form_for @request , url: team_request_path, method: :patch do |f| %>
+            <%= f.button :submit, value: 'Accept', class:"btn" %>
+          <% end %>
+        <%= simple_form_for @request , url: team_request_path, method: :patch do |f| %>
+            <%= f.button :submit, value: 'Decline', class:"btn" %>
+          <% end %>
+      <% end %>
+    </div>
     <p>Dates: <%= @request.start_date %> - <%= @request.start_date %></p>
     <p>
       Location:
       <% if @request.at_home == true %>
-        Home: <%= @current_user.team.league.city %>, <%= @current_user.team.league.country %>
+        <%= @request.user.team.league.city %>, <%= @request.user.team.league.country %> (away)
       <% else %>
-        Away: <%= @current_user.team.league.city %>, <%= @current_user.team.league.country %>
+        <%= @current_user.team.league.city %>, <%= @current_user.team.league.country %> (home)
       <% end %>
 
     </p>
