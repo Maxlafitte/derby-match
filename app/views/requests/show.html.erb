@@ -41,11 +41,19 @@
 
   <div class="messages">
     <% @request.messages.each do |message| %>
-    <div class="one-message">
-      <p><%= message.content %></p>
-      <p>From: <%= message.user.derby_name %></p>
-      ---
-    </div>
+      <% if message.user == current_user %>
+        <div class="one-message">
+          <p><%= message.content %></p>
+          <p>From: me</p>
+          ---
+        </div>
+      <% else %>
+        <div class="one-message">
+          <p><%= message.content %></p>
+          <p>From: <%= message.user.derby_name %></p>
+          ---
+        </div>
+      <% end %>
     <% end %>
     <div class="message-form">
       <%= simple_form_for ([@request, @message]), url: messages_path, method: :post do |f| %>
@@ -103,11 +111,19 @@
 
   <div class="messages">
     <% @request.messages.each do |message| %>
-    <div class="one-message">
-      <p><%= message.content %></p>
-      <p>From: <%= message.user.derby_name %></p>
-      ---
-    </div>
+      <% if message.user == current_user %>
+        <div class="one-message">
+          <p><%= message.content %></p>
+          <p>From: me</p>
+          ---
+        </div>
+      <% else %>
+        <div class="one-message">
+          <p><%= message.content %></p>
+          <p>From: <%= message.user.derby_name %></p>
+          ---
+        </div>
+      <% end %>
     <% end %>
     <div class="message-form">
       <%= simple_form_for ([@request, @message]), url: messages_path, method: :post do |f| %>
