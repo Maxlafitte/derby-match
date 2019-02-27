@@ -1,3 +1,5 @@
+require 'rest-client'
+
 namespace :scrapp_data do
   desc "scrapp flattrackstat"
   task scrapp: :environment do
@@ -12,7 +14,7 @@ namespace :scrapp_data do
         puts "scrapping...."
 
         league_name = element.search('.views-field-title a').text.strip
-        location = element.search('.views-field-field-team-location-value').text.strip.split(', ')
+        location = element.search('.views-field-field-team-location-value span').text.strip.split(', ')
         city = location[0]
         if location.length < 2
           country = city
@@ -38,6 +40,45 @@ namespace :scrapp_data do
       end
 
       puts "Created #{League.count} leagues!"
+    end
+  end
+end
+
+namespace :api_test do
+  desc "api algolia places"
+  task api_test: :environment do
+    url = "http://flattrackstats.com/teams/results/taxonomy\%3A17\%2C11\%2C49"
+    html_file = open(url).read.encode!('UTF-8', 'UTF-8', :invalid => :replace)
+    html_doc = Nokogiri::HTML(html_file)
+
+    html_doc.search('tr').each_with_index do |element, i|
+      next if i == 0
+      if i == 1
+        puts "scrapping...."
+
+        p league_name = element.search('.views-field-title a').text.strip
+        p location = element.search('.views-field-field-team-location-value span').attribute('title').value
+        algolia_location = JSON.parse((RestClient.post "https://places-dsn.algolia.net/1/places/query", {'query' => "#{location}"}.to_json, {content_type: :json, accept: :json}))
+        response = algolia_location["hits"]
+        p response[0]["country"]["en"]
+        p coordinates = response[0]["_geoloc"]
+        p response[0]["locale_names"]["en"]
+      end
+    end
+  end
+end
+
+
+namespace :scrapp_test do
+  desc "scrapp flattrackstat"
+  task test: :environment do
+    url = "http://flattrackstats.com/teams/70666"
+    html_file = open(url).read.encode!('UTF-8', 'UTF-8', :invalid => :replace)
+    html_doc = Nokogiri::HTML(html_file)
+    html_doc.search('.relatedteams a').each do |element|
+      puts "scrapping...."
+      #scraping du nom des équipes de la ligue
+      team = element.text.strip
     end
   end
 end
