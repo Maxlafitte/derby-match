@@ -19,15 +19,6 @@ namespace :scrapp_data do
         puts "scrapping...."
         # We look for the league data
         league_name = element.search('.views-field-title a').text.strip
-        location = element.search('.views-field-field-team-location-value').text.strip
-        algolia_location = JSON.parse((RestClient.post "https://places-dsn.algolia.net/1/places/query", {'query' => "#{location}"}.to_json, {content_type: :json, accept: :json}))
-        response = algolia_location["hits"]
-
-        response[0]["country"]["en"].nil? ? country = response[0]["country"]["default"] : country = response[0]["country"]["en"]
-        response[0]["locale_names"]["en"].nil? ? city = response[0]["locale_names"]["default"][0] : city = response[0]["locale_names"]["en"]
-
-        latitude = response[0]["_geoloc"]["lat"]
-        longitude = response[0]["_geoloc"]["lng"]
 
         # Path to the league page
         path = element.search('.views-field-title a').attribute('href')
@@ -38,7 +29,16 @@ namespace :scrapp_data do
         # In the league page we take the logo
         logo = league_html_doc.search('.logo img')
         website = league_html_doc.search('.website').text.strip
+        location = league_html_doc.search('.large').text.strip
 
+        algolia_location = JSON.parse((RestClient.post "https://places-dsn.algolia.net/1/places/query", {'query' => "#{location}"}.to_json, {content_type: :json, accept: :json}))
+        response = algolia_location["hits"]
+
+        response[0]["country"]["en"].nil? ? country = response[0]["country"]["default"] : country = response[0]["country"]["en"]
+        response[0]["locale_names"]["en"].nil? ? city = response[0]["locale_names"]["default"][0] : city = response[0]["locale_names"]["en"]
+
+        latitude = response[0]["_geoloc"]["lat"]
+        longitude = response[0]["_geoloc"]["lng"]
         # From there, we create a new league
         league = League.new(
                             name: league_name,
@@ -72,22 +72,19 @@ namespace :api_test do
 
     html_doc.search('tr').each_with_index do |element, i|
       next if i == 0
-      if i == 2
+      if i == 72
         puts "scrapping...."
 
         p league_name = element.search('.views-field-title a').text.strip
-        p location = element.search('.views-field-field-team-location-value').text
+        p location = element.search('.views-field-field-team-location-value')
         algolia_location = JSON.parse((RestClient.post "https://places-dsn.algolia.net/1/places/query", {'query' => "#{location}"}.to_json, {content_type: :json, accept: :json}))
         response = algolia_location["hits"]
         response[0]["country"]["en"].nil? ? country = response[0]["country"]["default"] : country = response[0]["country"]["en"]
         response[0]["locale_names"]["en"].nil? ? city = response[0]["locale_names"]["default"][0] : city = response[0]["locale_names"]["en"]
-        # p country = response[0]["country"]["default"]
-        # p country = response[0]["country"]["en"]
         p latitude = response[0]["_geoloc"]["lat"]
         p longitude = response[0]["_geoloc"]["lng"]
         p city
         p country
-        # p city = response[0]["locale_names"]["en"][0]
       end
     end
   end
@@ -97,7 +94,7 @@ end
 namespace :scrapp_test do
   desc "scrapp flattrackstat"
   task test: :environment do
-    url = "http://flattrackstats.com/teams/70666"
+    url = "http://flattrackstats.com/teams/92567"
     html_file = open(url).read.encode!('UTF-8', 'UTF-8', :invalid => :replace)
     html_doc = Nokogiri::HTML(html_file)
     html_doc.search('.relatedteams a').each do |element|
@@ -106,5 +103,6 @@ namespace :scrapp_test do
       team = element.text.strip
     end
     website = html_doc.search('.website').text.strip
+    p city = html_doc.search('.large').text.strip
   end
 end
