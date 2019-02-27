@@ -5,6 +5,8 @@ class TeamsController < ApplicationController
 
   def show
     @team = Team.find(params[:id])
+    @requests = @team.method_unavailable_dates
+    gon.unavailable_dates = @requests
     @request = Request.new
     authorize @team
     @message = Message.new
