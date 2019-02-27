@@ -30,8 +30,11 @@ class TeamsController < ApplicationController
   end
 
   def search
-    @teams = Team.all
-    authorize @teams
+    # get start_date (and end_date) from the form
+    booking_start_date = params[:start_date]
+    # compare it to d1 and d2 of the games (between?)
+    @teams = Team.where(booking_start_date.between?(team.games.start_date, team.games.end_date) == false)
+
     render :index
   end
 end
