@@ -1,6 +1,15 @@
 class MessagesController < ApplicationController
   def create
-    # autorize @message
+    @message = Message.new(message_params)
+    @message.user = current_user
+    authorize @message
+
+    if @message.save!
+      # to change once we have the dashboard
+      redirect_to teams_path
+    else
+      render :show
+    end
   end
 
   def index
@@ -9,5 +18,9 @@ class MessagesController < ApplicationController
         # do not uncomment this line: not sure about that one, we'll need to test it
     #   message.request.team.user == current_user
     # end
+  end
+
+  def message_params
+    params.require(:message).permit(:content, :team_id, :request_id)
   end
 end
