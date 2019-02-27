@@ -62,9 +62,10 @@ class RequestsController < ApplicationController
         #change once we have the dashboard
         redirect_to teams_path
       else
-        render :my_bookings
+        render :show
       end
-    end  end
+    end
+  end
 
   private
 
