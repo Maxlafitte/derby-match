@@ -42,7 +42,9 @@ class RequestsController < ApplicationController
   end
 
   def update
-    # authorize @request
+    @request = Request.find(params[:id])
+    authorize @request
+    # if params[:commit] == "Accept" >>
   end
 
   private
