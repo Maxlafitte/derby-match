@@ -7,7 +7,11 @@ class RequestsController < ApplicationController
   end
 
   def show
-    # authorize @request
+    @team = Team.find(params[:team_id])
+    @request = Request.find(params[:id])
+    authorize @request
+
+    @message = Message.new(request: @request)
   end
 
   def new
@@ -18,7 +22,7 @@ class RequestsController < ApplicationController
     @team = Team.find(params[:team_id])
     authorize @team
     @request = Request.new(request_params)
-    @message = Message.new(message_params)
+    @message = Message.new(request_message_params)
     @message.request = @request
     @message.user = current_user
     @request.team = @team
@@ -29,8 +33,8 @@ class RequestsController < ApplicationController
     else
       @request.at_home = false
     end
-    @request.save!
-    @message.save!
+    @request.save
+    @message.save
   end
 
   def edit
@@ -47,7 +51,7 @@ class RequestsController < ApplicationController
     params.require(:request).permit(:start_date, :end_date, :team_id, :user_id, :at_home)
   end
 
-  def message_params
+  def request_message_params
     params.require(:request).require(:message).permit(:content)
   end
 end
