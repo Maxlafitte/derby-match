@@ -1,19 +1,39 @@
-<h1><%= @team.name %></h1>
 
-<div class="team-infos">
-  <p><%= image_tag(@team.photo, height: 250, width: 250,crop: :fill) %></p>
-  <p>League: <%= @team.league.name %></p>
-  <p>Ranking: <%= @team.ranking %></p>
-  <p>Location: <%= @team.league.city %>, <%= @team.league.country %></p>
-</div>
+<div class="container grid">
+  <div class="card-category">
+    <div class="card-img">
+      <h2 class="text-center"><%= @team.name.upcase %></h2>
+      <p><%= cl_image_tag(@team.photo, height: 250, width: 250,crop: :fill) %></p>
+    </div>
 
-<div class="contact-info">
-  <p><%#= cl_image_tag(@team.user.photo, height: 50, width: 50,crop: :fill) %></p>
-  <p>Contact: <%= @team.user.derby_name %></p>
-</div>
+    <div class="card-team-infos">
+      <div class="team-content">
+        <p><%= @team.league.name %></p>
+        <p><%= @team.league.city %>, <%= @team.league.country %></p>
+      </div>
+      <div class="star-ranking">
+        <p class="ranking"><%= @team.ranking %></p>
+      </div>
+    </div>
+  </div>
+  <% if @team.user %>
+    <div class="contact-from">
+      <% if @team.user.photo? %>
+        <p><%= cl_image_tag(@team.user.photo, height: 50, width: 50,crop: :fill, class: 'avatar') %></p>
+        <p>Contact: <%= @team.user.derby_name %></p>
+      <% else %>
+        <p><%= image_tag 'avatar.png', height: 50, width: 50,crop: :fill, class: 'avatar' %></p>
+      <% end %>
+      <p>Please contact <%= @team.user.derby_name %> to make a game request.</p>
+    </div>
 
-<div class="request-form">
-  <% if current_user != @team.user %>
-    <%= render 'form', request: @request, team: @team %>
+    <% if current_user != @team.user %>
+      <div class="requesting-form text-center">
+      <%= render 'form', request: @request, team: @team %>
+    <% end %>
+    <% else %>
+      <p class="contact-from">No one has claimed this Team? Do you know them?</p>
   <% end %>
+
+  </div>
 </div>

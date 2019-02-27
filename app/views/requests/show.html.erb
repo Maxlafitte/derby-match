@@ -1,2 +1,137 @@
-<h1>Requests#show</h1>
-<p>Find me in app/views/requests/show.html.erb</p>
+<!-- if it's a request i've sent -->
+<% if @request.user == current_user %>
+  <h1>Requests to <%= @team.name %></h1>
+
+  <div class="team-infos">
+    <p><%= image_tag(@team.photo, height: 250, width: 250,crop: :fill) %></p>
+    <p>League: <%= @team.league.name %></p>
+    <p>Ranking: <%= @team.ranking %></p>
+    <p>Location: <%= @team.league.city %>, <%= @team.league.country %></p>
+  </div>
+
+  <div class="contact-infos">
+    <p>Contact: <%= @team.user.derby_name %></p>
+    <p>
+      <% if @team.user.photo.present? %>
+        <%= image_tag(@team.user.photo, height: 250, width: 250,crop: :fill) %>
+      <% end %>
+    </p>
+  </div>
+
+  <div class="request-infos">
+    <div class="booking-state">
+      <p><%= @request.status.upcase %></p>
+      <% if @request.status.upcase == "PENDING" %>
+        <%= simple_form_for @request , url: team_request_path ,method: :patch do |f| %>
+          <%= f.button :submit, value: 'Cancel', class:"btn" %>
+        <% end %>
+      <% end %>
+    </div>
+    <p>Dates: <%= @request.start_date %> - <%= @request.start_date %></p>
+    <p>
+      Location:
+      <% if @request.at_home == true %>
+        <%= @current_user.team.league.city %>, <%= @current_user.team.league.country %> (home)
+      <% else %>
+        <%= @team.league.city %>, <%= @team.league.country %> (away)
+      <% end %>
+
+    </p>
+  </div>
+
+  <div class="messages">
+    <% @request.messages.each do |message| %>
+      <% if message.user == current_user %>
+        <div class="one-message">
+          <p><%= message.content %></p>
+          <p>From: me</p>
+          ---
+        </div>
+      <% else %>
+        <div class="one-message">
+          <p><%= message.content %></p>
+          <p>From: <%= message.user.derby_name %></p>
+          ---
+        </div>
+      <% end %>
+    <% end %>
+    <div class="message-form">
+      <%= simple_form_for ([@request, @message]), url: messages_path, method: :post do |f| %>
+        <%= f.input :content, label: 'Your reply' %>
+        <%= f.input :request_id, as: :hidden %>
+        <%= f.button :submit, "Send Message",  class: 'btn-gradient' %>
+      <% end %>
+    </div>
+  </div>
+
+
+<% else %>
+  <!-- if it's a request i've received -->
+  <h1>Requests from <%= @request.user.team.name %></h1>
+
+  <div class="team-infos">
+    <p><%= image_tag(@request.user.team.photo, height: 250, width: 250,crop: :fill) %></p>
+    <p>League: <%= @request.user.team.league.name %></p>
+    <p>Ranking: <%= @request.user.team.ranking %></p>
+    <p>Location: <%= @request.user.team.league.city %>, <%= @request.user.team.league.country %></p>
+  </div>
+
+  <div class="contact-infos">
+    <p>Contact: <%= @current_user.team.user.derby_name %></p>
+    <p>
+      <% if @current_user.team.user.photo.present? %>
+        <%= image_tag(@current_user.team.user.photo, height: 250, width: 250,crop: :fill) %>
+      <% end %>
+    </p>
+  </div>
+
+  <div class="request-infos">
+    <div class="booking-state">
+      <p><%= @request.status.upcase %></p>
+      <% if @request.status.upcase == "PENDING" %>
+        <%= simple_form_for @request , url: team_request_path, method: :patch do |f| %>
+            <%= f.button :submit, value: 'Accept', class:"btn" %>
+          <% end %>
+        <%= simple_form_for @request , url: team_request_path, method: :patch do |f| %>
+            <%= f.button :submit, value: 'Decline', class:"btn" %>
+          <% end %>
+      <% end %>
+    </div>
+    <p>Dates: <%= @request.start_date %> - <%= @request.start_date %></p>
+    <p>
+      Location:
+      <% if @request.at_home == true %>
+        <%= @request.user.team.league.city %>, <%= @request.user.team.league.country %> (away)
+      <% else %>
+        <%= @current_user.team.league.city %>, <%= @current_user.team.league.country %> (home)
+      <% end %>
+
+    </p>
+  </div>
+
+  <div class="messages">
+    <% @request.messages.each do |message| %>
+      <% if message.user == current_user %>
+        <div class="one-message">
+          <p><%= message.content %></p>
+          <p>From: me</p>
+          ---
+        </div>
+      <% else %>
+        <div class="one-message">
+          <p><%= message.content %></p>
+          <p>From: <%= message.user.derby_name %></p>
+          ---
+        </div>
+      <% end %>
+    <% end %>
+    <div class="message-form">
+      <%= simple_form_for ([@request, @message]), url: messages_path, method: :post do |f| %>
+        <%= f.input :content, label: 'Your reply' %>
+        <%= f.input :request_id, as: :hidden %>
+        <%= f.button :submit, "Send Message",  class: 'btn-gradient' %>
+      <% end %>
+    </div>
+  </div>
+
+<% end %>

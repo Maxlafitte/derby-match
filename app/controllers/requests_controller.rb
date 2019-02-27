@@ -7,7 +7,10 @@ class RequestsController < ApplicationController
   end
 
   def show
-    # authorize @request
+    @team = Team.find(params[:team_id])
+    @request = Request.find(params[:id])
+    authorize @request
+    @message = Message.new(request: @request)
   end
 
   def new
@@ -18,7 +21,7 @@ class RequestsController < ApplicationController
     @team = Team.find(params[:team_id])
     authorize @team
     @request = Request.new(request_params)
-    @message = Message.new(message_params)
+    @message = Message.new(request_message_params)
     @message.request = @request
     @message.user = current_user
     @request.team = @team
@@ -29,8 +32,8 @@ class RequestsController < ApplicationController
     else
       @request.at_home = false
     end
-    @request.save!
-    @message.save!
+    @request.save
+    @message.save
   end
 
   def edit
@@ -38,7 +41,35 @@ class RequestsController < ApplicationController
   end
 
   def update
-    # authorize @request
+    @request = Request.find(params[:id])
+    authorize @request
+    if params[:commit] == "Accept"
+      if @request.update(status: "accepted")
+        @game = Game.new
+        @game.request = @request
+        @game.start_date = @request.start_date
+        @game.end_date = @request.end_date
+        @game.save!
+        #change once we have the dashboard
+        redirect_to teams_path
+      else
+        render :my_bookings
+      end
+    elsif params[:commit] == "Decline"
+      if @request.update(status: "declined")
+        #change once we have the dashboard
+        redirect_to teams_path
+      else
+        render :my_bookings
+      end
+    elsif params[:commit] == "Cancel"
+      if @request.update(status: "cancelled")
+        #change once we have the dashboard
+        redirect_to teams_path
+      else
+        render :show
+      end
+    end
   end
 
   private
@@ -47,7 +78,7 @@ class RequestsController < ApplicationController
     params.require(:request).permit(:start_date, :end_date, :team_id, :user_id, :at_home)
   end
 
-  def message_params
+  def request_message_params
     params.require(:request).require(:message).permit(:content)
   end
 end
