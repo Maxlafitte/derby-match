@@ -247,6 +247,7 @@ DEPENDENCIES
   rabl-rails
   rails (= 5.2.2)
   redis
+  rest-client
   sassc-rails
   simple_form
   spring
