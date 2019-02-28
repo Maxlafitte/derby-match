@@ -2,7 +2,7 @@
   <div class="form-container body">
     <div class="row form-center">
       <div class="col-xs-12 col-sm-6 col-md-offset-3">
-        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), novalidate: false) do |f| %>
           <%= f.error_notification %>
           <h2 class="text-center">Sign up</h2>
           <div class="form-inputs">
@@ -22,7 +22,8 @@
                         required: true,
                         input_html: { autocomplete: "new-password" } %>
             <%= f.input :team, :collection => Team.all,
-            input_html: { class: "select2"} %>
+            input_html: { class: "select2"},
+                        required: true %>
             <%= f.input :photo %>
             <%= f.input :photo_cache, as: :hidden %>
 
