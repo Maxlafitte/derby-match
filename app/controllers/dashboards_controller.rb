@@ -4,7 +4,7 @@ class DashboardsController < ApplicationController
 
   def show
     authorize :dashboard, :show?
-    @user = current_user
+    @team = current_user.team
     @requests = policy_scope(Request).where(user: current_user)
     @games = policy_scope(Game).where(user: current_user)
     @teams = policy_scope(Team).where(user: current_user)

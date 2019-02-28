@@ -1,23 +1,50 @@
-<div>
-  <div>
-    <h2>Welcome <%= @user.derby_name %></h2>
-    <div>
-      <% if @user.photo? %>
-        <%= cl_image_tag @user.photo, width: 200, height: 200, crop: :thumb, gravity: :face %>
-      <% else %>
-        <%= image_tag 'avatar.png' %>
-      <% end %>
+  <h3 class="text-center">Welcome <%= current_user.derby_name %>!</h3>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card-category">
+          <div class="card-img">
+            <h2><%= current_user.team.name.upcase %></h2>
+            <p><%= cl_image_tag(current_user.team.photo, height: 250, width: 250,crop: :fill) %></p>
+          </div>
+          <div class="card-team-infos">
+            <div class="team-content">
+              <p><%= current_user.team.league.name %></p>
+              <p><%= current_user.team.league.city %>, <%= current_user.team.league.country %></p>
+            </div>
+            <div class="star-ranking">
+              <p class="ranking"><%= current_user.team.ranking %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8"><h3>Suggested teams</h3>
+        <div class="row">
+            <div class="col-md-4">first suggested team
+            </div>
+            <div class="col-md-4">second suggested team
+            </div>
+            <div class="col-md-4">third suggested team
+            </div>
+        </div>
+      </div>
     </div>
-    <div>
-      <p><%= @team %></p>
-    </div>
-  </div>
-  <div>
-    <p><%= @requests %></p>
-    <p><%= @games %></p>
-    <p><%= @teams %></p>
 
+
+  <div class="row">
+    <div class="col-md-4">
+    <h3>Upcoming Events</h3>
+    </div>
+    <div class="col-md-8">
+      <h3>Last Requests
+        <%= current_user.requests.last %></h3>
+    </div>
   </div>
+</div>
+
+
+
+
 
 
   <!--  -->

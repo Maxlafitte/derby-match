@@ -20,6 +20,6 @@ Rails.application.routes.draw do
 
   resources :profiles, only: :show
 
-  resources :dashboards, only: :show
-
+  # resources :dashboards, only: :show
+  get '/dashboard', to: 'dashboards#show'
 end
