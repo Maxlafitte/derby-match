@@ -2,6 +2,7 @@ require 'rest-client'
 
 namespace :scrapp_data do
   desc "scrapp flattrackstat"
+
   task scrapp: :environment do
     #scrap of all pages of leagues (same as travel teams)
     puts "Destroying all leagues..."
@@ -34,33 +35,45 @@ namespace :scrapp_data do
         algolia_location = JSON.parse((RestClient.post "https://places-dsn.algolia.net/1/places/query", {'query' => "#{location}"}.to_json, {content_type: :json, accept: :json}))
         response = algolia_location["hits"]
 
-        response[0]["country"]["en"].nil? ? country = response[0]["country"]["default"] : country = response[0]["country"]["en"]
-        response[0]["locale_names"]["en"].nil? ? city = response[0]["locale_names"]["default"][0] : city = response[0]["locale_names"]["en"]
+        if algolia_location["nbHits"].positive?
+          response[0]["country"]["en"].nil? ? country = response[0]["country"]["default"] : country = response[0]["country"]["en"]
+          response[0]["locale_names"]["en"].nil? ? city = response[0]["locale_names"]["default"][0] : city = response[0]["locale_names"]["en"]
 
-        latitude = response[0]["_geoloc"]["lat"]
-        longitude = response[0]["_geoloc"]["lng"]
-        # From there, we create a new league
-        league = League.new(
-                            name: league_name,
-                            city: city,
-                            country: country,
-                            logo: logo,
-                            latitude: latitude,
-                            longitude: longitude,
-                            website: website
-                            )
+          latitude = response[0]["_geoloc"]["lat"]
+          longitude = response[0]["_geoloc"]["lng"]
+          # From there, we create a new league
+          league = League.new(
+                              name: league_name,
+                              city: city,
+                              country: country,
+                              logo: logo,
+                              latitude: latitude,
+                              longitude: longitude,
+                              website: website
+                              )
 
-        if league.valid?
-          league.save!
-          puts "league created #{league.name}"
+          if league.valid?
+            league.save!
+            puts "league created #{league.name}"
 
-          # create teams
+            # create teams
+          end
+        else
+          puts "#{league_name} doesn't have valid data..."
         end
       end
 
       puts "Created #{League.count} leagues!"
     end
   end
+
+  task test: :environment do
+    league_url = "http://flattrackstats.com/teams/3628"
+    league_html_file = open(league_url).read.encode!('UTF-8', 'UTF-8', :invalid => :replace)
+    league_html_doc = Nokogiri::HTML(league_html_file)
+    p league_html_doc.search('.teamname').attribute('#text')
+  end
+
 end
 
 namespace :api_test do
@@ -72,19 +85,24 @@ namespace :api_test do
 
     html_doc.search('tr').each_with_index do |element, i|
       next if i == 0
-      if i == 72
+      if i == 73
         puts "scrapping...."
 
         p league_name = element.search('.views-field-title a').text.strip
         p location = element.search('.views-field-field-team-location-value')
-        algolia_location = JSON.parse((RestClient.post "https://places-dsn.algolia.net/1/places/query", {'query' => "#{location}"}.to_json, {content_type: :json, accept: :json}))
-        response = algolia_location["hits"]
-        response[0]["country"]["en"].nil? ? country = response[0]["country"]["default"] : country = response[0]["country"]["en"]
-        response[0]["locale_names"]["en"].nil? ? city = response[0]["locale_names"]["default"][0] : city = response[0]["locale_names"]["en"]
-        p latitude = response[0]["_geoloc"]["lat"]
-        p longitude = response[0]["_geoloc"]["lng"]
-        p city
-        p country
+        p algolia_location = JSON.parse((RestClient.post "https://places-dsn.algolia.net/1/places/query", {'query' => "#{location}"}.to_json, {content_type: :json, accept: :json}))
+        p response = algolia_location["hits"]
+
+        if algolia_location["nbHits"].positive?
+          response[0]["country"]["en"].nil? ? country = response[0]["country"]["default"] : country = response[0]["country"]["en"]
+          response[0]["locale_names"]["en"].nil? ? city = response[0]["locale_names"]["default"][0] : city = response[0]["locale_names"]["en"]
+          p latitude = response[0]["_geoloc"]["lat"]
+          p longitude = response[0]["_geoloc"]["lng"]
+          p city
+          p country
+        else
+          puts "#{league_name} doesn't have valid data..."
+        end
       end
     end
   end
