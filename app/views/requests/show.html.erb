@@ -1,7 +1,7 @@
 <!-- if it's a request i've sent -->
-<h2 class="text-center title-request">Requests to <%= @team.name.upcase %></h2>
 <div class="container grid-request">
-<% if @request.user == current_user %>
+  <% if @request.user == current_user %>
+  <h2 class="text-center title-request">Requests to <%= @team.name.upcase %></h2>
   <div class="card">
     <div class="team-img">
       <p><%= image_tag(@team.photo, height: 250, width: 250,crop: :fill) %></p>
@@ -19,9 +19,9 @@
       <p>
         Location:
         <% if @request.at_home == true %>
-          Home: <%= @user.team.league.city %>, <%= @user.team.league.country %>
+          <%= @user.team.league.city %>, <%= @user.team.league.country %> (home)
         <% else %>
-          Away: <%= @team.league.city %>, <%= @team.league.country %>
+          <%= @team.league.city %>, <%= @team.league.country %> (away)
         <% end %>
       </p>
     </div>
@@ -32,11 +32,11 @@
 
   </div>
 </div>
+
 <div class="container message-container">
     <div class="chat-message">
       <div class="messages">
         <% @request.messages.each do |message| %>
-
           <div class="one-message">
             <div class="message-author">
               <p>
@@ -58,7 +58,6 @@
       </div>
     </div>
     <div class="message-form form-request-center">
-=
       <%= simple_form_for ([@request, @message]), url: messages_path, method: :post do |f| %>
         <%= f.input :content, label: 'Your reply' %>
         <%= f.input :request_id, as: :hidden %>
@@ -71,9 +70,9 @@
   <!-- if it's a request i've received -->
 
 
-  <h2 class="text-center title-request">Requests from <%= @request.user.team.name %></h2>
   <div class="container grid-request">
-<% else %>
+  <% else %>
+  <h2 class="text-center title-request">Requests from <%= @request.user.team.name %></h2>
 
     <div class="card">
       <div class="team-img">
@@ -91,9 +90,9 @@
         <p>
           Location:
            <% if @request.at_home == true %>
-          Home: <%= @current_user.team.league.city %>, <%= @current_user.team.league.country %>
+          <%= @current_user.team.league.city %>, <%= @current_user.team.league.country %> (home)
           <% else %>
-          Away: <%= @current_user.team.league.city %>, <%= @current_user.team.league.country %>
+          <%= @current_user.team.league.city %>, <%= @current_user.team.league.country %> (away)
           <% end %>
         </p>
       </div>

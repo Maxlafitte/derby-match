@@ -27,7 +27,7 @@ class RequestsController < ApplicationController
     @request.team = @team
     @request.user = current_user
     @request.status = "pending"
-    if params[:at_home] == 0
+    if params[:request][:at_home] == "0"
       @request.at_home = true
     else
       @request.at_home = false
