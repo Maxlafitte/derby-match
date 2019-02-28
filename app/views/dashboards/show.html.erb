@@ -36,8 +36,15 @@
     <h3>Upcoming Events</h3>
     </div>
     <div class="col-md-8">
-      <h3>Last Requests
-        <%= current_user.requests.last %></h3>
+      <h3>Last Request</h3>
+        <p>From: <%= current_user.team.requests.last.team.name %></p>
+        <p>Dates: from <%= current_user.requests.last.start_date %> to <%= current_user.requests.last.end_date %></p>
+        <p>Location:
+          <% if current_user.requests.last.at_home == true %>
+
+          <% else %>
+          <% end %>
+        </p>
     </div>
   </div>
 </div>
