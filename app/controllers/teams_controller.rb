@@ -2,9 +2,9 @@ class TeamsController < ApplicationController
   def index
     @teams = policy_scope(Team)
 
-    if params[:start_date]
+    if params[:index]
       # get start_date from the form
-      booking_start_date = Date.parse params[:start_date]
+      booking_start_date = Date.parse params[:index][:start_date]
       # compare it to d1 and d2 of the games (between?)
 
       # reject user team & reject teams from league
@@ -20,7 +20,6 @@ class TeamsController < ApplicationController
         team_games_dates = team_games.map(&:dates_range).flatten
         team_games_dates.include?(booking_start_date)
       end
-      authorize @teams
     end
   end
 

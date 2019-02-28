@@ -1,8 +1,8 @@
 class TeamPolicy < ApplicationPolicy
   # as a user i can see all the teams
-  # def index?
-  #   true
-  # end
+  def index?
+    true
+  end
 
   # necessary to create a request form
   def create?

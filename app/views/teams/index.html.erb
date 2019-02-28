@@ -6,10 +6,11 @@
       Search for a team
     </div>
     <div class="row" >
-      <%= simple_form_for :index, url: teams_path, html: {class: "form-inline"} do |f| %>
+      <%= simple_form_for :index, method: "GET", url: teams_path, html: {class: "form-inline"} do |f| %>
         <%= f.input :start_date, as: :string, required: true, input_html: {class: "datepicker"} %>
         <%= f.input :end_date, input_html: {class: "datepicker"} %>
         <%= f.button :submit, "Search",  class: 'my-btn' %>
+        <%#= raise %>
       <% end %>
     </div>
   </div>
