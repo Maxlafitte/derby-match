@@ -1,0 +1,55 @@
+.teams-search-container {
+  margin-top: 100px;
+}
+.search-title {
+  margin-top: 50px;
+}
+.form-search {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  label {
+    display: none;
+  }
+}
+.datepicker-margin {
+  margin: 0px 10px;
+}
+
+
+
+.teams-index {
+  margin-top: 35px;
+  height: 340px;
+  &:hover {
+    margin-top: 10px;
+  }
+}
+.team-index-card {
+  margin-bottom: 15px;
+  .teams-index-name {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
+  .teams-index-ranking {
+    font-size: 20px;
+  }
+}
+.background-color {
+  margin-top: 30px;
+}
+.teams-index-title {
+  text-transform: uppercase;
+  color: black;
+  font-weight: bold;
+}
+.my-ranking {
+  font-size: 24px;
+  color: black;
+  font-weight: bold;
+}
