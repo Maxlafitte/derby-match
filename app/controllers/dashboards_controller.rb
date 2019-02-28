@@ -8,6 +8,5 @@ class DashboardsController < ApplicationController
     @requests = policy_scope(Request).where(user: current_user)
     @games = policy_scope(Game).where(user: current_user)
     @teams = policy_scope(Team)
-    # @teams = policy_scope(Team).where(user: current_user)
   end
 end
