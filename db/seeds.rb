@@ -10,6 +10,7 @@ Team.destroy_all
 User.destroy_all
 League.destroy_all
 
+bear_city_logo = "http://flattrackstats.com/sites/default/files/imagecache/profile/logos/BCRD-Bear\%20City%20Roller\%20Derby_0.png"
 lrg_logo_url = 'http://flattrackstats.com/sites/default/files/imagecache/profile/logos/46446955_1505484136222040_7836643361741078528_n.png'
 prg_logo_url = 'http://flattrackstats.com/sites/default/files/imagecache/profile/logos/Paris%20Rollergirls.jpg'
 montreuil_logo_url = 'http://flattrackstats.com/sites/default/files/imagecache/profile/logos/Montreuil%20logo.png'
@@ -18,6 +19,7 @@ beastie_logo_url = 'http://flattrackstats.com/sites/default/files/imagecache/pro
 puts 'Creating leagues'
 
 leagues = League.create!([
+  { name: 'Bear City Roller Derby', city: "Berlin", country: "Germany", logo: lrg_logo_url },
   { name: 'Lomme Roller Girls', city: "Lomme", country: "France", logo: lrg_logo_url },
   { name: 'Paris Roller Girls', city: "Paris", country: "France", logo: prg_logo_url },
   { name: 'Roller Skating Montreuil', city: "Montreuil", country: "France",logo: montreuil_logo_url },
