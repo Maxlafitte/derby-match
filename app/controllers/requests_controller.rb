@@ -1,9 +1,9 @@
 class RequestsController < ApplicationController
   def index
-    # @requests_sent = policy_scope(Request).where(user: current_user)
-    # @requests_received = Request.all.select do |request|
-    #   request.team.user == current_user
-    # end
+    @requests_sent = policy_scope(Request).where(user: current_user)
+    @requests_received = Request.all.select do |request|
+      request.team.user == current_user
+    end
   end
 
   def show
@@ -51,22 +51,19 @@ class RequestsController < ApplicationController
         @game.start_date = @request.start_date
         @game.end_date = @request.end_date
         @game.save!
-        #change once we have the dashboard
-        redirect_to teams_path
+        redirect_to dashboard_path
       else
         render :my_bookings
       end
     elsif params[:commit] == "Decline"
       if @request.update(status: "declined")
-        #change once we have the dashboard
-        redirect_to teams_path
+        redirect_to dashboard_path
       else
         render :my_bookings
       end
     elsif params[:commit] == "Cancel"
       if @request.update(status: "cancelled")
-        #change once we have the dashboard
-        redirect_to teams_path
+        redirect_to dashboard_path
       else
         render :show
       end
