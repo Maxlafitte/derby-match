@@ -1,11 +1,31 @@
-<h1>Wonderful search</h1>
+<div class="container">
+  <h1>Wonderful search</h1>
 
-<h1>Ugly teams</h1>
+  <div class="form-container body">
+    <div class="row">
+      Search for a team
+    </div>
+    <div class="row" >
+      <%= simple_form_for :index, url: teams_path, html: {class: "form-inline"} do |f| %>
+        <%= f.input :start_date, as: :string, required: true, input_html: {class: "datepicker"} %>
+        <%= f.input :end_date, input_html: {class: "datepicker"} %>
+        <%= f.button :submit, "Search",  class: 'my-btn' %>
+      <% end %>
+    </div>
+  </div>
 
-<ul>
-  <% @teams.each do |team| %>
-    <li>
-      <%= link_to team.name, team_path(team) %>
-    </li>
-  <% end %>
-</ul>
+  <h1>Ugly teams</h1>
+
+  <ul>
+    <% @teams.each do |team| %>
+      <li>
+        <%= link_to team.name, team_path(team) %>
+      </li>
+    <% end %>
+  </ul>
+
+</div>
+
+
+
+

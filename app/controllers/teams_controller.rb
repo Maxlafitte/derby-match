@@ -1,6 +1,27 @@
 class TeamsController < ApplicationController
   def index
     @teams = policy_scope(Team)
+
+    if params[:start_date]
+      # get start_date from the form
+      booking_start_date = Date.parse params[:start_date]
+      # compare it to d1 and d2 of the games (between?)
+
+      # reject user team & reject teams from league
+      # get all teams
+      user_league_teams = current_user.team.league.teams
+      teams = @teams.reject { |team| user_league_teams.include?(team) }
+      # reject team where user_start_date is not included in games dates
+      @teams = teams.reject do |team|
+        team_games = team.requests.map(&:game).compact
+        return false if team_games.nil?
+
+        # raise
+        team_games_dates = team_games.map(&:dates_range).flatten
+        team_games_dates.include?(booking_start_date)
+      end
+      authorize @teams
+    end
   end
 
   def show
@@ -31,10 +52,30 @@ class TeamsController < ApplicationController
 
   def search
     # get start_date (and end_date) from the form
-    booking_start_date = params[:start_date]
+    booking_start_date = Date.parse params[:start_date]
     # compare it to d1 and d2 of the games (between?)
-    @teams = Team.where(booking_start_date.between?(team.games.start_date, team.games.end_date) == false)
+    # booking_start_date.between?(team.games.start_date, team.games.end_date) == false
 
-    render :index
+    # get all teams
+    all_teams = policy_scope(Team)
+    # reject user team
+    # reject teams from league
+    binding.pry
+    user_league_teams = current_user.team.leagues.teams
+    teams = all_teams.reject { |team| user_league_teams.include?(team) }
+    # reject team where user_start_date is not included in games dates
+    @searched_teams = teams.reject do |team|
+      team_games = team.requests.map(&:game)
+      team_games_dates = team_games.map(&:dates).map(&:dates_range).flatten
+      binding.pry
+      team_games_dates.include?(booking_start_date)
+    end
+
+    # Game.all.each do |game|
+    #   the_team = game.request.team
+    #   @teams << the_team.where(booking_start_date.between?(team.request.game.start_date, team.request.game.end_date) == false)
+    # end
+    # autorize @teams
+    # render :index
   end
 end
