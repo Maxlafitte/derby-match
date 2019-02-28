@@ -3,7 +3,7 @@
     <div class="row form-center">
       <div class="col-xs-12 col-sm-6 col-md-offset-3">
         <h2 class="text-center"><%= @user.derby_name %></h2>
-        <p class="text-center">Below you can update your profile</p>
+        <p class="text-center"> Update your profile</p>
         <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
           <%= f.error_notification %>
 
@@ -34,12 +34,11 @@
           </div>
           <div class="form-actions customize-links">
                       <%= f.button :submit, "Update", class: "my-btn" %>
-          </div>
           <% end %>
         </div>
         <p>Not anymore your team manager? <%= link_to "Cancel your account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
         </div>
-    </div>
+  </div>
 </div>
 
 
