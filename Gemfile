@@ -11,16 +11,17 @@ gem 'redis'
 gem 'dotenv-rails', groups: [:development, :test]
 
 gem 'autoprefixer-rails'
+gem 'cloudinary', '~> 1.9.1'
+gem 'carrierwave', '~> 1.2'
 gem 'font-awesome-sass', '~> 5.5.0'
+gem 'gon', '~> 6.2'
+gem 'rabl-rails'
 gem 'pundit'
+gem 'rest-client'
 gem 'sassc-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
-gem 'dotenv-rails', groups: [:development, :test]
-gem 'cloudinary', '~> 1.9.1'
-gem 'carrierwave', '~> 1.2'
-gem 'rest-client'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
