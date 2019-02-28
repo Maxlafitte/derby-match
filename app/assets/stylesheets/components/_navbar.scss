@@ -19,9 +19,14 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
 .log-in-nav {
   color: white;
   &:hover {
     color: $my-yellow;
   }
+}
+
+#logo {
+  width: 125px;
 }

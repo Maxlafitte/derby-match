@@ -1,0 +1,91 @@
+.title-request {
+  margin: 70px 0px;
+}
+.grid-request {
+  display: grid;
+  grid-template-columns : 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1 / span 1;
+  grid-gap: 16px;
+}
+
+.card {
+  grid-column: 1 / span 4;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  align-items: center;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+.message-form {
+  padding: 20px;
+  width: 500px;
+}
+.request-status {
+  text-align: center;
+}
+
+#message_content {
+  background-color: white;
+}
+.chat-message {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgba(245, 245, 245, 0.3);
+  align-items: center;
+}
+
+.one-message {
+  border-bottom :solid 1px #ccc;
+  padding :20px 0px;
+  display: flex;
+  margin: 0 36px;
+  .from-user {
+    float: right;
+  }
+  .message-content {
+    text-align: justify;
+  }
+}
+.user-message-name {
+  text-transform: uppercase;
+  }
+.message-content {
+  justify-content: space-between;
+
+  width: 70%;
+  padding-left: 40px;
+  .from-user {
+  font-style: italic;
+  font-weight: lighter;
+  }
+}
+.message-container {
+  margin-top: 70px;
+  width: 650px;
+  margin: 100px auto;
+  border: solid 1px #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+  background-color: white;
+}
+.message-author {
+  text-align: center;
+  width: 30%;
+}
+.italic-date {
+  font-style: italic;
+  color: gray;
+  font-size: 14px;
+  margin-top: -10px;
+}
+.form-request-center {
+  align-items: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-left: 50px;
+}
+.center-right-btn {
+  margin-left: 26px;
+}
