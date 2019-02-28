@@ -37,14 +37,23 @@
     </div>
     <div class="col-md-8">
       <h3>Last Request</h3>
-        <p>From: <%= current_user.team.requests.last.team.name %></p>
-        <p>Dates: from <%= current_user.requests.last.start_date %> to <%= current_user.requests.last.end_date %></p>
-        <p>Location:
-          <% if current_user.requests.last.at_home == true %>
-
+      <div class="last-request">
+        <% if current_user.team.requests.where(status: "pending").last.present? %>
+          <p>From: <%= current_user.team.requests.last.user.team.name %></p>
+          <p>Dates: from <%= current_user.team.requests.last.start_date %> to <%= current_user.team.requests.last.start_date %></p>
+          <p>Location:
+            <% if current_user.team.requests.last.at_home == false %>
+              <%= current_user.team.league.city %>, <%= current_user.team.league.country %> (away)
+            <% else %>
+              <%= current_user.team.requests.last.team.league.city %>, <%= current_user.team.requests.last.team.league.country %> (home)
+            <% end %>
+          </p>
+          <p><%= link_to "See details", team_request_path(current_user.team, current_user.team.requests.last ) %></p>
           <% else %>
+            <p>You have no pending request, but you can always invite a team!</p>
+            <%= link_to "Find a team", teams_path %>
           <% end %>
-        </p>
+      </div>
     </div>
   </div>
 </div>
