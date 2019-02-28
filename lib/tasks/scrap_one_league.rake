@@ -1,22 +1,22 @@
 require 'rest-client'
 
-namespace :scrapp_data do
+namespace :one_scrap do
   desc "scrapp flattrackstat"
 
-  task scrapp: :environment do
+  task one_scrap: :environment do
     #scrap of all pages of leagues (same as travel teams)
     puts "Destroying all leagues..."
     Team.destroy_all
     League.destroy_all
-    puts "Ready to create leagues!"
-    [0, 1, 2, 3, 4].each do |page_number|
-      url = "http://flattrackstats.com/teams/results/taxonomy\%3A17\%2C11\%2C49?page=#{page_number}"
+    puts "Ready to create the league!"
+
+      url = "http://flattrackstats.com/teams/results/wftda-travel-team"
       html_file = open(url).read.encode!('UTF-8', 'UTF-8', :invalid => :replace)
       html_doc = Nokogiri::HTML(html_file)
       # In the teams table we look for the info we need
       html_doc.search('tr').each_with_index do |element, i|
         # First line of the table is a table head so we skip it
-        next if i == 0
+        if i == 15
 
         puts "scrapping...."
         # BASIC LEAGUE ELEMENTS : NAME AND URL
@@ -53,7 +53,7 @@ namespace :scrapp_data do
           league.save!
           puts "league created #{league.name}"
           lead_team_name = league_html_doc.search('.teamname').text.match(/"(.*)"/)[1]
-          ranking_url = "http://flattrackstats.com/rankings/women/women_europe"
+          ranking_url = "http://flattrackstats.com/rankings"
           ranking_html_file = open(ranking_url).read.encode!('UTF-8', 'UTF-8', :invalid => :replace)
           ranking_html_doc = Nokogiri::HTML(ranking_html_file)
           ranking_html_doc.search('.rankingscontainer.rightflush tr').each do |element|
@@ -94,7 +94,7 @@ namespace :scrapp_data do
                     end
                   end
                 end
-                end
+            end
                 end
               end
               end
@@ -107,4 +107,47 @@ namespace :scrapp_data do
       puts "Created #{League.count} leagues!"
       puts "Created #{Team.count} teams!"
 end
+end
+
+
+namespace :scrapp_test do
+  desc "scrapp flattrackstat"
+  task test: :environment do
+    url = "http://flattrackstats.com/teams/92567"
+    html_file = open(url).read.encode!('UTF-8', 'UTF-8', :invalid => :replace)
+    html_doc = Nokogiri::HTML(html_file)
+    lead_team_name = html_doc.search('.teamname').text.match(/\((.*)\)/)[1]
+
+    ranking_url = "http://flattrackstats.com/rankings"
+    ranking_html_file = open(ranking_url).read.encode!('UTF-8', 'UTF-8', :invalid => :replace)
+    ranking_html_doc = Nokogiri::HTML(ranking_html_file)
+
+
+    ranking_html_doc.search('.rankingscontainer tr').each_with_index do |element, i|
+      next if i == 0
+      team_number = element.search('a').attribute('href').match(/\d+/)[0]
+
+      if team_number == "13732"
+        ranking = element.children[0].text.match(/\d+/)[0]
+      end
+        p ranking
+    end
+  end
+end
+
+# CHERCHER LE RANKING D'UNE TEAM PAR SON TEAM_NUMBER
+namespace :one_ranking do
+  desc "scrapp flattrackstat"
+  task test: :environment do
+    ranking_url = "http://flattrackstats.com/rankings"
+    ranking_html_file = open(ranking_url).read.encode!('UTF-8', 'UTF-8', :invalid => :replace)
+    ranking_html_doc = Nokogiri::HTML(ranking_html_file)
+    ranking_html_doc.search('.rankingscontainer.rightflush tr').each do |element|
+      row = element.search('a').attribute('href')
+      if !row.nil? && row.value.match(/\d+/)[0] == "3409"
+
+        puts "Yes"
+      end
+    end
+  end
 end
