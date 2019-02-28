@@ -1,7 +1,7 @@
 class Request < ApplicationRecord
   belongs_to :team
   belongs_to :user
-  has_many :messages
+  has_many :messages, dependent: :destroy
   has_one :game
 
   validates :team_id, presence: true
