@@ -27,6 +27,11 @@
     </div>
     <div class="request-status">
       <p><%= @request.status.upcase %></p>
+      <% if booking.status.upcase == "PENDING" %>
+        <%= simple_form_for [@request.team, @request] , method: :patch do |f| %>
+          <%= f.button :submit, value: 'Decline', class:"btn" %>
+        <% end %>
+      <% end %>
     </div>
 
 
@@ -68,11 +73,9 @@
 
 
   <!-- if it's a request i've received -->
-
-
   <div class="container grid-request">
   <% else %>
-  <h2 class="text-center title-request">Requests from <%= @request.user.team.name %></h2>
+    <h2 class="text-center title-request">Requests from <%= @request.user.team.name %></h2>
 
     <div class="card">
       <div class="team-img">
@@ -98,6 +101,14 @@
       </div>
      <div class="request-status">
       <p><%= @request.status.upcase %></p>
+      <% if @request.status.upcase == "PENDING" %>
+        <%= simple_form_for [@request.team, @request] , method: :patch do |f| %>
+          <%= f.button :submit, value: 'Accept', class:"btn" %>
+        <% end %>
+        <%= simple_form_for [@request.team, @request] , method: :patch do |f| %>
+          <%= f.button :submit, value: 'Decline', class:"btn" %>
+        <% end %>
+      <% end %>
     </div>
     </div>
   </div>
@@ -136,13 +147,3 @@
       </div>
   </div>
 <% end %>
-
-
-
-
-
-
-
-
-
-
