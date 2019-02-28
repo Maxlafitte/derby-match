@@ -82,19 +82,20 @@ namespace :api_test do
 
     html_doc.search('tr').each_with_index do |element, i|
       next if i == 0
-      if i == 72
+      if i == 1
         puts "scrapping...."
 
         p league_name = element.search('.views-field-title a').text.strip
-        p location = element.search('.views-field-field-team-location-value')
-        algolia_location = JSON.parse((RestClient.post "https://places-dsn.algolia.net/1/places/query", {'query' => "#{location}"}.to_json, {content_type: :json, accept: :json}))
-        response = algolia_location["hits"]
-        response[0]["country"]["en"].nil? ? country = response[0]["country"]["default"] : country = response[0]["country"]["en"]
-        response[0]["locale_names"]["en"].nil? ? city = response[0]["locale_names"]["default"][0] : city = response[0]["locale_names"]["en"]
-        p latitude = response[0]["_geoloc"]["lat"]
-        p longitude = response[0]["_geoloc"]["lng"]
-        p city
-        p country
+        p node = element.search('.views-field-title a').attribute('href').value.match(/\d+/)[0]
+        # p location = element.search('.views-field-field-team-location-value')
+        # algolia_location = JSON.parse((RestClient.post "https://places-dsn.algolia.net/1/places/query", {'query' => "#{location}"}.to_json, {content_type: :json, accept: :json}))
+        # response = algolia_location["hits"]
+        # response[0]["country"]["en"].nil? ? country = response[0]["country"]["default"] : country = response[0]["country"]["en"]
+        # response[0]["locale_names"]["en"].nil? ? city = response[0]["locale_names"]["default"][0] : city = response[0]["locale_names"]["en"]
+        # p latitude = response[0]["_geoloc"]["lat"]
+        # p longitude = response[0]["_geoloc"]["lng"]
+        # p city
+        # p country
       end
     end
   end
