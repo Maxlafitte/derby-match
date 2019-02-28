@@ -34,7 +34,6 @@ class RequestsController < ApplicationController
     end
     @request.save
     @message.save
-    redirect_to dashboard_path
   end
 
   def edit

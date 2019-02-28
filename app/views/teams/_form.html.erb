@@ -10,7 +10,7 @@
           <%= f.simple_fields_for :message do |message| %>
             <%= message.input :content, label: "Message" %>
           <% end %>
-          <%= f.button :submit, "Send Request",  class: 'my-btn' %>
+          <%= f.button :submit, "Send Request",  class: 'my-btn', id: 'sweet-alert-demo' %>
         <% end %>
     </div>
   </div>
