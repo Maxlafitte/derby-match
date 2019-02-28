@@ -72,22 +72,23 @@ namespace :scrapp_data do
                     puts "Team created #{lead_team.name}"
                     lead_team.save!
                     league_html_doc.search('.relatedteams a').each do |element|
-                    puts "scrapping...."
-                    # p element.attributes["class"].value
-                    unless element.attributes["class"].value == "disbanded"
-                      secondary_team_name = element.text.strip
-                      secondary_team_number = element.attribute('href').value.match(/\d+/)[0]
-                      ranking_html_doc.search('.rankingscontainer.rightflush tr').each do |element|
-                        if element.search('a')[0].nil?
-                          puts "not a row"
-                        else
-                          row = element.search('a')[0].attributes["href"].value
-                          if row.match(/\d+/)[0] == secondary_team_number
-                            secondary_team_ranking = element.children.children[0].text.delete('.')
-                            secondary_team = Team.new(name: secondary_team_name, league_id: league.id, ranking: secondary_team_ranking)
-                            if secondary_team.valid?
-                              secondary_team.save!
-                              puts "Team created #{secondary_team.name}"
+                      puts "scrapping...."
+                      # p element.attributes["class"].value
+                      unless element.attributes["class"].value == "disbanded"
+                        secondary_team_name = element.text.strip
+                        secondary_team_number = element.attribute('href').value.match(/\d+/)[0]
+                        ranking_html_doc.search('.rankingscontainer.rightflush tr').each do |element|
+                          if element.search('a')[0].nil?
+                            puts "not a row"
+                          else
+                            row = element.search('a')[0].attributes["href"].value
+                            if row.match(/\d+/)[0] == secondary_team_number
+                              secondary_team_ranking = element.children.children[0].text.delete('.')
+                              secondary_team = Team.new(name: secondary_team_name, league_id: league.id, ranking: secondary_team_ranking)
+                              if secondary_team.valid?
+                                secondary_team.save!
+                                puts "Team created #{secondary_team.name}"
+                              end
                             end
                           end
                         end
@@ -97,12 +98,11 @@ namespace :scrapp_data do
                 end
               end
             end
+          end
         end
+        puts "Created #{League.count} leagues!"
+        puts "Created #{Team.count} teams!"
       end
     end
-      puts "Created #{League.count} leagues!"
-      puts "Created #{Team.count} teams!"
   end
-end
-end
 end
