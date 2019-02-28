@@ -1,5 +1,5 @@
 <!-- if it's a request i've sent -->
-<h2 class="text-center">Requests to <%= @team.name %></h2>
+<h2 class="text-center title-request">Requests to <%= @team.name.upcase %></h2>
 <div class="container grid-request">
 <% if @request.user == current_user %>
   <div class="card">
@@ -10,10 +10,10 @@
       <p>League: <%= @team.league.name %></p>
       <p>Ranking: <%= @team.ranking %></p>
       <p>Location: <%= @team.league.city %>, <%= @team.league.country %></p>
+      <p>Contact: <%= @team.user.derby_name %></p>
     </div>
 
     <div class="request-infos">
-      <p><%= @request.status.upcase %></p>
       <p>Dates: <%= @request.start_date %> - <%= @request.start_date %></p>
       <p>
         Location:
@@ -24,86 +24,124 @@
         <% end %>
       </p>
     </div>
+    <div class="request-status">
+      <p><%= @request.status.upcase %></p>
+    </div>
+
   </div>
-   <div class="contact-infos card">
-      <p><%= @team.user.derby_name %></p>
-      <p>
-        <% if @team.user.photo.present? %>
-          <%= image_tag(@team.user.photo, height: 250, width: 250,crop: :fill, class: "avatar-large") %>
-        <% else %>
-          <%= image_tag 'avatar.png', class: "avatar avatar-large" %>
+</div>
+<div class="container message-container">
+    <div class="chat-message">
+      <div class="messages">
+        <% @request.messages.each do |message| %>
+
+          <div class="one-message">
+            <div class="message-author">
+              <p>
+                <% if @team.user.photo.present? %>
+                <%= cl_image_tag(message.user.photo, height: 250, width: 250,crop: :fill, class: "avatar-large")  %>
+                <% else %>
+                <%= image_tag 'avatar.png', class: "avatar avatar-large" %>
+                <% end %>
+              </p>
+              <p class="user-message-name"><%= message.user.derby_name %></p>
+              <p class="italic-date"><%= message.created_at.strftime("%b %e, %l:%M %p") %></p>
+            </div>
+            <div class="message-content">
+              <p><%= message.content %></p>
+            </div>
+            <br>
+          </div>
         <% end %>
-      </p>
-    </div>
-  <div class="chat-message">
-    <div class="messages">
-      <% @request.messages.each do |message| %>
-      <div class="one-message card">
-        <p><%= message.content %></p>
-        <p class="message-send">- From: <%= message.user.derby_name %></p>
       </div>
-      <% end %>
     </div>
-    <div class="message-form">
+    <div class="message-form form-request-center">
       <%= simple_form_for ([@request, @message]), url: messages_path, method: :post do |f| %>
         <%= f.input :content, label: 'Your reply' %>
         <%= f.input :request_id, as: :hidden %>
-        <%= f.button :submit, "Send Message",  class: 'btn-gradient' %>
+        <%= f.button :submit, "Send Message",  class: 'my-btn center-right-btn' %>
       <% end %>
     </div>
-  </div>
-
 </div>
 
-<% else %>
+
   <!-- if it's a request i've received -->
-  <h1>Requests from <%= @request.user.team.name %></h1>
 
-  <div class="team-infos">
-    <p><%= image_tag(@request.user.team.photo, height: 250, width: 250,crop: :fill) %></p>
-    <p>League: <%= @request.user.team.league.name %></p>
-    <p>Ranking: <%= @request.user.team.ranking %></p>
-    <p>Location: <%= @request.user.team.league.city %>, <%= @request.user.team.league.country %></p>
-  </div>
 
-  <div class="contact-infos">
-    <p>Contact: <%= @current_user.team.user.derby_name %></p>
-    <p>
-      <% if @current_user.team.user.photo.present? %>
-        <%= image_tag(@current_user.team.user.photo, height: 250, width: 250,crop: :fill) %>
-      <% end %>
-    </p>
-  </div>
+  <h2 class="text-center title-request">Requests from <%= @request.user.team.name %></h2>
+  <div class="container grid-request">
+<% else %>
 
-  <div class="request-infos">
-    <p><%= @request.status.upcase %></p>
-    <p>Dates: <%= @request.start_date %> - <%= @request.start_date %></p>
-    <p>
-      Location:
-      <% if @request.at_home == true %>
-        Home: <%= @current_user.team.league.city %>, <%= @current_user.team.league.country %>
-      <% else %>
-        Away: <%= @current_user.team.league.city %>, <%= @current_user.team.league.country %>
-      <% end %>
 
-    </p>
-  </div>
+    <div class="card">
+      <div class="team-img">
+        <p><%= image_tag(@request.user.team.photo, height: 250, width: 250,crop: :fill) %></p>
+      </div>
+      <div class="team-infos">
+        <p>League: <%= @request.user.team.league.name %></p>
+        <p>Ranking: <%= @request.user.team.ranking %></p>
+        <p>Location: <%= @request.user.team.league.city %>, <%= @request.user.team.league.country %></p>
+        <p>Contact: <%= @current_user.team.user.derby_name %></p>
+      </div>
 
-  <div class="messages">
-    <% @request.messages.each do |message| %>
-    <div class="one-message">
-      <p><%= message.content %></p>
-      <p>From: <%= message.user.derby_name %></p>
-      ---
+      <div class="request-infos">
+        <p>Dates: <%= @request.start_date %> - <%= @request.start_date %></p>
+        <p>
+          Location:
+           <% if @request.at_home == true %>
+          Home: <%= @current_user.team.league.city %>, <%= @current_user.team.league.country %>
+          <% else %>
+          Away: <%= @current_user.team.league.city %>, <%= @current_user.team.league.country %>
+          <% end %>
+        </p>
+      </div>
+     <div class="request-status">
+      <p><%= @request.status.upcase %></p>
     </div>
-    <% end %>
-    <div class="message-form">
-      <%= simple_form_for ([@request, @message]), url: messages_path, method: :post do |f| %>
-        <%= f.input :content, label: 'Your reply' %>
-        <%= f.input :request_id, as: :hidden %>
-        <%= f.button :submit, "Send Message",  class: 'btn-gradient' %>
-      <% end %>
     </div>
   </div>
 
+  <div class="container message-container">
+      <div class="chat-message">
+        <div class="messages">
+          <% @request.messages.each do |message| %>
+
+            <div class="one-message">
+              <div class="message-author">
+                <p>
+                  <% if @team.user.photo.present? %>
+                  <%= cl_image_tag(message.user.photo, height: 250, width: 250,crop: :fill, class: "avatar-large")  %>
+                  <% else %>
+                  <%= image_tag 'avatar.png', class: "avatar avatar-large" %>
+                  <% end %>
+                </p>
+                <p class="user-message-name"><%= message.user.derby_name %></p>
+                <p class="italic-date"><%= message.created_at.strftime("%b %e, %l:%M %p") %></p>
+              </div>
+              <div class="message-content">
+                <p><%= message.content %></p>
+              </div>
+              <br>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="message-form form-request-center">
+        <%= simple_form_for ([@request, @message]), url: messages_path, method: :post do |f| %>
+          <%= f.input :content, label: 'Your reply' %>
+          <%= f.input :request_id, as: :hidden %>
+          <%= f.button :submit, "Send Message",  class: 'my-btn center-right-btn' %>
+        <% end %>
+      </div>
+  </div>
 <% end %>
+
+
+
+
+
+
+
+
+
+
