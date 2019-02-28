@@ -31,28 +31,80 @@
     </div>
 
     <div class="row">
+
       <div class="col-md-4">
-      <h3>Upcoming Events</h3>
+      <% if current_user.team.games.count + current_user.requests.where(status: "accepted").count == 1 %>
+        <h3>1 Upcoming Event </h3>
+      <% elsif current_user.team.games.count + current_user.requests.where(status: "accepted").count == 0 %>
+        <h3>Upcoming events</h3>
+      <% else %>
+        <h3><%= current_user.team.games.count + current_user.requests.where(status: "accepted").count %> Upcoming Events </h3>
+        <h5>Next game</h5>
+      <% end %>
+        <!-- games for requests i've received -->
+        <% if current_user.team.games.present? %>
+          <p>
+            Against: <%= current_user.team.games.last.request.user.team.name %> - <%= current_user.team.games.last.request.user.team.league.name %>
+          </p>
+          <p>
+            Dates: from <%= current_user.team.games.last.start_date %> to <%= current_user.team.games.last.end_date %>
+          </p>
+          <p>
+            Location:
+            <% if current_user.team.requests.last.at_home == false %>
+              <%= current_user.team.league.city %>, <%= current_user.team.league.country %> (away)
+            <% else %>
+              <%= current_user.team.requests.last.team.league.city %>, <%= current_user.team.requests.last.team.league.country %> (home)
+            <% end %>
+          </p>
+          <p><%= link_to "Event details", team_game_path(current_user.team, current_user.team.games.last) %></p>
+          <br>
+          <p><%= link_to "See more upcoming games", team_games_path(current_user.team) %></p>
+        <!-- games for requests i've sent -->
+        <% elsif current_user.requests.where(status: "accepted").present? %>
+          <p>Against: <%= current_user.requests.where(status: "accepted").last.team.name %> - <%= current_user.requests.where(status: "accepted").last.team.league.name %></p>
+          <p>Dates: from <%= current_user.requests.where(status: "accepted").last.start_date %> to <%= current_user.requests.where(status: "accepted").last.end_date %></p>
+          <p>
+            Location:
+            <% if current_user.requests.where(status: "accepted").last.at_home == true %>
+              <%= current_user.team.league.city %>, <%= current_user.team.league.country %> (home)
+            <% else %>
+              <%= current_user.requests.where(status: "accepted").last.team.league.city %>, <%= current_user.requests.where(status: "accepted").last.team.league.country %> (away)
+            <% end %>
+          </p>
+          <p><%= link_to "Event details", team_game_path(current_user.requests.where(status: "accepted").last.team, current_user.requests.where(status: "accepted").last.game) %></p>
+          <br>
+          <p><%= link_to "See more upcoming games", team_games_path(current_user.team) %></p>
+        <!-- no games -->
+        <% else %>
+          <p>You have no event coming up, and you have <%= current_user.team.requests.where(status: "pending").count %> pending requests.
+            Try inviting a team!</p>
+        <% end %>
       </div>
+
       <div class="col-md-8">
-          <h3>Last Request</h3>
-          <div class="last-request">
+          <h3>Last Requests</h3>
             <% if current_user.team.requests.where(status: "pending").last.present? %>
-              <p>From: <%= current_user.team.requests.last.user.team.name %></p>
-              <p>Dates: from <%= current_user.team.requests.last.start_date %> to <%= current_user.team.requests.last.start_date %></p>
+            <p><%= current_user.team.requests.where(status: "pending").count %> pending requests.</p>
+            <div class="last-request">
+              <h5>Last request received</h5>
+              <p>From: <%= current_user.team.requests.where(status: "pending").last.user.team.name %> - <%= current_user.team.requests.where(status: "pending").last.user.team.league.name %></p>
+              <p>Dates: from <%= current_user.team.requests.where(status: "pending").last.start_date %> to <%= current_user.team.requests.where(status: "pending").last.start_date %></p>
               <p>Location:
-                <% if current_user.team.requests.last.at_home == false %>
+                <% if current_user.team.requests.where(status: "pending").last.at_home == false %>
                   <%= current_user.team.league.city %>, <%= current_user.team.league.country %> (away)
                 <% else %>
-                  <%= current_user.team.requests.last.team.league.city %>, <%= current_user.team.requests.last.team.league.country %> (home)
+                  <%= current_user.team.requests.where(status: "pending").last.team.league.city %>, <%= current_user.team.requests.where(status: "pending").last.team.league.country %> (home)
                 <% end %>
               </p>
-              <p><%= link_to "See details", team_request_path(current_user.team, current_user.team.requests.last ) %></p>
+              <p><%= link_to "See details", team_request_path(current_user.team, current_user.team.requests.where(status: "pending").last ) %></p>
+              <br>
+              <p><%= link_to "See all requests", team_requests_path(current_user.team) %></p>
               <% else %>
                 <p>You have no pending request, but you can always invite a team!</p>
                 <%= link_to "Find a team", teams_path %>
               <% end %>
-          </div>
+            </div>
       </div>
   </div>
 </div>
