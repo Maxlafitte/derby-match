@@ -34,11 +34,18 @@
 
       <div class="col-md-4">
       <% if current_user.team.games.count + current_user.requests.where(status: "accepted").count == 1 %>
-        <h3>1 Upcoming Event </h3>
+        <h3>One upcoming event</h3>
       <% elsif current_user.team.games.count + current_user.requests.where(status: "accepted").count == 0 %>
         <h3>Upcoming events</h3>
+        <% if current_user.team.requests.where(status: "pending").count == 0 %>
+          <p>You have no event coming up.
+          Try inviting a team!</p>
+          <%= link_to "Find a team", teams_path %>
+        <% else %>
+          <p>You have no event coming up, and you have <%= current_user.team.requests.where(status: "pending").count %> pending requests. Try replying to a request!</p>
+        <% end %>
       <% else %>
-        <h3><%= current_user.team.games.count + current_user.requests.where(status: "accepted").count %> Upcoming Events </h3>
+        <h3><%= current_user.team.games.count + current_user.requests.where(status: "accepted").count %> Upcoming Events - <%= link_to "See all", team_games_path(current_user.team) %></h3>
         <h5>Next game</h5>
       <% end %>
         <!-- games for requests i've received -->
@@ -58,8 +65,6 @@
             <% end %>
           </p>
           <p><%= link_to "Event details", team_game_path(current_user.team, current_user.team.games.last) %></p>
-          <br>
-          <p><%= link_to "See more upcoming games", team_games_path(current_user.team) %></p>
         <!-- games for requests i've sent -->
         <% elsif current_user.requests.where(status: "accepted").present? %>
           <p>Against: <%= current_user.requests.where(status: "accepted").last.team.name %> - <%= current_user.requests.where(status: "accepted").last.team.league.name %></p>
@@ -73,19 +78,18 @@
             <% end %>
           </p>
           <p><%= link_to "Event details", team_game_path(current_user.requests.where(status: "accepted").last.team, current_user.requests.where(status: "accepted").last.game) %></p>
-          <br>
-          <p><%= link_to "See more upcoming games", team_games_path(current_user.team) %></p>
-        <!-- no games -->
-        <% else %>
-          <p>You have no event coming up, and you have <%= current_user.team.requests.where(status: "pending").count %> pending requests.
-            Try inviting a team!</p>
         <% end %>
       </div>
 
       <div class="col-md-8">
-          <h3>Last Requests</h3>
+        <% if current_user.team.requests.where(status: "pending").count == 1 %>
+          <h3>One pending request</h3>
+        <% elsif current_user.team.requests.where(status: "pending").count == 0 %>
+          <h3>Requests received</h3>
+        <% else %>
+          <h3><%= current_user.team.requests.where(status: "pending").count %> pending requests - <%= link_to "See all", team_requests_path(current_user.team) %></h3>
+        <% end %>
             <% if current_user.team.requests.where(status: "pending").last.present? %>
-            <p><%= current_user.team.requests.where(status: "pending").count %> pending requests.</p>
             <div class="last-request">
               <h5>Last request received</h5>
               <p>From: <%= current_user.team.requests.where(status: "pending").last.user.team.name %> - <%= current_user.team.requests.where(status: "pending").last.user.team.league.name %></p>
@@ -99,7 +103,6 @@
               </p>
               <p><%= link_to "See details", team_request_path(current_user.team, current_user.team.requests.where(status: "pending").last ) %></p>
               <br>
-              <p><%= link_to "See all requests", team_requests_path(current_user.team) %></p>
               <% else %>
                 <p>You have no pending request, but you can always invite a team!</p>
                 <%= link_to "Find a team", teams_path %>
