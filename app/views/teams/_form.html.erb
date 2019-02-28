@@ -9,7 +9,7 @@
           </div>
           <%= f.input :at_home, label: 'LOCATION', as: :radio_buttons, collection: [['0', "Home: #{current_user.team.league.city}, #{current_user.team.league.country}"], ['1', "Away: #{@team.league.city}, #{@team.league.country}" ]], label_method: :second, value_method: :first %>
           <%= f.simple_fields_for :message do |message| %>
-            <%= message.input :content %>
+            <%= message.input :content, label: "Message" %>
           <% end %>
           <%= f.button :submit, "Send Request",  class: 'my-btn' %>
         <% end %>

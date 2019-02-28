@@ -13,6 +13,7 @@
       <p>Contact: <%= @team.user.derby_name %></p>
     </div>
 
+
     <div class="request-infos">
       <p>Dates: <%= @request.start_date %> - <%= @request.start_date %></p>
       <p>
@@ -27,6 +28,7 @@
     <div class="request-status">
       <p><%= @request.status.upcase %></p>
     </div>
+
 
   </div>
 </div>
@@ -56,6 +58,7 @@
       </div>
     </div>
     <div class="message-form form-request-center">
+=
       <%= simple_form_for ([@request, @message]), url: messages_path, method: :post do |f| %>
         <%= f.input :content, label: 'Your reply' %>
         <%= f.input :request_id, as: :hidden %>
@@ -71,7 +74,6 @@
   <h2 class="text-center title-request">Requests from <%= @request.user.team.name %></h2>
   <div class="container grid-request">
 <% else %>
-
 
     <div class="card">
       <div class="team-img">

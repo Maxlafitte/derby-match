@@ -1,0 +1,23 @@
+<div>
+  <div>
+    <h2>Welcome <%= @user.derby_name %></h2>
+    <div>
+      <% if @user.photo? %>
+        <%= cl_image_tag @user.photo, width: 200, height: 200, crop: :thumb, gravity: :face %>
+      <% else %>
+        <%= image_tag 'avatar.png' %>
+      <% end %>
+    </div>
+    <div>
+      <p><%= @team %></p>
+    </div>
+  </div>
+  <div>
+    <p><%= @requests %></p>
+    <p><%= @games %></p>
+    <p><%= @teams %></p>
+
+  </div>
+
+
+  <!--  -->
