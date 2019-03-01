@@ -17,6 +17,18 @@
   color: white;
 }
 
+.pink-link {
+  font-style: italic;
+  color: $my-pink;
+  text-decoration: none;
+  font-size: 18px;
+  &:hover {
+    text-decoration: none;
+    color: $my-pink;
+    opacity: 0.9;
+  }
+}
+
 
 
 
