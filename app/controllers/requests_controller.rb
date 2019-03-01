@@ -2,8 +2,9 @@ class RequestsController < ApplicationController
   def index
     @requests_sent = policy_scope(Request).where(user: current_user)
     @pending_requests_sent = @requests_sent.where(status: "pending")
-    @declined_requests_sent = @requests_sent.where(status: "cancelled")
+    @declined_requests_sent = @requests_sent.where(status: "declined")
     @accepted_requests_sent = @requests_sent.where(status: "accepted")
+    @cancelled_requests_sent = @requests_sent.where(status: "cancelled")
 
     @requests_received = Request.all.select do |request|
       request.team.user == current_user
@@ -16,6 +17,9 @@ class RequestsController < ApplicationController
     end
     @declined_requests_received = @requests_received.select do |request|
       request.status == "declined"
+    end
+    @cancelled_requests_received = @requests_received.select do |request|
+      request.status == "cancelled"
     end
   end
 

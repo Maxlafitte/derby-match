@@ -27,7 +27,7 @@
     </div>
     <div class="request-status">
       <p><%= @request.status.upcase %></p>
-      <% if booking.status.upcase == "PENDING" %>
+      <% if @request.status.upcase == "PENDING" %>
         <%= simple_form_for [@request.team, @request] , method: :patch do |f| %>
           <%= f.button :submit, value: 'Decline', class:"btn" %>
         <% end %>

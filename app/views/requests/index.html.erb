@@ -1,84 +1,149 @@
-<h1>My Requests</h1>
+<div class="container">
+  <h1>Requests for <%= current_user.team.name %></h1>
 
-<!-- pending requests: -->
-<!--  -->
-<h3>Requests received: </h3>
-<div class="pending-received-requests">
-  <% if @pending_requests_received.present? %>
-    PENDING
-    <% @pending_requests_sent.each do |request| %>
-      <div class="pending-received-request-details">
-        <p>From: <%= request.team.name %> - <%= request.team.league.name %></p>
-        <p>Dates: from <%= request.start_date %> to <%= request.end_date %></p>
-        <p>
-          Location:
-          <% if request.at_home == false %>
-            <%= current_user.team.league.city %> - <%= current_user.team.league.country %>
-          <% else %>
-          <% end %>
-        </p>
-      </div>
-    <% end %>
+  <!-- pending requests: -->
+  <h3>Pending requests:</h3>
+    <div class="pending-received-requests">
+      <% if @pending_requests_received.present? %>
+        <% @pending_requests_sent.each do |request| %>
+          <div class="pending-received-request-details">
+            <p>From: <%= request.team.name %> - <%= request.team.league.name %></p>
+            <p>Dates: from <%= request.start_date %> to <%= request.end_date %></p>
+            <p>
+              Location:
+              <% if request.at_home == false %>
+                <%= current_user.team.league.city %> - <%= current_user.team.league.country %>
+              <% else %>
+              <% end %>
+            </p>
+            <p>
+              <%= link_to "Get more details", team_request_path(request.team, request) %>
+            </p>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="pending-sent-requests">
+      <% if @pending_requests_sent.present? %>
+        <% @pending_requests_sent.each do |request| %>
+          <div class="pending-sent-request-details">
+            <p>To: <%= request.user.team.name %> - <%= request.user.team.league.name %></p>
+            <p>Dates: from <%= request.start_date %> to <%= request.end_date %></p>
+            <p>
+              Location:
+              <% if request.at_home == false %>
+                <%= current_user.team.league.city %> - <%= current_user.team.league.country %>
+              <% else %>
+              <% end %>
+            </p>
+            <p>
+              <%= link_to "Get more details", team_request_path(request.user.team, request) %>
+            </p>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+
+  <!-- see all games -->
+  <% if @accepted_requests_received.present? || @accepted_requests_sent.present? %>
+    <div class="games">
+      <h3>Games (accepted requests):</h3>
+      <p>
+        <%= link_to "See all", team_games_path(current_user.team) %>
+      </p>
+    </div>
   <% end %>
-</div>
 
+  <!-- cancelled & declined requests -->
+  <% if @declined_requests_sent.present? || @declined_requests_sent.present? || @cancelled_requests_sent.present? %>
+    <h3>Cancelled & declined requests:</h3>
+    <div class="declined-received-requests">
+      <% if @declined_requests_received.present? %>
+        <% @declined_requests_received.each do |request| %>
+          <div class="declined-received-request-details">
+            <p>To: <%= request.user.team.name %> - <%= request.user.team.league.name %></p>
+            <p>Dates: from <%= request.start_date %> to <%= request.end_date %></p>
+            <p>
+              Location:
+              <% if request.at_home == false %>
+                <%= current_user.team.league.city %> - <%= current_user.team.league.country %>
+              <% else %>
+                <%= request.user.team.league.city %> - <%= request.user.team.league.country %>
+              <% end %>
+            </p>
+            <p>
+              Status: <%= request.status %> by you
+            </p>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
 
-<div class="pending-received-requests">
-  <% if @declined_requests_sent.present? %>
-    DECLINED
-    <% @declined_requests_sent.each do |request| %>
-      <div class="declined-received-request-details">
-        <p>From: <%= request.user.team.name %> - <%= request.user.team.league.name %></p>
-        <p>Dates: from <%= request.start_date %> to <%= request.end_date %></p>
-        <p>
-          Location:
-          <% if request.at_home == false %>
-            <%= current_user.team.league.city %> - <%= current_user.team.league.country %>
-          <% else %>
-            <%= request.team.league.city %> - <%= request.team.league.country %>
-          <% end %>
-        </p>
-      </div>
-    <% end %>
-  <% end %>
-</div>
+    <div class="declined-sent-requests">
+      <% if @declined_requests_sent.present? %>
+        <% @declined_requests_sent.each do |request| %>
+          <div class="declined-sent-request-details">
+            <p>From: <%= request.user.team.name %> - <%= request.user.team.league.name %></p>
+            <p>Dates: from <%= request.start_date %> to <%= request.end_date %></p>
+            <p>
+              Location:
+              <% if request.at_home == false %>
+                <%= current_user.team.league.city %> - <%= current_user.team.league.country %>
+              <% else %>
+                <%= request.team.league.city %> - <%= request.team.league.country %>
+              <% end %>
+            </p>
+            <p>
+              Status: <%= request.status %> by <%= request.user.team.name %>
+            </p>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
 
-<h3>Requests sent: </h3>
-<div class="pending-sent-requests">
-  <% if @pending_requests_sent.present? %>
-    PENDING
-    <% @pending_requests_sent.each do |request| %>
-      <div class="pending-sent-request-details">
-        <p>From: <%= request.user.team.name %> - <%= request.user.team.league.name %></p>
-        <p>Dates: from <%= request.start_date %> to <%= request.end_date %></p>
-        <p>
-          Location:
-          <% if request.at_home == false %>
-            <%= current_user.team.league.city %> - <%= current_user.team.league.country %>
-          <% else %>
-          <% end %>
-        </p>
-      </div>
-    <% end %>
-  <% end %>
-</div>
+    <div class="cancelled-received-requests">
+      <% if @cancelled_requests_received.present? %>
+        <% @cancelled_requests_received.each do |request| %>
+          <div class="cancelled-received-request-details">
+            <p>From: <%= request.user.team.name %> - <%= request.user.team.league.name %></p>
+            <p>Dates: from <%= request.start_date %> to <%= request.end_date %></p>
+            <p>
+              Location:
+              <% if request.at_home == false %>
+                <%= current_user.team.league.city %> - <%= current_user.team.league.country %>
+              <% else %>
+                <%= request.team.league.city %> - <%= request.team.league.country %>
+              <% end %>
+            </p>
+            <p>
+              Status: <%= request.status %> by <%= request.user.team.name %>
+            </p>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
 
-<div class="pending-sent-requests">
-  <% if @declined_requests_sent.present? %>
-    DECLINED
-    <% @declined_requests_sent.each do |request| %>
-      <div class="declined-sent-request-details">
-        <p>From: <%= request.user.team.name %> - <%= request.user.team.league.name %></p>
-        <p>Dates: from <%= request.start_date %> to <%= request.end_date %></p>
-        <p>
-          Location:
-          <% if request.at_home == false %>
-            <%= current_user.team.league.city %> - <%= current_user.team.league.country %>
-          <% else %>
-          <% end %>
-        </p>
-      </div>
-    <% end %>
+    <div class="cancelled-sent-requests">
+      <% if @cancelled_requests_sent.present? %>
+        <% @cancelled_requests_sent.each do |request| %>
+          <div class="declined-sent-request-details">
+            <p>To: <%= request.user.team.name %> - <%= request.user.team.league.name %></p>
+            <p>Dates: from <%= request.start_date %> to <%= request.end_date %></p>
+            <p>
+              Location:
+              <% if request.at_home == false %>
+                <%= current_user.team.league.city %> - <%= current_user.team.league.country %>
+              <% else %>
+                <%= request.team.league.city %> - <%= request.team.league.country %>
+              <% end %>
+            </p>
+            <p>
+              Status: <%= request.status %> by you
+            </p>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
   <% end %>
 </div>
 
