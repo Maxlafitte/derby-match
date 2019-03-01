@@ -1,8 +1,21 @@
 class RequestsController < ApplicationController
   def index
     @requests_sent = policy_scope(Request).where(user: current_user)
+    @pending_requests_sent = @requests_sent.where(status: "pending")
+    @declined_requests_sent = @requests_sent.where(status: "cancelled")
+    @accepted_requests_sent = @requests_sent.where(status: "accepted")
+
     @requests_received = Request.all.select do |request|
       request.team.user == current_user
+    end
+    @pending_requests_received = @requests_received.select do |request|
+      request.status == "pending"
+    end
+    @accepted_requests_received = @requests_received.select do |request|
+      request.status == "accepted"
+    end
+    @declined_requests_received = @requests_received.select do |request|
+      request.status == "declined"
     end
   end
 

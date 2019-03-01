@@ -18,13 +18,39 @@
           </div>
         </div>
       </div>
-      <div class="col-md-8"><h3>Suggested teams</h3>
+      <div class="col-md-8">
+        <h3>Suggested teams</h3>
+        <br>
         <div class="row">
-            <div class="col-md-4">first suggested team
+            <div class="col-md-4">
+              <% @team_one = @teams.sample %>
+              <div class="team-index-card">
+                <p class="teams-index-name text-center"><%= link_to @team_one.name.upcase, team_path(@team_one) %></p>
+                <%= link_to team_path(@team_one) do %>
+                  <%= cl_image_tag @team_one.photo, class: "teams-index-photo" %>
+                <% end %>
+                <p class="teams-index-ranking text-center">Ranking: <%= @team_one.ranking %></p>
+              </div>
             </div>
-            <div class="col-md-4">second suggested team
+            <div class="col-md-4">
+              <% @team_two = @teams.sample %>
+              <div class="team-index-card">
+                <p class="teams-index-name text-center"><%= link_to @team_two.name.upcase, team_path(@team_two) %></p>
+                <%= link_to team_path(@team_two) do %>
+                  <%= cl_image_tag @team_two.photo, class: "teams-index-photo" %>
+                <% end %>
+                <p class="teams-index-ranking text-center">Ranking: <%= @team_two.ranking %></p>
+              </div>
             </div>
-            <div class="col-md-4">third suggested team
+            <div class="col-md-4">
+              <% @team_three = @teams.sample %>
+              <div class="team-index-card">
+                <p class="teams-index-name text-center"><%= link_to @team_three.name.upcase, team_path(@team_three) %></p>
+                <%= link_to team_path(@team_three) do %>
+                  <%= cl_image_tag @team_three.photo, class: "teams-index-photo" %>
+                <% end %>
+                <p class="teams-index-ranking text-center">Ranking: <%= @team_three.ranking %></p>
+              </div>
             </div>
         </div>
       </div>
