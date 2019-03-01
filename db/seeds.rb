@@ -25,6 +25,7 @@ stockholm_b_logo_url = "http://flattrackstats.com/sites/default/files/imagecache
 liverpool_logo_url = 'http://flattrackstats.com/sites/default/files/imagecache/profile/logos/17359300_1346809895383605_4405284166842330556_o.jpg'
 yellow_shovemarines_logo_url = 'http://flattrackstats.com/sites/default/files/imagecache/profile/logos/Liverpool-Roller-Birds-150_0.png'
 
+
 puts 'Creating leagues'
 league_1 = League.create!(name: 'Bear City Roller Derby', city: "Berlin", country: "Germany", logo: bear_city_logo_url, website: 'bearcityrollerderby.com/')
 league_2 = League.create!(name: 'Lomme Roller Girls', city: "Lomme", country: "France", logo: lrg_logo_url, website: 'https://www.lommerollergirls.com/')
@@ -39,6 +40,8 @@ puts 'Leagues created'
 
 puts 'Creating users'
 
+avatar_1 = "https://res.cloudinary.com/dq5pqhr4o/image/upload/v1551450831/Derby\%20Match/avatar2.jpg"
+avatar_2 = "https://res.cloudinary.com/dq5pqhr4o/image/upload/v1551450831/Derby\%20Match/avatar1.jpg"
 
 user_1 = User.create!(email: 'bomb@bear.com', password: 'azerty', derby_name: 'La terreur de Berlin Bombshells')
 user_2 = User.create!(email: 'wallbreakers@bear.com', password: 'azerty', derby_name: 'La terreur de Wallbreakers')
@@ -47,7 +50,7 @@ user_4 = User.create!(email: 'bunnies@lrg.com', password: 'azerty', derby_name: 
 user_5 = User.create!(email: 'batardes@lrg.com', password: 'azerty', derby_name: 'La terreur des Glorious batardes')
 user_6 = User.create!(email: 'tetons@lrg.com', password: 'azerty', derby_name: 'La terreur des Tétons Flingueurs')
 user_7 = User.create!(email: 'all_stars@prg.com', password: 'azerty', derby_name: 'La terreur des All Stars de Paris')
-user_8 = User.create!(email: 'quedalles@prg.com', password: 'azerty', derby_name: 'La terreur des Quedalles')
+user_8 = User.create!(email: 'quedalles@prg.com', password: 'azerty', derby_name: 'La terreur des Quedalles', remote_photo_url: avatar_1)
 user_9 = User.create!(email: 'sans_culottes@prg.com', password: 'azerty', derby_name: 'La terreur de Sans culottes')
 user_10 = User.create!(email: 'nasty@montreuil.com', password: 'azerty', derby_name: 'La terreur des Nasty pécheresses')
 user_11 = User.create!(email: 'rsm_b@montreuil.com', password: 'azerty', derby_name: 'La terreur des RSM B')
@@ -55,7 +58,7 @@ user_12 = User.create!(email: 'beastie@beaste.com', password: 'azerty', derby_na
 user_13 = User.create!(email: 'atlantic_breakers_a@cornwall.com', password: 'azerty', derby_name: 'La terreur des Atlanti Breakers A')
 user_14 = User.create!(email: 'atlantic_breakers_b@cornwall.com', password: 'azerty', derby_name: 'La terreur des Atlanti Breakers B')
 user_15 = User.create!(email: 'all_stars@stockholm.com', password: 'azerty', derby_name: 'La terreur des All Stars de Stockholm')
-user_16 = User.create!(email: 'bstrds@stockholm.com', password: 'azerty', derby_name: 'La terreur de la BSTRDs de Stockholm')
+user_16 = User.create!(email: 'bstrds@stockholm.com', password: 'azerty', derby_name: 'La terreur de la BSTRDs de Stockholm', remote_photo_url: avatar_2)
 user_17 = User.create!(email: 'c_star@stockholm.com', password: 'azerty', derby_name: 'La terreur de la C Stars de Stockholm')
 user_18 = User.create!(email: 'sisters@liverpool.com', password: 'azerty', derby_name: 'La terreur des Sisters of Mersey')
 user_19 = User.create!(email: 'yellow_shovemarines@liverpool.com', password: 'azerty', derby_name: 'La terreur des Yellow Shovemarines')
