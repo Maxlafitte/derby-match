@@ -8,6 +8,7 @@ class GamesController < ApplicationController
     authorize @game
     @request = current_user.team.games.last.request
     @team = current_user.team
+    @message = Message.new(request: @request)
   end
 
   def new
