@@ -1,9 +1,22 @@
 class RequestsController < ApplicationController
   def index
-    # @requests_sent = policy_scope(Request).where(user: current_user)
-    # @requests_received = Request.all.select do |request|
-    #   request.team.user == current_user
-    # end
+    @requests_sent = policy_scope(Request).where(user: current_user)
+    @pending_requests_sent = @requests_sent.where(status: "pending")
+    @declined_requests_sent = @requests_sent.where(status: "cancelled")
+    @accepted_requests_sent = @requests_sent.where(status: "accepted")
+
+    @requests_received = Request.all.select do |request|
+      request.team.user == current_user
+    end
+    @pending_requests_received = @requests_received.select do |request|
+      request.status == "pending"
+    end
+    @accepted_requests_received = @requests_received.select do |request|
+      request.status == "accepted"
+    end
+    @declined_requests_received = @requests_received.select do |request|
+      request.status == "declined"
+    end
   end
 
   def show
@@ -27,7 +40,7 @@ class RequestsController < ApplicationController
     @request.team = @team
     @request.user = current_user
     @request.status = "pending"
-    if params[:at_home] == 0
+    if params[:request][:at_home] == "0"
       @request.at_home = true
     else
       @request.at_home = false
@@ -51,22 +64,19 @@ class RequestsController < ApplicationController
         @game.start_date = @request.start_date
         @game.end_date = @request.end_date
         @game.save!
-        #change once we have the dashboard
-        redirect_to teams_path
+        redirect_to dashboard_path
       else
         render :my_bookings
       end
     elsif params[:commit] == "Decline"
       if @request.update(status: "declined")
-        #change once we have the dashboard
-        redirect_to teams_path
+        redirect_to dashboard_path
       else
         render :my_bookings
       end
     elsif params[:commit] == "Cancel"
       if @request.update(status: "cancelled")
-        #change once we have the dashboard
-        redirect_to teams_path
+        redirect_to dashboard_path
       else
         render :show
       end
