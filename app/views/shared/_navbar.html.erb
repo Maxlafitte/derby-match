@@ -15,7 +15,7 @@
         <%= link_to "Find a team", teams_path, class: "nav-link logged-nav" %>
       </li>
       <li class="nav-item">
-        <%= link_to "Request", "#", class: "nav-link logged-nav" %>
+        <%= link_to "Request", team_requests_path(current_user.team), class: "nav-link logged-nav" %>
       </li>
       <li class="nav-item dropdown">
         <% if current_user.photo? %>
