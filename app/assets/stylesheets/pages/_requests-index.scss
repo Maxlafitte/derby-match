@@ -14,16 +14,18 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   flex-direction: row;
   position: relative;
   background-color: white;
   color: $my-gray;
   font-size: 24px;
   margin-bottom: 20px;
-  padding: 20px;
+  padding: 25px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   p {
     font-size: 16px;
+    margin-bottom: 0;
   }
 }
 
@@ -31,31 +33,28 @@
   background-color: $opacity-gray;
 }
 
-// .team {
-//   position: absolute;
-//   top: 10px;
-//   left: 20px;
-// }
+.team {
+  padding: 10px;
+}
 
-// .dates {
-//   position: absolute;
-//   top: 10px;
-//   left: 450px;
-// }
+.dates {
+  padding: 10px;
+  position: absolute;
+  left: 450px;
+}
 
-// .location {
-//   position: absolute;
-//   top: 10px;
-//   left: 450px;
+.location {
+  padding: 10px;
+  position: absolute;
+  left: 700px;
+}
 
-// }
-
-// .link {
-//   position: absolute;
-//   top: 30px;
-//   right: 20px;
-// }
+.link {
+  padding: 10px;
+}
 
 .status {
-
+  padding: 10px;
+  position: absolute;
+  right: 40px;
 }

@@ -13,8 +13,8 @@
       <div class="row">
         <div class="pending-received request-details">
           <div class="team">
-            <p>From: <%= request.user.team.name %> - <%= request.user.team.league.name %></p>
-            <p>Ranking: <%= request.user.team.ranking %></p>
+            <p>From: <%= request.user.team.name %> - <%= request.user.team.league.name %> <br>
+              Ranking: <%= request.user.team.ranking %></p>
           </div>
           <div class="dates">
             <p>From <%= request.start_date %><br>
@@ -45,11 +45,12 @@
       <div class="row">
         <div class="pending-sent request-details">
           <div class="team">
-            <p>To: <%= request.team.name %> - <%= request.team.league.name %></p>
-            <p>Ranking: <%= request.user.team.ranking %></p>
+            <p>To: <%= request.team.name %> - <%= request.team.league.name %> <br>
+            Ranking: <%= request.user.team.ranking %></p>
           </div>
           <div class="dates">
-            <p>Dates: from <%= request.start_date %> to <%= request.end_date %></p>
+            <p>From <%= request.start_date %> <br>
+              To <%= request.end_date %></p>
           </div>
           <div class="location">
             <p>
@@ -96,15 +97,16 @@
         <div class="row">
           <div class="grey-card request-details">
             <div class="team">
-              <p>From: <%= request.user.team.name %> - <%= request.user.team.league.name %></p>
-              <p>Ranking: <%= request.user.team.ranking %></p>
+              <p>From: <%= request.user.team.name %> - <%= request.user.team.league.name %> <br>
+              Ranking: <%= request.user.team.ranking %></p>
             </div>
             <div class="dates">
-              <p>Dates: from <%= request.start_date %> to <%= request.end_date %></p>
+              <p>From <%= request.start_date %> <br>
+                To <%= request.end_date %></p>
             </div>
             <div class="location">
               <p>
-                Location:
+                Location: <br>
                 <% if request.at_home == false %>
                   <%= current_user.team.league.city %> - <%= current_user.team.league.country %>
                 <% else %>
@@ -114,7 +116,8 @@
             </div>
             <div class="status">
               <p>
-                Status: <%= request.status %> by you
+                Status: <br>
+                <%= request.status %> by you
               </p>
             </div>
           </div>
@@ -127,15 +130,16 @@
         <div class="row">
           <div class="grey-card request-details">
             <div class="team">
-              <p>To: <%= request.team.name %> - <%= request.team.league.name %></p>
-              <p>Ranking: <%= request.team.ranking %></p>
+              <p>To: <%= request.team.name %> - <%= request.team.league.name %> <br>
+              Ranking: <%= request.team.ranking %></p>
             </div>
             <div class="dates">
-              <p>Dates: from <%= request.start_date %> to <%= request.end_date %></p>
+              <p>From <%= request.start_date %> <br>
+                To <%= request.end_date %></p>
             </div>
             <div class="location">
               <p>
-                Location:
+                Location: <br>
                 <% if request.at_home == false %>
                   <%= request.team.league.city %> - <%= request.team.league.country %>
                 <% else %>
@@ -145,7 +149,8 @@
             </div>
             <div class="status">
               <p>
-                Status: <%= request.status %> by <%= request.team.name %>
+                Status: <br>
+                <%= request.status %> by <%= request.team.name %>
               </p>
             </div>
           </div>
@@ -158,15 +163,16 @@
         <div class="row">
           <div class="grey-card request-details">
             <div class="team">
-              <p>From: <%= request.user.team.name %> - <%= request.user.team.league.name %></p>
-              <p>Ranking: <%= request.user.team.ranking %></p>
+              <p>From: <%= request.user.team.name %> - <%= request.user.team.league.name %> <br>
+              Ranking: <%= request.user.team.ranking %></p>
             </div>
             <div class="dates">
-              <p>Dates: from <%= request.start_date %> to <%= request.end_date %></p>
+              <p>From <%= request.start_date %> <br>
+                To <%= request.end_date %></p>
             </div>
             <div class="location">
               <p>
-                Location:
+                Location: <br>
                 <% if request.at_home == false %>
                   <%= current_user.team.league.city %> - <%= current_user.team.league.country %>
                 <% else %>
@@ -176,7 +182,8 @@
             </div>
             <div class="status">
               <p>
-                Status: <%= request.status %> by <%= request.user.team.name %>
+                Status: <br>
+                <%= request.status %> by <%= request.user.team.name %>
               </p>
             </div>
           </div>
@@ -190,15 +197,16 @@
           <div class="row">
             <div class="grey-card request-details">
               <div class="team">
-                <p>To: <%= request.team.name %> - <%= request.team.league.name %></p>
-                <p>Ranking: <%= request.team.ranking %></p>
+                <p>To: <%= request.team.name %> - <%= request.team.league.name %> <br>
+                Ranking: <%= request.team.ranking %></p>
               </div>
               <div class="dates">
-                <p>Dates: from <%= request.start_date %> to <%= request.end_date %></p>
+                <p>From <%= request.start_date %> <br>
+                  To <%= request.end_date %></p>
               </div>
               <div class="location">
                 <p>
-                  Location:
+                  Location: <br>
                   <% if request.at_home == false %>
                     <%= request.team.league.city %> - <%= request.team.league.country %>
                   <% else %>
@@ -208,7 +216,8 @@
               </div>
               <div class="status">
                 <p>
-                  Status: <%= request.status %> by you
+                  Status: <br>
+                  <%= request.status %> by you
                 </p>
               </div>
             </div>
