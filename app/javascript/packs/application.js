@@ -7,9 +7,8 @@ console.log('io')
 import { initSweetalert } from '../plugins/init_sweetalert';
 
 initSweetalert('#sweet-alert-demo', {
-  title: "A nice alert",
-  text: "This is a great alert, isn't it?",
-  icon: "success"
-}, (value) => {
+        title: "Request sent!",
+        icon: "success",
+        button: "Yay!"}, (value) => {
   console.log(value);
 });
