@@ -1,5 +1,7 @@
 <h1>My Requests</h1>
 
+<!-- pending requests: -->
+<!--  -->
 <h3>Requests received: </h3>
 <div class="pending-received-requests">
   <% if @pending_requests_received.present? %>
@@ -20,12 +22,6 @@
   <% end %>
 </div>
 
-<div class="accepted-received-requests">
-  <% if @pending_requests_sent.present? %>
-    ACCEPTED
-    <!-- See your accepted requests in games -->
-  <% end %>
-</div>
 
 <div class="pending-received-requests">
   <% if @declined_requests_sent.present? %>
@@ -64,13 +60,6 @@
         </p>
       </div>
     <% end %>
-  <% end %>
-</div>
-
-<div class="accepted-sent-requests">
-  <% if @pending_requests_sent.present? %>
-    ACCEPTED
-    <!-- See your accepted requests in games -->
   <% end %>
 </div>
 

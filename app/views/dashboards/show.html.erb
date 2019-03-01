@@ -53,6 +53,7 @@
               </div>
             </div>
         </div>
+        <%= link_to "Search for another team", teams_path %>
       </div>
     </div>
 
@@ -71,7 +72,7 @@
           <p>You have no event coming up, and you have <%= current_user.team.requests.where(status: "pending").count %> pending requests. Try replying to a request!</p>
         <% end %>
       <% else %>
-        <h3><%= current_user.team.games.count + current_user.requests.where(status: "accepted").count %> Upcoming Events - <%= link_to "See all", team_games_path(current_user.team) %></h3>
+        <h3><%= current_user.team.games.count + current_user.requests.where(status: "accepted").count %> upcoming events <%= link_to "(see all)", team_games_path(current_user.team) %></h3>
         <h5>Next game</h5>
       <% end %>
         <!-- games for requests i've received -->
@@ -90,7 +91,7 @@
               <%= current_user.team.requests.last.team.league.city %>, <%= current_user.team.requests.last.team.league.country %> (home)
             <% end %>
           </p>
-          <p><%= link_to "Event details", team_game_path(current_user.team, current_user.team.games.last) %></p>
+          <p><%= link_to "Get more details", team_game_path(current_user.team, current_user.team.games.last) %></p>
         <!-- games for requests i've sent -->
         <% elsif current_user.requests.where(status: "accepted").present? %>
           <p>Against: <%= current_user.requests.where(status: "accepted").last.team.name %> - <%= current_user.requests.where(status: "accepted").last.team.league.name %></p>
@@ -103,7 +104,7 @@
               <%= current_user.requests.where(status: "accepted").last.team.league.city %>, <%= current_user.requests.where(status: "accepted").last.team.league.country %> (away)
             <% end %>
           </p>
-          <p><%= link_to "Event details", team_game_path(current_user.requests.where(status: "accepted").last.team, current_user.requests.where(status: "accepted").last.game) %></p>
+          <p><%= link_to "Get more details", team_game_path(current_user.requests.where(status: "accepted").last.team, current_user.requests.where(status: "accepted").last.game) %></p>
         <% end %>
       </div>
 
@@ -113,7 +114,7 @@
         <% elsif current_user.team.requests.where(status: "pending").count == 0 %>
           <h3>Requests received</h3>
         <% else %>
-          <h3><%= current_user.team.requests.where(status: "pending").count %> pending requests - <%= link_to "See all", team_requests_path(current_user.team) %></h3>
+          <h3><%= current_user.team.requests.where(status: "pending").count %> pending requests <%= link_to "(see all)", team_requests_path(current_user.team) %></h3>
         <% end %>
             <% if current_user.team.requests.where(status: "pending").last.present? %>
             <div class="last-request">
@@ -127,7 +128,7 @@
                   <%= current_user.team.requests.where(status: "pending").last.team.league.city %>, <%= current_user.team.requests.where(status: "pending").last.team.league.country %> (home)
                 <% end %>
               </p>
-              <p><%= link_to "See details", team_request_path(current_user.team, current_user.team.requests.where(status: "pending").last ) %></p>
+              <p><%= link_to "Get more details", team_request_path(current_user.team, current_user.team.requests.where(status: "pending").last ) %></p>
               <br>
               <% else %>
                 <p>You have no pending request, but you can always invite a team!</p>
