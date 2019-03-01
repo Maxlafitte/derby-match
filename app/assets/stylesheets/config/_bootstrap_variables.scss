@@ -14,6 +14,7 @@ $my-orange : #3e306e;
 $my-pink : #e73279;
 $my-yellow: #D8973C;
 $my-gray: #3f3e3e;
+$opacity-gray: rgba(150, 150, 150, 0.3);
 // $secondary: $your-secondary-color;
 $success:   $green;
 $info:      $yellow;
@@ -53,3 +54,15 @@ $gray-300: #E6E6E6;
 .custom-select.is-invalid ~ .invalid-tooltip {
   display: block;
 }
+
+$navbar-dark-color:                 rgba(white, .5) !default;
+$navbar-dark-hover-color:           rgba(white, .75) !default;
+$navbar-dark-active-color:          white !default;
+$navbar-dark-disabled-color:        rgba(white, .25) !default;
+
+$navbar-dark-toggler-border-color:  rgba(white, .1) !default;
+$navbar-light-color:                rgba(white, .5) !default;
+$navbar-light-hover-color:          rgba(white, .7) !default;
+$navbar-light-active-color:         rgba(white, .9) !default;
+$navbar-light-disabled-color:       rgba(white, .3) !default;
+$navbar-light-toggler-border-color: rgba(white, .1) !default;
