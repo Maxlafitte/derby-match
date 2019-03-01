@@ -1,0 +1,60 @@
+.pending-requests {
+ margin: 20px 0;
+}
+
+.games {
+  margin: 20px 0;
+}
+
+.old-requests {
+  margin: 20px 0;
+}
+
+.request-details {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  position: relative;
+  background-color: white;
+  color: $my-gray;
+  font-size: 24px;
+  margin-bottom: 20px;
+  padding: 25px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  p {
+    font-size: 16px;
+    margin-bottom: 0;
+  }
+}
+
+.grey-card {
+  background-color: $opacity-gray;
+}
+
+.team {
+  padding: 10px;
+}
+
+.dates {
+  padding: 10px;
+  position: absolute;
+  left: 450px;
+}
+
+.location {
+  padding: 10px;
+  position: absolute;
+  left: 700px;
+}
+
+.link {
+  padding: 10px;
+}
+
+.status {
+  padding: 10px;
+  position: absolute;
+  right: 40px;
+}
