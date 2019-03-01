@@ -1,0 +1,35 @@
+.my-btn {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 35px;
+  font-weight: bold;
+  background-color: $my-pink;
+  opacity: 1;
+  transition: background 0.3s ease;
+  border: 2px solid white ;
+  width: 140px;
+  height: 50px;
+}
+.my-btn:hover {
+  background-color: $my-pink;
+  opacity: 0.8;
+  transition: background 0.3s ease;
+  color: white;
+}
+
+.pink-link {
+  font-style: italic;
+  color: $my-pink;
+  text-decoration: none;
+  font-size: 18px;
+  &:hover {
+    text-decoration: none;
+    color: $my-pink;
+    opacity: 0.9;
+  }
+}
+
+
+
+
+

@@ -10,10 +10,78 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_25_151014) do
+ActiveRecord::Schema.define(version: 2019_02_27_155925) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "games", force: :cascade do |t|
+    t.date "start_date"
+    t.date "end_date"
+    t.integer "score_diff"
+    t.bigint "request_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["request_id"], name: "index_games_on_request_id"
+  end
+
+  create_table "leagues", force: :cascade do |t|
+    t.string "name"
+    t.string "logo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "city"
+    t.string "country"
+    t.float "latitude"
+    t.float "longitude"
+    t.string "website"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.bigint "request_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["request_id"], name: "index_messages_on_request_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "requests", force: :cascade do |t|
+    t.string "status"
+    t.date "start_date"
+    t.date "end_date"
+    t.boolean "at_home"
+    t.bigint "team_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id"], name: "index_requests_on_team_id"
+    t.index ["user_id"], name: "index_requests_on_user_id"
+  end
+
+  create_table "scores", force: :cascade do |t|
+    t.boolean "at_home"
+    t.integer "value"
+    t.bigint "game_id"
+    t.bigint "team_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_scores_on_game_id"
+    t.index ["team_id"], name: "index_scores_on_team_id"
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string "name"
+    t.integer "ranking"
+    t.bigint "league_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "photo"
+    t.index ["league_id"], name: "index_teams_on_league_id"
+    t.index ["user_id"], name: "index_teams_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +91,19 @@ ActiveRecord::Schema.define(version: 2019_02_25_151014) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "derby_name"
+    t.string "photo"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "games", "requests"
+  add_foreign_key "messages", "requests"
+  add_foreign_key "messages", "users"
+  add_foreign_key "requests", "teams"
+  add_foreign_key "requests", "users"
+  add_foreign_key "scores", "games"
+  add_foreign_key "scores", "teams"
+  add_foreign_key "teams", "leagues"
+  add_foreign_key "teams", "users"
 end

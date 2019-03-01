@@ -1,0 +1,37 @@
+<div class="teams-search-container">
+  <div class="container">
+    <h2 class="text-center teams-index-title">Ugly teams displayed by ranking pertinence</h2>
+    <p class="text-center my-ranking">Your ranking: <%= current_user.team.ranking %></p>
+    <h3 class="text-center search-title">Wonderful search</h3>
+    <div class="row form-search">
+      <%= simple_form_for :index, method: "GET", url: teams_path, html: {class: "form-inline form-center"} do |f| %>
+        <%= f.input :start_date, as: :string, required: true, input_html: {class: "datepicker datepicker-margin", placeholder: "Start Date"} %>
+        <%= f.input :end_date, input_html: {class: "datepicker datepicker-margin", placeholder: "End Date"} %>
+        <%= f.button :submit, "Search",  class: 'my-btn my-btn-index-margin' %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="background-color">
+  <div class="container">
+    <div class="row teams-flex">
+      <% @teams.each do |team| %>
+      <div class="col-xs-6 col-sm-4 col-md-3">
+        <div class="card teams-index">
+          <div class="team-index-card">
+            <p class="teams-index-name text-center"><%= link_to team.name.upcase, team_path(team) %></p>
+            <%= link_to team_path(team) do %>
+              <%= cl_image_tag team.photo, class: "teams-index-photo" %>
+            <% end %>
+            <p class="teams-index-ranking text-center">Ranking: <%= team.ranking %></p>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+

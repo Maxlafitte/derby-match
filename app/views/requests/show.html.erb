@@ -1,0 +1,149 @@
+<!-- if it's a request i've sent -->
+<div class="container grid-request">
+  <% if @request.user == current_user %>
+  <h2 class="text-center title-request">Requests to <%= @team.name.upcase %></h2>
+  <div class="card">
+    <div class="team-img">
+      <p><%= image_tag(@team.photo, height: 250, width: 250,crop: :fill) %></p>
+    </div>
+    <div class="team-infos">
+      <p>League: <%= @team.league.name %></p>
+      <p>Ranking: <%= @team.ranking %></p>
+      <p>Location: <%= @team.league.city %>, <%= @team.league.country %></p>
+      <p>Contact: <%= @team.user.derby_name %></p>
+    </div>
+
+
+    <div class="request-infos">
+      <p>Dates: <%= @request.start_date %> - <%= @request.start_date %></p>
+      <p>
+        Location:
+        <% if @request.at_home == true %>
+          <%= @user.team.league.city %>, <%= @user.team.league.country %> (home)
+        <% else %>
+          <%= @team.league.city %>, <%= @team.league.country %> (away)
+        <% end %>
+      </p>
+    </div>
+    <div class="request-status">
+      <p><%= @request.status.upcase %></p>
+      <% if booking.status.upcase == "PENDING" %>
+        <%= simple_form_for [@request.team, @request] , method: :patch do |f| %>
+          <%= f.button :submit, value: 'Decline', class:"btn" %>
+        <% end %>
+      <% end %>
+    </div>
+
+
+  </div>
+</div>
+
+<div class="container message-container">
+    <div class="chat-message">
+      <div class="messages">
+        <% @request.messages.each do |message| %>
+          <div class="one-message">
+            <div class="message-author">
+              <p>
+                <% if @team.user.photo.present? %>
+                <%= cl_image_tag(message.user.photo, height: 250, width: 250,crop: :fill, class: "avatar-large")  %>
+                <% else %>
+                <%= image_tag 'avatar.png', class: "avatar avatar-large" %>
+                <% end %>
+              </p>
+              <p class="user-message-name"><%= message.user.derby_name %></p>
+              <p class="italic-date"><%= message.created_at.strftime("%b %e, %l:%M %p") %></p>
+            </div>
+            <div class="message-content">
+              <p><%= message.content %></p>
+            </div>
+            <br>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="message-form form-request-center">
+      <%= simple_form_for ([@request, @message]), url: messages_path, method: :post do |f| %>
+        <%= f.input :content, label: 'Your reply' %>
+        <%= f.input :request_id, as: :hidden %>
+        <%= f.button :submit, "Send Message",  class: 'my-btn center-right-btn' %>
+      <% end %>
+    </div>
+</div>
+
+
+  <!-- if it's a request i've received -->
+  <div class="container grid-request">
+  <% else %>
+    <h2 class="text-center title-request">Requests from <%= @request.user.team.name %></h2>
+
+    <div class="card">
+      <div class="team-img">
+        <p><%= image_tag(@request.user.team.photo, height: 250, width: 250,crop: :fill) %></p>
+      </div>
+      <div class="team-infos">
+        <p>League: <%= @request.user.team.league.name %></p>
+        <p>Ranking: <%= @request.user.team.ranking %></p>
+        <p>Location: <%= @request.user.team.league.city %>, <%= @request.user.team.league.country %></p>
+        <p>Contact: <%= @current_user.team.user.derby_name %></p>
+      </div>
+
+      <div class="request-infos">
+        <p>Dates: <%= @request.start_date %> - <%= @request.start_date %></p>
+        <p>
+          Location:
+           <% if @request.at_home == true %>
+          <%= @current_user.team.league.city %>, <%= @current_user.team.league.country %> (home)
+          <% else %>
+          <%= @current_user.team.league.city %>, <%= @current_user.team.league.country %> (away)
+          <% end %>
+        </p>
+      </div>
+     <div class="request-status">
+      <p><%= @request.status.upcase %></p>
+      <% if @request.status.upcase == "PENDING" %>
+        <%= simple_form_for [@request.team, @request] , method: :patch do |f| %>
+          <%= f.button :submit, value: 'Accept', class:"btn" %>
+        <% end %>
+        <%= simple_form_for [@request.team, @request] , method: :patch do |f| %>
+          <%= f.button :submit, value: 'Decline', class:"btn" %>
+        <% end %>
+      <% end %>
+    </div>
+    </div>
+  </div>
+
+  <div class="container message-container">
+      <div class="chat-message">
+        <div class="messages">
+          <% @request.messages.each do |message| %>
+
+            <div class="one-message">
+              <div class="message-author">
+                <p>
+                  <% if @team.user.photo.present? %>
+                  <%= cl_image_tag(message.user.photo, height: 250, width: 250,crop: :fill, class: "avatar-large")  %>
+                  <% else %>
+                  <%= image_tag 'avatar.png', class: "avatar avatar-large" %>
+                  <% end %>
+                </p>
+                <p class="user-message-name"><%= message.user.derby_name %></p>
+                <p class="italic-date"><%= message.created_at.strftime("%b %e, %l:%M %p") %></p>
+              </div>
+              <div class="message-content">
+                <p><%= message.content %></p>
+              </div>
+              <br>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="message-form form-request-center">
+        <%= simple_form_for ([@request, @message]), url: messages_path, method: :post do |f| %>
+          <%= f.input :content, label: 'Your reply' %>
+          <%= f.input :request_id, as: :hidden %>
+          <%= f.button :submit, "Send Message",  class: 'my-btn center-right-btn' %>
+        <% end %>
+      </div>
+  </div>
+<% end %>

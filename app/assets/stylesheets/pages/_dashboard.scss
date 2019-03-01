@@ -1,0 +1,28 @@
+
+.card-suggested-teams {
+ background-size: cover;
+  background-position: center;
+  background-color: white;
+  height: 480px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  color: $my-gray;
+  font-size: 24px;
+  font-weight: bold;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  p {
+    font-size: 16px;
+  }
+}
+
+
+.card-lastest-request {
+
+}
+
+
+.card-upcoming-events {
+
+}
+
