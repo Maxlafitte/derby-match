@@ -135,7 +135,7 @@
                 <% if current_user.team.requests.where(status: "pending").count == 1 %>
                   <h3 class="text-center">One pending request</h3>
                 <% elsif current_user.team.requests.where(status: "pending").count == 0 %>
-                  <h3 class="text-center">Pending requests received</h3>
+                  <h3 class="text-center">Pending requests</h3>
                 <% else %>
                   <h3 class="text-center"><%= current_user.team.requests.where(status: "pending").count %> pending requests - <%= link_to "See all", team_requests_path(current_user.team), class: "pink-link" %></h3>
                 <% end %>
