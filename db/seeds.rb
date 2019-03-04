@@ -28,14 +28,14 @@ yellow_shovemarines_logo_url = 'http://flattrackstats.com/sites/default/files/im
 
 
 puts 'Creating leagues'
-league_1 = League.create!(name: 'Bear City Roller Derby', city: "Berlin", country: "Germany", logo: bear_city_logo_url, website: 'bearcityrollerderby.com/')
-league_2 = League.create!(name: 'Lomme Roller Girls', city: "Lomme", country: "France", logo: lrg_logo_url, website: 'https://www.lommerollergirls.com/')
-league_3 = League.create!(name: 'Paris Roller Girls', city: "Paris", country: "France", logo: prg_logo_url, website: 'www.parisrollergirls.com/')
-league_4 = League.create!(name: 'Roller Skating Montreuil', city: "Montreuil", country: "France",logo: montreuil_logo_url, website: 'https://www.facebook.com/lesnastypecheresses/')
-league_5 = League.create!(name: 'Beastie Derby Girls', city: "Reims", country: "France", logo: beastie_logo_url, website: 'https://www.facebook.com/BeastieDerbyGirls/')
-league_6 = League.create!(name: 'Cornwall Roller Derby', city: "Newquay", country: "UK", logo: cornwall_logo_url, website: 'www.cornwallrollerderby.com/')
-league_7 = League.create!(name: 'Stockholm Roller Derby', city: "Stockholm", country: "Sweden", logo: stockholm_logo_url, website: 'rollerderby.se/')
-league_8 = League.create!(name: 'Liverpool Roller Birds', city: "Liverpool", country: "UK", logo: liverpool_logo_url, website: 'www.liverpoolrollerbirds.co.uk/')
+league_1 = League.create!(name: 'Bear City Roller Derby', city: "Berlin", country: "Germany", logo: bear_city_logo_url, latitude: 52.52437, longitude: 13.41053, website: 'bearcityrollerderby.com/')
+league_2 = League.create!(name: 'Lomme Roller Girls', city: "Lomme", country: "France", logo: lrg_logo_url, latitude: 48.8648586, longitude: 2.3798648, website: 'https://www.lommerollergirls.com/')
+league_3 = League.create!(name: 'Paris Roller Girls', city: "Paris", country: "France", logo: prg_logo_url, latitude: 48.8566101, longitude: 2.3514992, website: 'www.parisrollergirls.com/')
+league_4 = League.create!(name: 'Roller Skating Montreuil', city: "Montreuil", country: "France",logo: montreuil_logo_url, latitude: 48.8603, longitude: 2.4429999999999836,website: 'https://www.facebook.com/lesnastypecheresses/')
+league_5 = League.create!(name: 'Beastie Derby Girls', city: "Reims", country: "France", logo: beastie_logo_url, latitude: 49.2577886, longitude: 4.031926, website: 'https://www.facebook.com/BeastieDerbyGirls/')
+league_6 = League.create!(name: 'Cornwall Roller Derby', city: "Newquay", country: "UK", logo: cornwall_logo_url, latitude: 50.4156, longitude: -5.073190000000068, website: 'www.cornwallrollerderby.com/')
+league_7 = League.create!(name: 'Stockholm Roller Derby', city: "Stockholm", country: "Sweden", logo: stockholm_logo_url, latitude: 59.3251172, longitude: 18.0710935, website: 'rollerderby.se/')
+league_8 = League.create!(name: 'Liverpool Roller Birds', city: "Liverpool", country: "UK", logo: liverpool_logo_url, latitude: 53.4106, longitude: 2.9779399999999896, website: 'www.liverpoolrollerbirds.co.uk/')
 
 puts 'Leagues created'
 
