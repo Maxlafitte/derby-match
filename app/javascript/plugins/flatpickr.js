@@ -6,7 +6,7 @@ flatpickr(".datepicker", {})
 const disabled = document.querySelector(".datepicker-unavailable")
 
 if (disabled) {
- flatpickr(".datepicker-unavailable", {
-   disable: gon.unavailable_dates
- })
+  flatpickr(".datepicker-unavailable", {
+    disable: gon.unavailable_dates
+  })
 }
