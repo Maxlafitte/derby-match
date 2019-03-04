@@ -16,7 +16,7 @@
 
 
         <div class="request-infos">
-          <p>Dates: <%= @request.start_date %> - <%= @request.start_date %></p>
+          <p>Dates: <%= @request.start_date.strftime('%a %d %b %Y') %> - <%= @request.start_date.strftime('%a %d %b %Y') %></p>
           <p>
             Location:
             <% if @request.at_home == true %>
@@ -39,35 +39,15 @@
   </div>
 
   <div class="container message-container">
+      <div class="message-form form-request-center">
+        <%= render 'requests/form-message', request: @request, message: @message %>
+      </div>
       <div class="chat-message">
         <div class="messages">
           <% @request.messages.each do |message| %>
-            <div class="one-message">
-              <div class="message-author">
-                <p>
-                  <% if @team.user.photo.present? %>
-                  <%= cl_image_tag(message.user.photo, height: 250, width: 250,crop: :fill, class: "avatar-large")  %>
-                  <% else %>
-                  <%= image_tag 'avatar.png', class: "avatar avatar-large" %>
-                  <% end %>
-                </p>
-                <p class="user-message-name"><%= message.user.derby_name %></p>
-                <p class="italic-date"><%= message.created_at.strftime("%b %e, %l:%M %p") %></p>
-              </div>
-              <div class="message-content">
-                <p><%= message.content %></p>
-              </div>
-              <br>
-            </div>
+            <%= render 'requests/one-message', team: @team, message: message %>
           <% end %>
         </div>
-      </div>
-      <div class="message-form form-request-center">
-        <%= simple_form_for ([@request, @message]), url: messages_path, method: :post do |f| %>
-          <%= f.input :content, label: 'Your reply' %>
-          <%= f.input :request_id, as: :hidden %>
-          <%= f.button :submit, "Send Message",  class: 'my-btn center-right-btn' %>
-        <% end %>
       </div>
   </div>
 
@@ -88,7 +68,7 @@
         </div>
 
         <div class="request-infos">
-          <p>Dates: <%= @request.start_date %> - <%= @request.start_date %></p>
+          <p>Dates: <%= @request.start_date.strftime('%a %d %b %Y') %> - <%= @request.start_date.strftime('%a %d %b %Y') %></p>
           <p>
             Location:
              <% if @request.at_home == true %>
@@ -113,26 +93,13 @@
     </div>
 
     <div class="container message-container">
+      <div class="message-form form-request-center">
+        <%= render 'requests/form-message', request: @request, message: @message %>
+      </div>
       <div class="chat-message">
-        <div class="messages">
+        <div class="messages" id="messages">
           <% @request.messages.each do |message| %>
-            <div class="one-message">
-              <div class="message-author">
-                <p>
-                  <% if @team.user.photo.present? %>
-                  <%= cl_image_tag(message.user.photo, height: 250, width: 250,crop: :fill, class: "avatar-large")  %>
-                  <% else %>
-                  <%= image_tag 'avatar.png', class: "avatar avatar-large" %>
-                  <% end %>
-                </p>
-                <p class="user-message-name"><%= message.user.derby_name %></p>
-                <p class="italic-date"><%= message.created_at.strftime("%b %e, %l:%M %p") %></p>
-              </div>
-              <div class="message-content">
-                <p><%= message.content %></p>
-              </div>
-              <br>
-            </div>
+            <%= render 'requests/one-message', team: @team, message: message %>
           <% end %>
         </div>
       </div>

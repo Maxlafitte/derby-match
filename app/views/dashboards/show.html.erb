@@ -93,7 +93,7 @@
               Against: <span class="team-game-bold"><%= current_user.team.games.last.request.user.team.name %> - <%= current_user.team.games.last.request.user.team.league.name %></span>
             </p>
             <p class="text-center">
-              Dates: from <%= current_user.team.games.last.start_date %> to <%= current_user.team.games.last.end_date %>
+              Dates: from <%= current_user.team.games.last.start_date.strftime('%a %d %b %Y') %> to <%= current_user.team.games.last.end_date.strftime('%a %d %b %Y') %>
             </p>
             <p class="text-center">
               Location:
@@ -107,7 +107,7 @@
           <!-- games for requests i've sent -->
           <% elsif current_user.requests.where(status: "accepted").present? %>
             <p class="text-center">Against: <%= current_user.requests.where(status: "accepted").last.team.name %> - <%= current_user.requests.where(status: "accepted").last.team.league.name %></p>
-            <p class="text-center">Dates: from <%= current_user.requests.where(status: "accepted").last.start_date %> to <%= current_user.requests.where(status: "accepted").last.end_date %></p>
+            <p class="text-center">Dates: from <%= current_user.requests.where(status: "accepted").last.start_date.strftime('%a %d %b %Y') %> to <%= current_user.requests.where(status: "accepted").last.end_date.strftime('%a %d %b %Y') %></p>
             <p>
               Location:
               <% if current_user.requests.where(status: "accepted").last.at_home == true %>
