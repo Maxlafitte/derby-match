@@ -1,0 +1,17 @@
+<div class="one-message" id="one-message">
+  <div class="message-author">
+    <p>
+      <% if @team.user.photo.present? %>
+      <%= cl_image_tag(message.user.photo, height: 250, width: 250,crop: :fill, class: "avatar")  %>
+      <% else %>
+      <%= image_tag 'avatar.png', class: "avatar" %>
+      <% end %>
+    </p>
+    <p class="user-message-name"><%= message.user.derby_name %></p>
+    <p class="italic-date"><%= message.created_at.strftime("%b %e, %l:%M %p") %></p>
+  </div>
+  <div class="message-content">
+    <p><%= message.content %></p>
+  </div>
+  <br>
+</div>

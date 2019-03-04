@@ -1,14 +1,20 @@
 class MessagesController < ApplicationController
+
   def create
     @message = Message.new(message_params)
     @message.user = current_user
     authorize @message
-
-    if @message.save!
+    if @message.save
       # to change once we have the dashboard
-      redirect_to teams_path
+      respond_to do |format|
+        format.html { redirect_to team_request_path(current_user.team, current_user.team.requests.where(status: "pending").last ) }
+        format.js
+      end
     else
-      render :show
+      respond_to do |format|
+        format.html { redirect_to team_request_path(current_user.team, current_user.team.requests.where(status: "pending").last ) }
+        format.js
+      end
     end
   end
 
