@@ -52,6 +52,7 @@ class RequestsController < ApplicationController
 
   # one function for each accept/ decline/ cancel
   def accept
+    @request = Request.find(params[:request][:id])
     @request.update(status: "accepted")
     @game = Game.new
     @game.request = @request
