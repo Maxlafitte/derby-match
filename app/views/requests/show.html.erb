@@ -101,7 +101,7 @@
          <div class="request-status" id="request-status">
           <p><%= @request.status.upcase %></p>
           <% if @request.status.upcase == "PENDING" %>
-            <%= simple_form_for [@request.team, @request], remote: true, method: :patch do |f| %>
+            <%= simple_form_for [@request.team, @request], url: requests/accept,remote: true, method: :patch do |f| %>
               <%= f.button :submit, value: 'Accept', class: "my-btn", id: "accept-button" %>
             <% end %>
             <%= simple_form_for [@request.team, @request], remote: true, method: :patch do |f| %>

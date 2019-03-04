@@ -1,4 +1,6 @@
 class RequestsController < ApplicationController
+  before_action :set_request, only: [:show, :accept, :decline, :cancel]
+
   def index
     @requests_sent = policy_scope(Request).where(user: current_user)
     @pending_requests_sent = @requests_sent.where(status: "pending")
@@ -25,13 +27,7 @@ class RequestsController < ApplicationController
 
   def show
     @team = Team.find(params[:team_id])
-    @request = Request.find(params[:id])
-    authorize @request
     @message = Message.new(request: @request)
-  end
-
-  def new
-    # authorize @request
   end
 
   def create
@@ -54,49 +50,68 @@ class RequestsController < ApplicationController
     redirect_to dashboard_path
   end
 
-  def edit
-    # authorize @request
-  end
-
-  def update
-    @request = Request.find(params[:id])
-    authorize @request
-    if params[:commit] == "Accept"
+  # one function for each accept/ decline/ cancel
+  def accept
+    # if params[:commit] == "Accept"
       if @request.update(status: "accepted")
         @game = Game.new
         @game.request = @request
         @game.start_date = @request.start_date
         @game.end_date = @request.end_date
-        @game.save!
-        redirect_to dashboard_path
+        if @game.save!
+          respond_to do |format|
+            format.html { redirect_to dashboard_path }
+            format.js
+          end
       else
         respond_to do |format|
           format.html { render 'teams/show' }
           format.js
         end
       end
-    elsif params[:commit] == "Decline"
-      if @request.update(status: "declined")
-        redirect_to dashboard_path
+    # end
+  end
+
+  def decline
+    # if params[:commit] == "Decline"
+      @request.update(status: "declined")
+      if @request.save
+        respond_to do |format|
+          format.html { redirect_to dashboard_path }
+          format.js
+        end
       else
         respond_to do |format|
           format.html { render 'teams/show' }
           format.js
         end
       end
-    elsif params[:commit] == "Cancel"
-      if @request.update(status: "cancelled")
-        redirect_to dashboard_path
+    # end
+  end
+
+  def cancel
+    # if params[:commit] == "Cancel"
+      @request.update(status: "cancelled")
+      if @request.save
+        respond_to do |format|
+          format.html { redirect_to dashboard_path }
+          format.js
+        end
       else
         respond_to do |format|
           format.html { render 'teams/show' }
           format.js
         end
       end
-    end
+    # end
   end
 
   private
+
+  def set_request
+    @request = Request.find(params[:id])
+    authorize @request
+  end
 
   def request_params
     params.require(:request).permit(:start_date, :end_date, :team_id, :user_id, :at_home)
