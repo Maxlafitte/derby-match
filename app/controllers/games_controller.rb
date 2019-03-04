@@ -1,6 +1,8 @@
 class GamesController < ApplicationController
   def index
     @games = policy_scope(Game)
+    @games = current_user.team.games
+
   end
 
   def show
