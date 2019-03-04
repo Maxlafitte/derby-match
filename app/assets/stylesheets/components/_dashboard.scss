@@ -8,27 +8,34 @@
 .dashboard-container {
   max-width: 1600px;
 }
+
 .background-dashboard {
   background-color: rgba(80, 66, 131, 0.8);
   margin-top: 100px;
 }
+
 .team-dashboard {
   margin-top: 15px;
   height: 390px;
 }
+
 .center-team-sample {
   justify-content: center;
 }
+
 .pink-ranking {
   color: $my-pink;
   font-weight: bold;
 }
+
 .teams-index-ranking {
   margin-top: 10px;
 }
+
 .dashboard-flex {
   justify-content: space-around;
 }
+
 .dashboard-game-request {
   display: flex;
   justify-content: space-around;
@@ -54,11 +61,13 @@
     margin: 25px 0px;
   }
 }
+
 .last-request {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .team-game-bold {
   font-style: bolder;
 }
