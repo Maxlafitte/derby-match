@@ -11,7 +11,7 @@
     <% end %>
     </p>
     <p class="text-center">
-      Dates: from <%= @game.request.start_date %> to <%= @game.request.end_date %>
+      Dates: from <%= @game.request.start_date.strftime('%a %d %b %Y') %> to <%= @game.request.end_date.strftime('%a %d %b %Y') %>
     </p>
 
     <div class="row games-flex">
@@ -73,7 +73,7 @@
     <% end %>
     </p>
     <p class="text-center">
-      Dates: from <%= @game.request.start_date %> to <%= @game.request.end_date %>
+      Dates: from <%= @game.request.start_date.strftime('%a %d %b %Y') %> to <%= @game.request.end_date.strftime('%a %d %b %Y') %>
     </p>
 
     <div class="row games-flex">

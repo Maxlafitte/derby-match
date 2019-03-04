@@ -16,7 +16,7 @@
 
 
         <div class="request-infos">
-          <p>Dates: <%= @request.start_date %> - <%= @request.start_date %></p>
+          <p>Dates: <%= @request.start_date.strftime('%a %d %b %Y') %> - <%= @request.start_date.strftime('%a %d %b %Y') %></p>
           <p>
             Location:
             <% if @request.at_home == true %>
@@ -70,7 +70,7 @@
         </div>
 
         <div class="request-infos">
-          <p>Dates: <%= @request.start_date %> - <%= @request.start_date %></p>
+          <p>Dates: <%= @request.start_date.strftime('%a %d %b %Y') %> - <%= @request.start_date.strftime('%a %d %b %Y') %></p>
           <p>
             Location:
              <% if @request.at_home == true %>
