@@ -2,10 +2,9 @@ import "bootstrap";
 import "../plugins/flatpickr";
 import 'select2/dist/css/select2.css';
 import { initSelect2 } from '../plugins/init_select2';
+import { initSweetalert } from '../plugins/init_sweetalert';
 
 initSelect2();
-console.log('io');
-import { initSweetalert } from '../plugins/init_sweetalert';
 
 initSweetalert('#sweet-alert-demo', {
         title: "Request sent!",
