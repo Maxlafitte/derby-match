@@ -1,7 +1,7 @@
-<div class="one-message" id="one-message">
+<div class="one-message">
   <div class="message-author">
     <p>
-      <% if @team.user.photo.present? %>
+      <% if team.user.photo.present? %>
       <%= cl_image_tag(message.user.photo, height: 250, width: 250,crop: :fill, class: "avatar")  %>
       <% else %>
       <%= image_tag 'avatar.png', class: "avatar" %>

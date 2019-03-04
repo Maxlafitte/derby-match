@@ -2,6 +2,7 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.new(message_params)
+    @team = Request.find(message_params[:request_id]).team
     @message.user = current_user
     authorize @message
     if @message.save

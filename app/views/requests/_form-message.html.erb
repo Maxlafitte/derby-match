@@ -1,5 +1,5 @@
 <%= simple_form_for [@request, @message], remote: true, url: messages_path, method: :post do |f| %>
-  <%= f.input :content, label: 'Your reply' %>
+  <%= f.input :content, label: 'Your reply', input_html: { value: '' } %>
   <%= f.input :request_id, as: :hidden %>
   <%= f.button :submit, "Send Message",  class: 'my-btn center-right-btn ajax-btn' %>
 <% end %>
