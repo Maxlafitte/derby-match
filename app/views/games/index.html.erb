@@ -1,17 +1,34 @@
 <div class="container">
   <h1 class=text-center>Upcoming Games</h1>
   <% @games.each do |game| %>
-    <p>From: <%=  game.request.user.team.name %> - <%= game.request.user.team.league.name %> <br>
-    Ranking: <%= game.request.user.team.ranking %></p>
-    <p>From <%= game.request.start_date %><br>
-    To <%= game.request.end_date %></p>
-    <p>Location: <br>
-    <% if game.request.at_home == false %>
-      <%= current_user.team.league.city %> - <%= current_user.team.league.country %>
-    <% else %>
-      <%= game.request.user.team.league.city %> - <%= game.request.user.team.league.country %>
-    <% end %>
-    </p>
+    <div class="row">
+      <div class="grey-card request-details">
+          <div class="photo">
+            <%= cl_image_tag game.request.user.team.photo, class: "avatar-large"%>
+          </div>
+         <div class="gamesindex-team">
+          <p>Rival Team: <%=  game.request.user.team.name %> <br> League: <%= game.request.user.team.league.name %> <br>
+          Ranking: <%= game.request.user.team.ranking %></p>
+        </div>
+        <div class="gamesindex-dates">
+          <p>From <%= game.request.start_date %><br>
+          To <%= game.request.end_date %></p>
+        </div>
+        <div class="gamesindex-location">
+            <p>Location: <br>
+            <% if game.request.at_home == false %>
+              <%= current_user.team.league.city %> - <%= current_user.team.league.country %>
+            <% else %>
+              <%= game.request.user.team.league.city %> - <%= game.request.user.team.league.country %>
+            <% end %>
+            </p>
+        </div>
+        <div class="link">
+            <%= link_to "Get details", team_game_path(@games, game), class:"my-btn" %>
+        </div>
+      </div>
   <% end %>
+  </div>
 </div>
+
 

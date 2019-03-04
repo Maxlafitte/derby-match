@@ -5,7 +5,7 @@
   <% if @game.request.user == current_user %>
     <p class="text-center">Location:
     <% if @game.request.at_home == false %>
-      <%= current_user.team.league.city %>, <%= ccurrent_user.team.league.country %> (home)
+      <%= current_user.team.league.city %>, <%= current_user.team.league.country %> (home)
     <% else %>
       <%= @game.request.team.league.city %>, <%= @game.request.team.league.country %> (away)
     <% end %>
