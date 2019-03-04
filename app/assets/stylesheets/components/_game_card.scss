@@ -17,25 +17,11 @@
   background-color: white;
 }
 
-.game-img {
-  width: 150 px;
-}
-
 .grey-card {
   display: flex;
+  justify-content: center;
 }
 
-.gamesindex-team {
+.games-details {
     padding: 10px;
-
-  }
-
-.gamesindex-dates {
-    padding: 10px;
-
-  }
-
-  .gamesindex-location {
-    padding: 10px;
-
-  }
+}
