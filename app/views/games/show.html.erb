@@ -13,14 +13,9 @@
   </p>
 
 
-<!-- <p><%= @request.messages.second.content %></p> -->
   <div class="row games-flex">
-    <!-- <div class="game-row"> -->
-      <!-- <div class="col-md-6"> -->
       <div class="col-md-3">
         <div class="background-color">
-          <!-- <div class="container"> -->
-            <!-- <div class="row teams-flex"> -->
                 <div class="card games-index">
                   <div class="team-index-card">
                     <p class="teams-index-name text-center"><%= link_to @team.name.upcase, team_path(@team) %></p>
@@ -31,15 +26,9 @@
                   </div>
                 </div>
               </div>
-            <!-- </div> -->
-          <!-- </div> -->
         </div>
-      <!-- </div> -->
       <div class="col-md-3">
           <div class="background-color">
-            <!-- <div class="container"> -->
-              <!-- <div class="row teams-flex"> -->
-                <!-- <div class="col-md-6"> -->
                   <div class="card games-index">
                     <div class="team-index-card">
                       <p class="teams-index-name text-center"><%= link_to @team.games.last.request.user.team.name.upcase, team_path(@team.games.last.request.user.team) %></p>
@@ -49,9 +38,6 @@
                       <p class="teams-index-ranking text-center">Ranking: <%= @team.games.last.request.user.team.ranking %></p>
                     </div>
                   </div>
-                <!-- </div> -->
-              <!-- </div> -->
-            <!-- </div> -->
           </div>
         </div>
       </div>

@@ -30,7 +30,7 @@
           <p><%= @request.status.upcase %></p>
           <% if @request.status.upcase == "PENDING" %>
             <%= simple_form_for [@request.team, @request] , method: :patch do |f| %>
-              <%= f.button :submit, value: 'Decline', class:"btn" %>
+              <%= f.button :submit, value: 'Cancel', class:"my-btn cancel-decline" %>
             <% end %>
           <% end %>
         </div>
@@ -104,10 +104,10 @@
           <p><%= @request.status.upcase %></p>
           <% if @request.status.upcase == "PENDING" %>
             <%= simple_form_for [@request.team, @request] , method: :patch do |f| %>
-              <%= f.button :submit, value: 'Accept', class:"btn" %>
+              <%= f.button :submit, value: 'Accept', class:"my-btn" %>
             <% end %>
             <%= simple_form_for [@request.team, @request] , method: :patch do |f| %>
-              <%= f.button :submit, value: 'Decline', class:"btn" %>
+              <%= f.button :submit, value: 'Decline', class:"my-btn cancel-decline" %>
             <% end %>
           <% end %>
         </div>
