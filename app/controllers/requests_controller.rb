@@ -70,19 +70,28 @@ class RequestsController < ApplicationController
         @game.save!
         redirect_to dashboard_path
       else
-        render :my_bookings
+        respond_to do |format|
+          format.html { render 'teams/show' }
+          format.js
+        end
       end
     elsif params[:commit] == "Decline"
       if @request.update(status: "declined")
         redirect_to dashboard_path
       else
-        render :my_bookings
+        respond_to do |format|
+          format.html { render 'teams/show' }
+          format.js
+        end
       end
     elsif params[:commit] == "Cancel"
       if @request.update(status: "cancelled")
         redirect_to dashboard_path
       else
-        render :show
+        respond_to do |format|
+          format.html { render 'teams/show' }
+          format.js
+        end
       end
     end
   end
