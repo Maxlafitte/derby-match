@@ -5,8 +5,15 @@ namespace :scrapp_data do
 
   task scrapp: :environment do
     #scrap of all pages of leagues (same as travel teams)
-    puts "Destroying all leagues..."
+    puts "Destroying all messages..."
+    Message.destroy_all
+    puts "Destroying all games..."
+    Game.destroy_all
+    puts "Destroying all requests..."
+    Request.destroy_all
+    puts "Destroying all teams..."
     Team.destroy_all
+    puts "Destroying all leagues..."
     League.destroy_all
     puts "Ready to create leagues!"
     [0, 1, 2, 3, 4].each do |page_number|
@@ -52,7 +59,7 @@ namespace :scrapp_data do
 
           if league.valid?
             league.save!
-            puts "league created #{league.name}"
+            puts "LEAGUE CREATED: #{league.name}"
             lead_team_name = league_html_doc.search('.teamname').text.match(/"(.*)"/)[1]
             ranking_url = "http://flattrackstats.com/rankings/women/women_europe"
             ranking_html_file = open(ranking_url).read.encode!('UTF-8', 'UTF-8', :invalid => :replace)
@@ -67,9 +74,9 @@ namespace :scrapp_data do
                 if row.match(/\d+/)[0] == lead_team_number
                   lead_team_ranking = element.children.children[0].text.delete('.')
                   lead_team = Team.new(name: lead_team_name, league_id: league.id, ranking: lead_team_ranking)
-                  p lead_team
+                  lead_team
                   if lead_team.valid?
-                    puts "Team created #{lead_team.name}"
+                    puts "TEAM CREATED: #{lead_team.name}"
                     lead_team.save!
                     league_html_doc.search('.relatedteams a').each do |element|
                       puts "scrapping...."
@@ -87,7 +94,7 @@ namespace :scrapp_data do
                               secondary_team = Team.new(name: secondary_team_name, league_id: league.id, ranking: secondary_team_ranking)
                               if secondary_team.valid?
                                 secondary_team.save!
-                                puts "Team created #{secondary_team.name}"
+                                puts "TEAM CREATED: #{secondary_team.name}"
                               end
                             end
                           end
@@ -100,8 +107,8 @@ namespace :scrapp_data do
             end
           end
         end
-        puts "Created #{League.count} leagues!"
-        puts "Created #{Team.count} teams!"
+        puts "CREATED #{League.count} LEAGUES!"
+        puts "CREATED #{Team.count} TEAMS!"
       end
     end
   end
