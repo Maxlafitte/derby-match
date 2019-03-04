@@ -25,7 +25,7 @@ Rails.application.routes.draw do
 
   get '/dashboard', to: 'dashboards#show'
 
-  get 'accept', to: 'requests#accept'
-  get 'decline', to: 'requests#decline'
-  get 'cancel', to: 'requests#cancel'
+  patch 'accept', to: 'requests#accept'
+  patch 'decline', to: 'requests#decline'
+  patch 'cancel', to: 'requests#cancel'
 end
