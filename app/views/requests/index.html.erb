@@ -18,8 +18,8 @@
                 Ranking: <%= request.user.team.ranking %></p>
             </div>
             <div class="dates">
-              <p>From <%= request.start_date %><br>
-                To <%= request.end_date %></p>
+              <p>From <%= request.start_date.strftime('%a %d %b %Y') %><br>
+                To <%= request.end_date.strftime('%a %d %b %Y') %></p>
             </div>
             <div class="location">
               <p>
@@ -50,8 +50,8 @@
               Ranking: <%= request.user.team.ranking %></p>
             </div>
             <div class="dates">
-              <p>From <%= request.start_date %> <br>
-                To <%= request.end_date %></p>
+              <p>From <%= request.start_date.strftime('%a %d %b %Y') %> <br>
+                To <%= request.end_date.strftime('%a %d %b %Y') %></p>
             </div>
             <div class="location">
               <p>
@@ -119,8 +119,8 @@
               Ranking: <%= request.user.team.ranking %></p>
             </div>
             <div class="dates">
-              <p>From <%= request.start_date %> <br>
-                To <%= request.end_date %></p>
+              <p>From <%= request.start_date.strftime('%a %d %b %Y') %> <br>
+                To <%= request.end_date.strftime('%a %d %b %Y') %></p>
             </div>
             <div class="location">
               <p>
@@ -152,8 +152,8 @@
               Ranking: <%= request.team.ranking %></p>
             </div>
             <div class="dates">
-              <p>From <%= request.start_date %> <br>
-                To <%= request.end_date %></p>
+              <p>From <%= request.start_date.strftime('%a %d %b %Y') %> <br>
+                To <%= request.end_date.strftime('%a %d %b %Y') %></p>
             </div>
             <div class="location">
               <p>
@@ -185,8 +185,8 @@
               Ranking: <%= request.user.team.ranking %></p>
             </div>
             <div class="dates">
-              <p>From <%= request.start_date %> <br>
-                To <%= request.end_date %></p>
+              <p>From <%= request.start_date.strftime('%a %d %b %Y') %> <br>
+                To <%= request.end_date.strftime('%a %d %b %Y') %></p>
             </div>
             <div class="location">
               <p>
@@ -219,8 +219,8 @@
                 Ranking: <%= request.team.ranking %></p>
               </div>
               <div class="dates">
-                <p>From <%= request.start_date %> <br>
-                  To <%= request.end_date %></p>
+                <p>From <%= request.start_date.strftime('%a %d %b %Y') %> <br>
+                  To <%= request.end_date.strftime('%a %d %b %Y') %></p>
               </div>
               <div class="location">
                 <p>
