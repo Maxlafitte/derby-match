@@ -81,10 +81,6 @@
 
   <!-- see all games -->
   <div class="games">
-    <div>accepted_requests_received</div>
-    <%= @accepted_requests_received %>
-    <div>accepted_requests_sent</div>
-    <%= @accepted_requests_sent %>
     <% if @accepted_requests_received.present? || @accepted_requests_sent.present? %>
       <div class="row">
         <h3>Games:</h3>
