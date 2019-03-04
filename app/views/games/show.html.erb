@@ -1,5 +1,5 @@
 <div class="container">
-  <h1 class=text-center>Upcoming Event</h1>
+  <h1 class=text-center>Upcoming game</h1>
 
   <!-- request sent -->
   <% if @game.request.user == current_user %>
@@ -10,128 +10,142 @@
       <%= @game.request.team.league.city %>, <%= @game.request.team.league.country %> (away)
     <% end %>
     </p>
-    <p class="text-center"> Dates: from <%= @game.request.start_date %> to <%= @game.request.end_date %>
+    <p class="text-center">
+      Dates: from <%= @game.request.start_date %> to <%= @game.request.end_date %>
     </p>
 
     <div class="row games-flex">
-        <div class="col-md-3">
-          <div class="background-color">
-            <div class="card games-index">
-              <div class="team-index-card">
-                <p class="teams-index-name text-center">
-                <%= link_to @game.request.team.name.upcase, team_path(@game.request.team) %></p>
-                <%= link_to team_path(@game.request.team) do %>
-                  <%= cl_image_tag @game.request.team.photo, class: "teams-index-photo" %>
-                <% end %>
-                <p class="teams-index-ranking text-center">Ranking: <%= @game.request.team.ranking %></p>
-              </div>
+      <div class="col-md-3">
+        <div class="background-color">
+          <div class="card games-index">
+            <div class="team-index-card">
+              <p class="teams-index-name text-center">
+                <%= link_to @game.request.team.name.upcase, team_path(@game.request.team) %>
+              </p>
+              <%= link_to team_path(@game.request.team) do %>
+                <%= cl_image_tag @game.request.team.photo, class: "teams-index-photo" %>
+              <% end %>
+              <p class="teams-index-ranking text-center">
+                Ranking: <%= @game.request.team.ranking %>
+              </p>
             </div>
           </div>
         </div>
-        <div class="col-md-3">
-            <div class="background-color">
-              <div class="card games-index">
-                <div class="team-index-card">
-                  <p class="teams-index-name text-center">
-                  <%= link_to @team.name.upcase, team_path(@team) %></p>
-                  <%= link_to team_path(@team) do %>
-                    <%= cl_image_tag @team.photo, class: "teams-index-photo" %>
-                  <% end %>
-                  <p class="teams-index-ranking text-center">Ranking: <%= @team.ranking %></p>
-                </div>
-              </div>
+      </div>
+      <div class="col-md-3">
+        <div class="background-color">
+          <div class="card games-index">
+            <div class="team-index-card">
+              <p class="teams-index-name text-center">
+              <%= link_to @team.name.upcase, team_path(@team) %></p>
+              <%= link_to team_path(@team) do %>
+                <%= cl_image_tag @team.photo, class: "teams-index-photo" %>
+              <% end %>
+              <p class="teams-index-ranking text-center">
+                Ranking: <%= @team.ranking %>
+              </p>
             </div>
           </div>
         </div>
+      </div>
     </div>
+  </div>
 
   <!-- request received -->
   <% else %>
     <p class="text-center">Location:
-    <% if current_user.team.requests.last.at_home == false %>
+    <% if @game.request.at_home == false %>
       <%= current_user.team.league.city %>, <%= current_user.team.league.country %> (away)
     <% else %>
-      <%= current_user.team.requests.last.team.league.city %>, <%= current_user.team.requests.last.team.league.country %> (home)
+      <%= @game.request.team.league.city %>, <%= @game.request.team.league.country %> (home)
     <% end %>
     </p>
-    <p class="text-center"> Dates: from <%= current_user.team.games.last.start_date %> to <%= current_user.team.games.last.end_date %>
+    <p class="text-center">
+      Dates: from <%= @game.request.start_date %> to <%= @game.request.end_date %>
     </p>
 
-
     <div class="row games-flex">
-        <div class="col-md-3">
-          <div class="background-color">
-            <div class="card games-index">
-              <div class="team-index-card">
-                <p class="teams-index-name text-center">
-                <%= link_to @team.name.upcase, team_path(@team) %></p>
-                <%= link_to team_path(@team) do %>
-                  <%= cl_image_tag @team.photo, class: "teams-index-photo" %>
-                <% end %>
-                <p class="teams-index-ranking text-center">Ranking: <%= @team.ranking %></p>
-              </div>
+      <div class="col-md-3">
+        <div class="background-color">
+          <div class="card games-index">
+            <div class="team-index-card">
+              <p class="teams-index-name text-center">
+              <%= link_to @team.name.upcase, team_path(@team) %></p>
+              <%= link_to team_path(@team) do %>
+                <%= cl_image_tag @team.photo, class: "teams-index-photo" %>
+              <% end %>
+              <p class="teams-index-ranking text-center">
+                Ranking: <%= @team.ranking %>
+              </p>
             </div>
           </div>
         </div>
-        <div class="col-md-3">
-            <div class="background-color">
-              <div class="card games-index">
-                <div class="team-index-card">
-                  <p class="teams-index-name text-center">
-                  <%= link_to @team.games.last.request.user.team.name.upcase, team_path(@team.games.last.request.user.team) %></p>
-                  <%= link_to team_path(@team.games.last.request.user.team) do %>
-                    <%= cl_image_tag @team.games.last.request.user.team.photo, class: "teams-index-photo" %>
-                  <% end %>
-                  <p class="teams-index-ranking text-center">Ranking: <%= @team.games.last.request.user.team.ranking %></p>
-                </div>
-              </div>
+      </div>
+      <div class="col-md-3">
+        <div class="background-color">
+          <div class="card games-index">
+            <div class="team-index-card">
+              <p class="teams-index-name text-center">
+              <%= link_to @game.request.user.team.name.upcase, team_path(@game.request.user.team) %></p>
+              <%= link_to team_path(@game.request.user.team) do %>
+                <%= cl_image_tag @game.request.user.team.photo, class: "teams-index-photo" %>
+              <% end %>
+              <p class="teams-index-ranking text-center">
+                Ranking: <%= @game.request.user.team.ranking %>
+              </p>
             </div>
           </div>
         </div>
+      </div>
     </div>
   <% end %>
 </div>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="container game-container">
-            <div class="chat-message">
-              <div class="messages">
-                <% @request.messages.each do |message| %>
 
-                  <div class="one-message">
-                    <div class="message-author">
-                      <p>
-                        <% if @current_user.photo.present? %>
-                        <%= cl_image_tag(message.user.photo, height: 250, width: 250,crop: :fill, class: "avatar-large")  %>
-                        <% else %>
-                        <%= image_tag 'avatar.png', class: "avatar avatar-large" %>
-                        <% end %>
-                      </p>
-                      <p class="user-message-name"><%= message.user.derby_name %></p>
-                      <p class="italic-date"><%= message.created_at.strftime("%b %e, %l:%M %p") %></p>
-                    </div>
-                    <div class="message-content">
-                      <p><%= message.content %></p>
-                    </div>
-                    <br>
-                  </div>
-                <% end %>
+<!-- messages -->
+<div class="row">
+  <div class="col-md-12">
+    <div class="container game-container">
+      <div class="chat-message">
+        <div class="messages">
+          <% @request.messages.each do |message| %>
+            <div class="one-message">
+              <div class="message-author">
+                <p>
+                  <% if @current_user.photo.present? %>
+                    <%= cl_image_tag(message.user.photo, height: 250, width: 250,crop: :fill, class: "avatar-large")  %>
+                  <% else %>
+                    <%= image_tag 'avatar.png', class: "avatar avatar-large" %>
+                  <% end %>
+                </p>
+                <p class="user-message-name">
+                  <%= message.user.derby_name %>
+                </p>
+                <p class="italic-date">
+                  <%= message.created_at.strftime("%b %e, %l:%M %p") %>
+                </p>
               </div>
+              <div class="message-content">
+                <p><%= message.content %></p>
+              </div>
+              <br>
             </div>
-      </div>
-    </div>
-  </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="container game-container">
-          <div class="message-form form-request-center">
-            <%= simple_form_for ([@request, @message]), url: messages_path, method: :post do |f| %>
-              <%= f.input :content, label: 'Your reply' %>
-              <%= f.input :request_id, as: :hidden %>
-              <%= f.button :submit, "Send Message",  class: 'my-btn center-right-btn' %>
-            <% end %>
-          </div>
+          <% end %>
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="container game-container">
+      <div class="message-form form-request-center">
+        <%= simple_form_for ([@request, @message]), url: messages_path, method: :post do |f| %>
+          <%= f.input :content, label: 'Your reply' %>
+          <%= f.input :request_id, as: :hidden %>
+          <%= f.button :submit, "Send Message",  class: 'my-btn center-right-btn' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
