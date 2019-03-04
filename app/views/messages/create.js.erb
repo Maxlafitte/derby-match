@@ -5,7 +5,7 @@ function refreshForm(form) {
 
 function addMessage(messageHTML) {
   const messages = document.getElementById('messages');
-  messages.insertAdjacentHTML('beforeend', messageHTML);
+  messages.insertAdjacentHTML('afterbegin', messageHTML);
 }
 
 <% if @message.errors.any? %>

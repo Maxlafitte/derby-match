@@ -41,15 +41,15 @@
   </div>
 
   <div class="container message-container">
+      <div class="message-form form-request-center">
+        <%= render 'requests/form-message', request: @request, message: @message %>
+      </div>
       <div class="chat-message">
         <div class="messages">
           <% @request.messages.each do |message| %>
             <%= render 'requests/one-message', team: @team, message: message %>
           <% end %>
         </div>
-      </div>
-      <div class="message-form form-request-center">
-        <%= render 'requests/form-message', request: @request, message: @message %>
       </div>
   </div>
 
@@ -95,15 +95,15 @@
     </div>
 
     <div class="container message-container">
+      <div class="message-form form-request-center">
+        <%= render 'requests/form-message', request: @request, message: @message %>
+      </div>
       <div class="chat-message">
         <div class="messages" id="messages">
           <% @request.messages.each do |message| %>
             <%= render 'requests/one-message', team: @team, message: message %>
           <% end %>
         </div>
-      </div>
-      <div class="message-form form-request-center">
-        <%= render 'requests/form-message', request: @request, message: @message %>
       </div>
     </div>
   <% end %>
