@@ -8,7 +8,7 @@ class GamesController < ApplicationController
   def show
     @game = Game.find(params[:id])
     authorize @game
-    @request = current_user.team.games.last.request
+    @request = @game.request
     @team = current_user.team
     @message = Message.new(request: @request)
   end
