@@ -1,16 +1,15 @@
-<%= raise %>
 <div class="container">
   <h1 class=text-center>Upcoming Games</h1>
   <% @games.each do |game| %>
-    <p>From: <%= request.user.team.name %> - <%= request.user.team.league.name %> <br>
-    Ranking: <%= request.user.team.ranking %></p>
-    <p>From <%= request.start_date %><br>
-    To <%= request.end_date %></p>
+    <p>From: <%=  game.request.user.team.name %> - <%= game.request.user.team.league.name %> <br>
+    Ranking: <%= game.request.user.team.ranking %></p>
+    <p>From <%= game.request.start_date %><br>
+    To <%= game.request.end_date %></p>
     <p>Location: <br>
-    <% if request.at_home == false %>
+    <% if game.request.at_home == false %>
       <%= current_user.team.league.city %> - <%= current_user.team.league.country %>
     <% else %>
-      <%= request.user.team.league.city %> - <%= request.user.team.league.country %>
+      <%= game.request.user.team.league.city %> - <%= game.request.user.team.league.country %>
     <% end %>
     </p>
   <% end %>
