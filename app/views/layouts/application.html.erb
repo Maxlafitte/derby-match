@@ -36,7 +36,7 @@
     <%= stylesheet_pack_tag 'application', media: 'all' %>
   </head>
   <body>
-    <% unless controller_name == "pages" %>
+    <% unless controller_name == "sessions" && action_name == 'new' %>
       <%= render 'shared/navbar' %>
     <% end %>
     <%= render 'shared/flashes' %>
