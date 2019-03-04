@@ -21,7 +21,7 @@
       <p>This team is part of your league, try inviting another team!</p>
       <%= link_to "Find a team", teams_path, class: "my-btn" %>
     </div>
-  <% elsif current_user != @team.user %>
+  <% elsif current_user != @team.user && @team.user.present? %>
     <div class="contact-from">
       <% if @team.user.photo? %>
         <p><%= cl_image_tag(@team.user.photo, height: 50, width: 50,crop: :fill, class: 'avatar') %></p>
