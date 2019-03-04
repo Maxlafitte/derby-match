@@ -52,28 +52,27 @@ class RequestsController < ApplicationController
 
   # one function for each accept/ decline/ cancel
   def accept
-    if @request.update(status: "accepted")
-      @game = Game.new
-      @game.request = @request
-      @game.start_date = @request.start_date
-      @game.end_date = @request.end_date
-      if @game.save!
-        respond_to do |format|
-          format.html { redirect_to dashboard_path }
-          format.js
-        end
-      else
-        respond_to do |format|
-          format.html { render 'teams/show' }
-          format.js
-        end
+    @request.update(status: "accepted")
+    @game = Game.new
+    @game.request = @request
+    @game.start_date = @request.start_date
+    @game.end_date = @request.end_date
+    if @game.save!
+      respond_to do |format|
+        format.html { redirect_to dashboard_path }
+        format.js
+      end
+    else
+      respond_to do |format|
+        format.html { render 'teams/show' }
+        format.js
       end
     end
   end
 
   def decline
     @request.update(status: "declined")
-    if @request.save
+    if @request.save!
       respond_to do |format|
         format.html { redirect_to dashboard_path }
         format.js
@@ -88,7 +87,7 @@ class RequestsController < ApplicationController
 
   def cancel
     @request.update(status: "cancelled")
-    if @request.save
+    if @request.save!
       respond_to do |format|
         format.html { redirect_to dashboard_path }
         format.js

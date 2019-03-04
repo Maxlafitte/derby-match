@@ -29,7 +29,7 @@
         <div class="request-status" id="request-status">
           <p><%= @request.status.upcase %></p>
           <% if @request.status.upcase == "PENDING" %>
-            <%= simple_form_for [@request.team, @request] , method: :patch do |f| %>
+            <%= simple_form_for [@request.team, @request], :url => {:action => "cancel"}, method: :patch do |f| %>
               <%= f.button :submit, value: 'Cancel', class: "my-btn cancel-decline", id: "decline-button" %>
             <% end %>
           <% end %>
@@ -103,13 +103,13 @@
           <% end %>
         </div>
       </div>
-      <div class="message-form form-request-center">
-        <%= simple_form_for [@request, @message], :url => {:action => "cancel"}, remote: true, url: messages_path, method: :post do |f| %>
-          <%= f.input :content, label: 'Your reply' %>
-          <%= f.input :request_id, as: :hidden %>
-          <%= f.button :submit, "Send Message",  class: 'my-btn center-right-btn' %>
-        <% end %>
-      </div>
+      <!-- <div class="message-form form-request-center"> -->
+        <%#= simple_form_for [@request, @message], remote: true, url: messages_path, method: :post do |f| %>
+          <%#= f.input :content, label: 'Your reply' %>
+          <%#= f.input :request_id, as: :hidden %>
+          <%#= f.button :submit, "Send Message",  class: 'my-btn center-right-btn' %>
+        <%# end %>
+      <!-- </div> -->
     </div>
   <% end %>
 </div>
