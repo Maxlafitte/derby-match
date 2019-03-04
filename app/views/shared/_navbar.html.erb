@@ -18,7 +18,10 @@
         <%= link_to "Find a team", teams_path, class: "nav-link logged-nav" %>
       </li>
       <li class="nav-item <%= "active" if controller_name == "requests" %>">
-        <%= link_to "Request", team_requests_path(current_user.team), class: "nav-link logged-nav" %>
+        <%= link_to "Requests", team_requests_path(current_user.team), class: "nav-link logged-nav" %>
+      </li>
+      <li class="nav-item <%= "active" if controller_name == "games" %>">
+        <%= link_to "Games", team_games_path(current_user.team), class: "nav-link logged-nav" %>
       </li>
       <li class="nav-item dropdown">
         <% if current_user.photo? %>
