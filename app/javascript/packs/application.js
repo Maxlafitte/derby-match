@@ -6,7 +6,7 @@ import { initSweetalert } from '../plugins/init_sweetalert';
 
 initSelect2();
 
-initSweetalert('#sweet-alert-demo', {
+initSweetalert('#request-sent', {
         title: "Request sent!",
         icon: "success",
         button: "Yay!"}, (value) => {
