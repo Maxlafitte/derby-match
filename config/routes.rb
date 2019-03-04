@@ -21,4 +21,7 @@ Rails.application.routes.draw do
   resources :profiles, only: :show
 
   get '/dashboard', to: 'dashboards#show'
+  patch '/accept', to: 'requests#accept'
+  patch '/decline', to: 'requests#decline'
+  patch '/cancel', to: 'requests#cancel'
 end

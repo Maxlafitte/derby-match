@@ -101,10 +101,10 @@
          <div class="request-status" id="request-status">
           <p><%= @request.status.upcase %></p>
           <% if @request.status.upcase == "PENDING" %>
-            <%= simple_form_for [@request.team, @request], url: requests/accept,remote: true, method: :patch do |f| %>
+            <%= simple_form_for [@request.team, @request], :url => {:action => "accept"}, remote: true, method: :patch do |f| %>
               <%= f.button :submit, value: 'Accept', class: "my-btn", id: "accept-button" %>
             <% end %>
-            <%= simple_form_for [@request.team, @request], remote: true, method: :patch do |f| %>
+            <%= simple_form_for [@request.team, @request], :url => {:action => "decline"}, remote: true, method: :patch do |f| %>
               <%= f.button :submit, value: 'Decline', class:"my-btn cancel-decline", id: "decline-button" %>
             <% end %>
           <% end %>
@@ -137,7 +137,7 @@
         </div>
       </div>
       <div class="message-form form-request-center">
-        <%= simple_form_for [@request, @message], remote: true, url: messages_path, method: :post do |f| %>
+        <%= simple_form_for [@request, @message], :url => {:action => "cancel"}, remote: true, url: messages_path, method: :post do |f| %>
           <%= f.input :content, label: 'Your reply' %>
           <%= f.input :request_id, as: :hidden %>
           <%= f.button :submit, "Send Message",  class: 'my-btn center-right-btn' %>
