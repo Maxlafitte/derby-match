@@ -47,7 +47,17 @@ class RequestsController < ApplicationController
     end
     @request.save
     @message.save
-    redirect_to dashboard_path
+    if @message.save!
+      respond_to do |format|
+        format.html { redirect_to team_requests_path(current_user.team) }
+        format.js
+      end
+    else
+      respond_to do |format|
+        format.html { render 'teams/show' }
+        format.js
+      end
+    end
   end
 
   def update
