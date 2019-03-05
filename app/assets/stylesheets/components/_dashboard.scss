@@ -16,7 +16,6 @@
 }
 
 .background-dashboard {
-  background-color: rgba(80, 66, 131, 0.8);
   margin-top: 100px;
 }
 
@@ -41,21 +40,72 @@
 .dashboard-flex {
   justify-content: space-around;
 }
-
+.request-dashboard {
+  padding-bottom: 10px;
+}
 .dashboard-game-request {
-  display: flex;
-  justify-content: space-around;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 5px;
-  background-color: rgba(250, 250, 250, 0.9);
-  box-shadow: 5px 4px 15px rgba(46,44,51,1);
-  margin: 100px 0px;
-  height: 250px;
-  color: black;
-  a {
+//   display: flex;
+//   justify-content: space-around;
+//   flex-direction: column;
+//   align-items: center;
+  margin: 50px 0px;
+//   // height: 250px;
+//   color: black;
+//   a {
+//     text-decoration: none;
+//   }
+}
+.margin-left-title {
+  padding-left: 27px;
+
+}
+.upcoming-games-dashboard {
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  margin-bottom: 11px;
+  height: 56px;
+}
+.next-game-detail {
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  p {
+    margin-left: 20px;
+  }
+  h5 {
+    margin-left: 20px;
+    font-weight: lighter;
+  }
+  a:hover {
     text-decoration: none;
   }
+}
+.game-notification {
+  color: white;
+  background-color: $my-pink;
+  margin-right: 10px;
+  position: relative;
+  margin-top: 7px;
+  a {
+    text-decoration: none;
+    color: white;
+    position: absolute;
+    right: 14px;
+    bottom: 6px;
+    font-weight: bold;
+  }
+}
+.games-count {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.team-against-avatar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .request-flex {
