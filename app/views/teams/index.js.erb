@@ -1,0 +1,6 @@
+function refreshForm(innerHTML) {
+  const teamsForm = document.querySelector('.teams-flex');
+  teamsForm.innerHTML = innerHTML;
+}
+
+refreshForm("<%= j render 'teams/result', teams: @teams %>");
