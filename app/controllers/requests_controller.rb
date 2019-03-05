@@ -73,7 +73,7 @@ class RequestsController < ApplicationController
   def update
     case @request
     when params[:commit] == "Accept"
-      @request.update(status: params[:commit])
+      @request.update(status: params[:status])
       @game = Game.new
       @game.request = @request
       @game.start_date = @request.start_date
@@ -90,7 +90,7 @@ class RequestsController < ApplicationController
         end
       end
     else
-      @request.update(status: params[:commit])
+      @request.update(status: params[:status])
       if @request.save!
       respond_to do |format|
         format.html { redirect_to dashboard_path }
