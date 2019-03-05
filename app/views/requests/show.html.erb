@@ -19,7 +19,7 @@
           <p>
             Location:
             <% if @request.at_home == true %>
-              <%= @user.team.league.city %>, <%= @user.team.league.country %> (home)
+              <%= current_user.team.league.city %>, <%= current_user.team.league.country %> (home)
             <% else %>
               <%= @team.league.city %>, <%= @team.league.country %> (away)
             <% end %>
