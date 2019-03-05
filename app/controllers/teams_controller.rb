@@ -2,6 +2,10 @@ class TeamsController < ApplicationController
   def index
     @teams = policy_scope(Team)
     if params[:index]
+      if params[:index][:distance].present?
+        leagues = League.near(current_user.team.league.to_coordinates, params[:index][:distance])
+        @teams = @teams.where(league_id: leagues.map(&:id))
+      end
       # get start_date from the form
       booking_start_date = Date.parse params[:index][:start_date]
 
