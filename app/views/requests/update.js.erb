@@ -1,0 +1,6 @@
+function refreshPartial(html, form_id) {
+  const partial = document.getElementById(form_id);
+  partial.innerHTML = html;
+}
+
+refreshPartial("<%= j render 'form-update-request', request: @request %>", '<%= "update-request-form-#{@request.id}" %>');

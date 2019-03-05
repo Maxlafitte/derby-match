@@ -14,7 +14,6 @@
           <p>Contact: <%= @team.user.derby_name %></p>
         </div>
 
-
         <div class="request-infos">
           <p>Dates: <%= @request.start_date.strftime('%a %d %b %Y') %> - <%= @request.start_date.strftime('%a %d %b %Y') %></p>
           <p>
@@ -26,17 +25,12 @@
             <% end %>
           </p>
         </div>
-        <div class="request-status">
-          <p><%= @request.status.upcase %></p>
-          <% if @request.status.upcase == "PENDING" %>
-            <%= simple_form_for [@request.team, @request] , method: :patch do |f| %>
-              <%= f.button :submit, value: 'Cancel', class:"my-btn cancel-decline" %>
-            <% end %>
-          <% end %>
+        <div class="request-status" id="request-status">
+          <div id='<%= "update-request-form-#{@request.id}" %>'>
+            <%= render 'form-update-request', request: @request %>
+          </div>
         </div>
-    </div>
-
-
+      </div>
     </div>
   </div>
 
@@ -80,16 +74,10 @@
             <% end %>
           </p>
         </div>
-         <div class="request-status">
-          <p><%= @request.status.upcase %></p>
-          <% if @request.status.upcase == "PENDING" %>
-            <%= simple_form_for [@request.team, @request] , method: :patch do |f| %>
-              <%= f.button :submit, value: 'Accept', class:"my-btn" %>
-            <% end %>
-            <%= simple_form_for [@request.team, @request] , method: :patch do |f| %>
-              <%= f.button :submit, value: 'Decline', class:"my-btn cancel-decline" %>
-            <% end %>
-          <% end %>
+         <div class="request-status" id="request-status">
+            <div id='<%= "update-request-form-#{@request.id}" %>'>
+              <%= render 'form-update-request', request: @request %>
+            </div>
         </div>
       </div>
     </div>
@@ -105,6 +93,13 @@
           <% end %>
         </div>
       </div>
+      <!-- <div class="message-form form-request-center"> -->
+        <%#= simple_form_for [@request, @message], remote: true, url: messages_path, method: :post do |f| %>
+          <%#= f.input :content, label: 'Your reply' %>
+          <%#= f.input :request_id, as: :hidden %>
+          <%#= f.button :submit, "Send Message",  class: 'my-btn center-right-btn' %>
+        <%# end %>
+      <!-- </div> -->
     </div>
   <% end %>
 </div>
