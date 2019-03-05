@@ -21,7 +21,7 @@
 
     <div class="col-md-8">
       <div class="sample-dashboard-center">
-        <h3 class="text-center">Suggested teams for you</h3>
+        <h3 class="text-center">Suggested teams by ranking pertinence</h3>
         <br>
         <p class="text-center">
           <%= link_to "Find another team", teams_path, class: "my-btn sample-btn" %>
@@ -29,7 +29,7 @@
         <div class="team-sample">
           <div class="row center-team-sample">
             <div class="col-xs-6 col-sm-4 col-md-3">
-              <% @team_one = @teams.sample %>
+              <% @team_one = @suggested_teams.first %>
               <div class="card team-dashboard">
                 <div class="team-index-card">
                   <p class="teams-index-name text-center"><%= link_to @team_one.name.upcase, team_path(@team_one) %></p>
@@ -41,7 +41,7 @@
               </div>
             </div>
             <div class="col-xs-6 col-sm-4 col-md-3">
-              <% @team_two = @teams.sample %>
+              <% @team_two = @suggested_teams.second %>
               <div class="card team-dashboard">
                 <div class="team-index-card">
                   <p class="teams-index-name text-center"><%= link_to @team_two.name.upcase, team_path(@team_two) %></p>
@@ -53,7 +53,7 @@
               </div>
             </div>
             <div class="col-xs-6 col-sm-4 col-md-3">
-              <% @team_three = @teams.sample %>
+              <% @team_three = @suggested_teams.third %>
               <div class="card team-dashboard">
                 <div class="team-index-card">
                   <p class="teams-index-name text-center"><%= link_to @team_three.name.upcase, team_path(@team_three) %></p>
