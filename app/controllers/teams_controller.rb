@@ -47,6 +47,17 @@ class TeamsController < ApplicationController
       end
       @teams = final_ranked_teams
     end
+    if params[:index]
+      respond_to do |format|
+        format.html { redirect_to teams_path }
+        format.js
+      end
+    else
+      respond_to do |format|
+        format.html { render 'teams/index' }
+        format.js
+      end
+    end
   end
 
   def show
@@ -73,5 +84,11 @@ class TeamsController < ApplicationController
 
   # not sure that we need it since we won't have admin users
   def update
+  end
+
+  private
+
+  def teams_params
+    params.require(:index).permit(:start_date, :end_date, :distance)
   end
 end
