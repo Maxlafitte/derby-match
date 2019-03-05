@@ -47,6 +47,17 @@ class TeamsController < ApplicationController
       end
       @teams = final_ranked_teams
     end
+    if params[:index]
+      respond_to do |format|
+        format.html { redirect_to teams_path }
+        format.js
+      end
+    else
+      respond_to do |format|
+        format.html { render 'teams/index' }
+        format.js
+      end
+    end
   end
 
   def show
