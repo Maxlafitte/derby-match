@@ -1,5 +1,5 @@
 class RequestsController < ApplicationController
-  before_action :set_request, only: [:show, :accept, :decline, :cancel]
+  before_action :set_request, only: [:show, :update, :accept, :decline, :cancel]
 
   def index
     @requests_sent = policy_scope(Request).where(user: current_user)
@@ -51,8 +51,7 @@ class RequestsController < ApplicationController
   end
 
   # one function for each accept/ decline/ cancel
-  def accept
-    @request = Request.find(params[:request][:id])
+  def update_bis
     @request.update(status: "accepted")
     @game = Game.new
     @game.request = @request
@@ -65,10 +64,46 @@ class RequestsController < ApplicationController
       end
     else
       respond_to do |format|
+        format.html { redirect_to 'teams/show' }
+        format.js
+      end
+    end
+  end
+
+  def update
+    case @request
+    when params[:commit] == "Accept"
+      @request.update(status: params[:commit])
+      @game = Game.new
+      @game.request = @request
+      @game.start_date = @request.start_date
+      @game.end_date = @request.end_date
+      if @game.save!
+        respond_to do |format|
+          format.html { redirect_to dashboard_path }
+          format.js
+        end
+      else
+        respond_to do |format|
+          format.html { redirect_to 'teams/show' }
+          format.js
+        end
+      end
+    else
+      @request.update(status: params[:commit])
+      if @request.save!
+      respond_to do |format|
+        format.html { redirect_to dashboard_path }
+        format.js
+      end
+    else
+      respond_to do |format|
         format.html { render 'teams/show' }
         format.js
       end
     end
+    end
+
   end
 
   def decline

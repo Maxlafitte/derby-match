@@ -1,19 +1,7 @@
-// give ids to the 4 elements i wanna change in requests controller
-
-// get rid of the buttons > innerHTML = ""
-function updateButton(button_id) {
-  const button = document.getElementById(button_id);
-  button.innerHTML = "";
-  console.log(button)
+function refreshPartial(html, form_id) {
+  const partial = document.getElementById(form_id);
+  console.log(partial)
+  partial.innerHTML = html;
 }
 
-// get the content of the status (.text) and change it
-function updateStatus(status) {
-  const requestStatus = document.getElementById('request-status');
-  requestStatus.text = status;
-  console.log(requestStatus)
-}
-
-updateButton('decline-button');
-updateStatus('declined');
-
+refreshPartial("<%= j render 'form-update-request', request: @request %>", '<%= "update-request-form-#{@request.id}" %>');
