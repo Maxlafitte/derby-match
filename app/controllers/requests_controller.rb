@@ -1,5 +1,5 @@
 class RequestsController < ApplicationController
-  before_action :set_request, only: [:show, :update, :accept, :decline, :cancel]
+  before_action :set_request, only: [:show, :update]
 
   def index
     @requests_sent = policy_scope(Request).where(user: current_user)
@@ -48,26 +48,6 @@ class RequestsController < ApplicationController
     @request.save
     @message.save
     redirect_to dashboard_path
-  end
-
-  # one function for each accept/ decline/ cancel
-  def update_bis
-    @request.update(status: "accepted")
-    @game = Game.new
-    @game.request = @request
-    @game.start_date = @request.start_date
-    @game.end_date = @request.end_date
-    if @game.save!
-      respond_to do |format|
-        format.html { redirect_to dashboard_path }
-        format.js
-      end
-    else
-      respond_to do |format|
-        format.html { redirect_to 'teams/show' }
-        format.js
-      end
-    end
   end
 
   def update
