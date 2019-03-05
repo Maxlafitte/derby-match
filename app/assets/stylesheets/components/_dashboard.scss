@@ -4,6 +4,12 @@
   font-weight: bold;
   font-size: 32px;
 }
+.sample-btn {
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+}
 
 .dashboard-container {
   max-width: 1600px;
