@@ -1,7 +1,7 @@
 <div class="container">
   <div class="form-container body">
     <div class="row form-center" >
-        <%= simple_form_for ([@team, @request]) do |f| %>
+        <%= simple_form_for [@team, @request], remote: true do |f| %>
           <div class="date-request">
             <%= f.input :start_date, as: :string, required: true, input_html: {class: "datepicker-unavailable"} %>
             <%= f.input :end_date, as: :string, required: true, input_html: {class: "datepicker-unavailable"} %>
