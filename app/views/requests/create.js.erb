@@ -1,2 +1,2 @@
 // empty but necessary to pretend like the sweetalert is setup
-window.location = team_requests_path(current_user.team);
+window.location.pathname = '/teams/<%= current_user.team.id %>/requests'
