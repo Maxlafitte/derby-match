@@ -1,8 +1,7 @@
 <div class="teams-search-container">
   <div class="container">
-    <h2 class="text-center teams-index-title">Ugly teams displayed by ranking pertinence</h2>
+    <h2 class="text-center teams-index-title">LOOK FOR A TEAM TO PLAY AGAINST!!!</h2>
     <p class="text-center my-ranking">Your ranking: <%= current_user.team.ranking %></p>
-    <h3 class="text-center search-title">Wonderful search</h3>
     <div class="row form-search">
       <%= simple_form_for :index, method: "GET", remote: true, url: teams_path, html: {class: "form-inline form-center"} do |f| %>
         <%= f.input :start_date, as: :string, required: true, input_html: {class: "datepicker datepicker-margin", placeholder: "Start Date"} %>
