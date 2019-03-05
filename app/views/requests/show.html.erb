@@ -14,7 +14,6 @@
           <p>Contact: <%= @team.user.derby_name %></p>
         </div>
 
-
         <div class="request-infos">
           <p>Dates: <%= @request.start_date.strftime('%a %d %b %Y') %> - <%= @request.start_date.strftime('%a %d %b %Y') %></p>
           <p>
@@ -27,7 +26,9 @@
           </p>
         </div>
         <div class="request-status" id="request-status">
-          <%= render 'form-update-request', request: @request %>
+          <div id='<%= "update-request-form-#{@request.id}" %>'>
+            <%= render 'form-update-request', request: @request %>
+          </div>
         </div>
       </div>
     </div>

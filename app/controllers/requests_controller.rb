@@ -92,46 +92,15 @@ class RequestsController < ApplicationController
     else
       @request.update(status: params[:status])
       if @request.save!
-      respond_to do |format|
-        format.html { redirect_to dashboard_path }
-        format.js
-      end
-    else
-      respond_to do |format|
-        format.html { render 'teams/show' }
-        format.js
-      end
-    end
-    end
-
-  end
-
-  def decline
-    @request.update(status: "declined")
-    if @request.save!
-      respond_to do |format|
-        format.html { redirect_to dashboard_path }
-        format.js
-      end
-    else
-      respond_to do |format|
-        format.html { render 'teams/show' }
-        format.js
-      end
-    end
-  end
-
-  def cancel
-    @request.update(status: "cancelled")
-    if @request.save!
-      respond_to do |format|
-        format.html { redirect_to dashboard_path }
-        format.js
-      end
-    else
-      respond_to do |format|
-        format.html { render 'teams/show' }
-        format.js
+        respond_to do |format|
+          format.html { redirect_to dashboard_path }
+          format.js
+        end
+      else
+        respond_to do |format|
+          format.html { redirect_to 'teams/show' }
+          format.js
+        end
       end
     end
   end

@@ -24,18 +24,6 @@ class RequestPolicy < ApplicationPolicy
     record.user == user || record.team.user == user
   end
 
-  def accept?
-    record.team.user == user
-  end
-
-  def decline?
-    accept?
-  end
-
-  def cancel?
-    record.user == user
-  end
-
   class Scope < Scope
     def resolve
       scope.all
