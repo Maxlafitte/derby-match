@@ -1,7 +1,7 @@
-<div class="container">
-  <h1 class=text-center>Upcoming Games</h1>
-  <% @games.each do |game| %>
+<div class="container games-index-container">
+  <h2 class="text-center games-index-title">Upcoming Games</h2>
     <div class="row">
+    <% @games.each do |game| %>
       <div class="grey-card request-details">
           <div class="photo">
             <%= cl_image_tag game.request.user.team.photo, class: "avatar-large"%>
@@ -19,7 +19,7 @@
             </p>
 
         <div class="link">
-            <%= link_to "Get details", team_game_path(@games, game), class:"my-btn" %>
+            <%= link_to "Get details", team_game_path(@games, game), class: "my-btn games-index-btn" %>
         </div>
       </div>
   <% end %>
