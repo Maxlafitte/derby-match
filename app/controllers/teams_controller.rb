@@ -74,4 +74,10 @@ class TeamsController < ApplicationController
   # not sure that we need it since we won't have admin users
   def update
   end
+
+  private
+
+  def teams_params
+    params.require(:index).permit(:start_date, :end_date, :distance)
+  end
 end

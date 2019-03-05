@@ -1,0 +1,6 @@
+<%= simple_form_for :index, method: "GET", remote: true, url: teams_path, html: {class: "form-inline form-center"} do |f| %>
+  <%= f.input :start_date, as: :string, required: true, input_html: {class: "datepicker datepicker-margin", placeholder: "Start Date"} %>
+  <%= f.input :end_date, input_html: {class: "datepicker datepicker-margin", placeholder: "End Date"} %>
+  <%= f.input :distance, :collection => [["< 50 km", 50], ["< 100 km", 100], ["< 500 km", 500], ["Everywhere", 50000]], input_html: { class: "select2"}, required: true %>
+  <%= f.button :submit, "Search",  class: 'my-btn my-btn-index-margin' %>
+<% end %>
