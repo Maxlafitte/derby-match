@@ -1,17 +1,14 @@
 <div class="container grid">
   <div class="card-category">
-    <div class="card-img">
-      <h2 class="text-center"><%= @team.name.upcase %></h2>
+    <div class="card-img text-center">
       <p><%= cl_image_tag(@team.photo, height: 250, width: 250,crop: :fill) %></p>
+      <h1><%= @team.league.name.upcase %></h1>
+      <h2><%= @team.name.upcase %></h2>
+      <p class="ranking"><%= @team.ranking %></p>
     </div>
 
     <div class="card-team-infos">
-      <div class="team-content">
-        <p><%= @team.league.name %></p>
-        <p><%= @team.league.city %>, <%= @team.league.country %></p>
-      </div>
       <div class="star-ranking">
-        <p class="ranking"><%= @team.ranking %></p>
       </div>
     </div>
   </div>

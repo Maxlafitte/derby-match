@@ -1,0 +1,13 @@
+<% teams.each do |team| %>
+  <div class="col-xs-6 col-sm-4 col-md-3">
+    <div class="card teams-index">
+      <div class="team-index-card">
+        <p class="teams-index-name text-center"><%= link_to team.name.upcase, team_path(team) %></p>
+        <%= link_to team_path(team) do %>
+          <%= cl_image_tag team.photo, class: "teams-index-photo" %>
+        <% end %>
+        <p class="teams-index-ranking text-center">Ranking: <%= team.ranking %></p>
+      </div>
+    </div>
+  </div>
+<% end %>
