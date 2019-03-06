@@ -3,199 +3,73 @@
   <div class="row">
     <div class="col-md-4">
       <div class="card-category">
-        <div class="card-img">
-          <h2><%= current_user.team.name.upcase %></h2>
-          <p><%= cl_image_tag(current_user.team.photo, height: 250, width: 250,crop: :fill) %></p>
-        </div>
-        <div class="card-team-infos">
-          <div class="team-content">
-            <p><%= current_user.team.league.name %></p>
-            <p><%= current_user.team.league.city %>, <%= current_user.team.league.country %></p>
+        <div class="team-name-ranking">
+          <div class="team-name">
+            <p><%= current_user.team.league.name.upcase %></p>
+            <p><%= current_user.team.name %></p>
           </div>
           <div class="star-ranking">
             <p class="ranking"><%= current_user.team.ranking %></p>
           </div>
+        </div>
+        <div class="card-img logo-img">
+          <p><%= cl_image_tag(current_user.team.photo, height: 250, width: 250,crop: :fill, class: 'logo') %></p>
+        </div>
+        <div class="team-content text-center">
+          <p><%= current_user.team.league.city %>, <%= current_user.team.league.country %></p>
         </div>
       </div>
     </div>
 
     <div class="col-md-8">
       <div class="sample-dashboard-center">
-        <h3 class="text-center">Suggested teams by ranking pertinence</h3>
-        <br>
-        <p class="text-center">
-          <%= link_to "Find another team", teams_path, class: "my-btn sample-btn" %>
-        </p>
+        <h3 class="text-center title-dashboard-sample">Suggested opponents: Find a challenger</h3>
         <div class="team-sample">
           <div class="row center-team-sample">
-            <div class="col-xs-6 col-sm-4 col-md-3">
+            <div class="col-xs-11 col-sm-11 col-md-11">
               <% @team_one = @suggested_teams.first %>
-              <div class="card team-dashboard">
-                <div class="team-index-card">
-                  <p class="teams-index-name text-center"><%= link_to @team_one.name.upcase, team_path(@team_one) %></p>
-                  <%= link_to team_path(@team_one) do %>
-                    <%= cl_image_tag @team_one.photo, class: "teams-index-photo" %>
-                  <% end %>
+              <div class="card-dashboard team-dashboard">
+                <div class="team-index-card team-name-location">
+                  <p class="teams-index-name"><%= link_to @team_one.league.name.upcase, team_path(@team_one) %></p>
+                  <p><%= link_to @team_one.name, team_path(@team_one) %></p>
+                  <p class="team-index-location"><%= @team_one.league.city %>, <%= @team_one.league.country %></p>
+                </div>
+                <div class="suggested-team-ranking">
                   <p class="teams-index-ranking text-center">Ranking: <span class="pink-ranking"><%= @team_one.ranking %></span></p>
                 </div>
               </div>
             </div>
-            <div class="col-xs-6 col-sm-4 col-md-3">
+            <div class="col-xs-11 col-sm-11 col-md-11">
               <% @team_two = @suggested_teams.second %>
-              <div class="card team-dashboard">
-                <div class="team-index-card">
-                  <p class="teams-index-name text-center"><%= link_to @team_two.name.upcase, team_path(@team_two) %></p>
-                  <%= link_to team_path(@team_two) do %>
-                    <%= cl_image_tag @team_two.photo, class: "teams-index-photo" %>
-                  <% end %>
+              <div class="card-dashboard team-dashboard">
+                <div class="team-index-card team-name-location">
+                  <p class="teams-index-name"><%= link_to @team_two.league.name.upcase, team_path(@team_two) %></p>
+                  <p><%= link_to @team_two.name, team_path(@team_two) %></p>
+                  <p class="team-index-location"><%= @team_two.league.city %>, <%= @team_two.league.country %></p>
+                </div>
+                <div class="suggested-team-ranking">
                   <p class="teams-index-ranking text-center">Ranking: <span class="pink-ranking"><%= @team_two.ranking %></span></p>
                 </div>
               </div>
             </div>
-            <div class="col-xs-6 col-sm-4 col-md-3">
+            <div class="col-xs-11 col-sm-11 col-md-11">
               <% @team_three = @suggested_teams.third %>
-              <div class="card team-dashboard">
-                <div class="team-index-card">
-                  <p class="teams-index-name text-center"><%= link_to @team_three.name.upcase, team_path(@team_three) %></p>
-                  <%= link_to team_path(@team_three) do %>
-                    <%= cl_image_tag @team_three.photo, class: "teams-index-photo" %>
-                  <% end %>
+              <div class="card-dashboard team-dashboard">
+                <div class="team-index-card team-name-location">
+                  <p class="teams-index-name"><%= link_to @team_three.league.name.upcase, team_path(@team_two) %></p>
+                  <p><%= link_to @team_three.name, team_path(@team_two) %></p>
+                  <p class="team-index-location"><%= @team_three.league.city %>, <%= @team_three.league.country %></p>
+                </div>
+                <div class="suggested-team-ranking">
                   <p class="teams-index-ranking text-center">Ranking: <span class="pink-ranking"><%= @team_three.ranking %></span></p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<div class="background-dashboard">
-  <div class="container">
-    <div class="row dashboard-flex">
-      <div class="col-md-5">
-        <div class="dashboard-game dashboard-game-request">
-          <div class="upcoming-games-dashboard">
-            <% if current_user.team.games.count + current_user.requests.where(status: "accepted").count == 1 %>
-              <div class="games-count">
-                <h3 class="margin-left-title">Upcoming game</h3>
-                <p class="game-notification avatar">
-                  <%= current_user.team.games.count + current_user.requests.where(status: "accepted").count %>
-                </p>
-              </div>
-            <% elsif current_user.team.games.count + current_user.requests.where(status: "accepted").count == 0 %>
-              <h3 class="margin-left-title">No Upcoming games</h3>
-              <% if current_user.team.requests.where(status: "pending").count == 0 %>
-
-              <% else %>
-                <p><%= current_user.team.requests.where(status: "pending").count %></p>
-              <% end %>
-
-            <% else %>
-              <div class="games-count">
-                <h3 class="margin-left-title">Upcoming games</h3>
-                <p class="game-notification avatar">
-                  <%= link_to team_games_path(current_user.team) do %>
-                  <%= current_user.team.games.count + current_user.requests.where(status: "accepted").count %>
-                  <% end %>
-                </p>
-              </div>
-            <% end %>
-          </div>
-          <!-- games for requests i've received -->
-          <div class="next-game-detail">
-            <% if current_user.team.games.present? %>
-              <h5>Next game</h5>
-              <div class="team-against-avatar">
-                <p>
-                  Against: <span class="team-game-bold"><%= current_user.team.games.last.request.user.team.name %> - <%= current_user.team.games.last.request.user.team.league.name %></span>
-                </p>
-                <p><%= cl_image_tag(current_user.team.games.last.request.user.team.photo, height: 250, width: 250,crop: :fill, class: "avatar") %></p>
-              </div>
-              <p>
-                From <%= current_user.team.games.last.start_date.strftime('%a %d %b %Y') %> to <%= current_user.team.games.last.end_date.strftime('%a %d %b %Y') %>
-              </p>
-              <p>
-                In
-                <% if current_user.team.requests.last.at_home == false %>
-                  <%= current_user.team.league.city %>, <%= current_user.team.league.country %> (away)
-                <% else %>
-                  <%= current_user.team.requests.last.team.league.city %>, <%= current_user.team.requests.last.team.league.country %> (home)
-                <% end %>
-              </p>
-              <p><%= link_to "Event details", team_game_path(current_user.team, current_user.team.games.last), class: "my-btn" %></p>
-            <!-- games for requests i've sent -->
-            <% elsif current_user.requests.where(status: "accepted").present? %>
-              <p>Against: <%= current_user.requests.where(status: "accepted").last.team.name %> - <%= current_user.requests.where(status: "accepted").last.team.league.name %></p>
-              <p>From <%= current_user.requests.where(status: "accepted").last.start_date.strftime('%a %d %b %Y') %> to <%= current_user.requests.where(status: "accepted").last.end_date.strftime('%a %d %b %Y') %></p>
-              <p>
-                In
-                <% if current_user.requests.where(status: "accepted").last.at_home == true %>
-                  <%= current_user.team.league.city %>, <%= current_user.team.league.country %> (home)
-                <% else %>
-                  <%= current_user.requests.where(status: "accepted").last.team.league.city %>, <%= current_user.requests.where(status: "accepted").last.team.league.country %> (away)
-                <% end %>
-              </p>
-              <p class="text-center"><%= link_to "Event details", team_game_path(current_user.team, current_user.requests.where(status: "accepted").last.game), class: "my-btn" %></p>
-            <% else %>
-              <p>You have no games for the moment, but you can always invite a team!</p>
-              <p class="text-center"><%= link_to "Find a team", teams_path, class: "my-btn" %></p>
-            <% end %>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-5">
-        <div class="dashboard-request dashboard-game-request">
-            <div class="upcoming-games-dashboard">
-              <% if current_user.team.requests.where(status: "pending").count == 1 %>
-                <div class="games-count">
-                  <h3 class="margin-left-title">Pending request</h3>
-                  <p class="game-notification avatar">
-                    <%= link_to team_requests_path(current_user.team) do %>
-                      <%= current_user.team.requests.where(status: "pending").count %>
-                    <% end %>
-                  </p>
-                </div>
-              <% elsif current_user.team.requests.where(status: "pending").count == 0 %>
-                <h3 class="margin-left-title">No pending requests</h3>
-              <% else %>
-                <div class="games-count">
-                  <h3 class="margin-left-title">Pending requests</h3>
-                  <p class="game-notification avatar">
-                    <%= link_to team_requests_path(current_user.team) do %>
-                      <%= current_user.team.requests.where(status: "pending").count %>
-                     <% end %>
-                  </p>
-                </div>
-              <% end %>
-            </div>
-
-          <div class="next-game-detail request-dashboard">
-            <% if current_user.team.requests.where(status: "pending").last.present? %>
-              <h5>Last request received</h5>
-              <div class="team-against-avatar">
-                <p><%= current_user.team.requests.where(status: "pending").last.user.team.name %> - <%= current_user.team.requests.where(status: "pending").last.user.team.league.name %></p>
-                <p><%= cl_image_tag(current_user.team.requests.last.user.team.photo, height: 250, width: 250,crop: :fill, class: "avatar") %></p>
-              </div>
-                <p>From <%= current_user.team.requests.where(status: "pending").last.start_date.strftime('%a %d %b %Y') %> to <%= current_user.team.requests.where(status: "pending").last.start_date.strftime('%a %d %b %Y') %></p>
-                <p>In
-                  <% if current_user.team.requests.where(status: "pending").last.at_home == false %>
-                    <%= current_user.team.league.city %>, <%= current_user.team.league.country %> (away)
-                  <% else %>
-                    <%= current_user.team.requests.where(status: "pending").last.team.league.city %>, <%= current_user.team.requests.where(status: "pending").last.team.league.country %> (home)
-                  <% end %>
-                </p>
-                <p><%= link_to "See details", team_request_path(current_user.team, current_user.team.requests.where(status: "pending").last ), class: "my-btn" %></p>
-
-              <% else %>
-                <p>You have no pending request, but you can always invite a team!</p>
-                <p class="text-center"><%= link_to "Find a team", teams_path, class: "my-btn" %></p>
-            <% end %>
-          </div>
-        </div>
+            <p class="text-right margin-btn">
+            <%= link_to "Find another team", teams_path, class: "my-btn sample-btn" %>
+            </p>
       </div>
     </div>
   </div>
