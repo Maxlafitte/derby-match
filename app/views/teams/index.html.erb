@@ -2,7 +2,7 @@
 <p class="text-center my-ranking">Your ranking: <%= current_user.team.ranking %></p>
 <div class="container teams-index-container">
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-5">
         <%= simple_form_for :index, method: "GET", remote: true, url: teams_path, html: {class: "form-inline form-center index-search"} do |f| %>
           <%= f.input :start_date, as: :string, required: true, input_html: {class: "datepicker datepicker-margin index-field", placeholder: "Start Date"} %>
           <%= f.input :end_date, input_html: {class: "datepicker datepicker-margin index-field", placeholder: "End Date"} %>
@@ -10,7 +10,7 @@
           <%= f.button :submit, "Lets's roll",  class: 'my-btn my-btn-index-margin' %>
         <% end %>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-7">
         <%= render 'result', teams: @teams %>
     </div>
   </div>
