@@ -1,3 +1,7 @@
+body {
+  color: #4f4f4f;
+}
+
 .title-dashboard-sample {
   margin: 25px 0px;
 }
@@ -45,6 +49,7 @@
 
   font-weight: bold;
   font-size: 32px;
+  color: $my-gray;
 }
 .sample-btn {
   text-decoration: none;
@@ -73,7 +78,7 @@
 
 .teams-index-ranking {
   font-size: 25px;
-  color: $my-green;
+  color: $my-gray;
 }
 
 

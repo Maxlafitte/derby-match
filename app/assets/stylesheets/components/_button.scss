@@ -1,28 +1,33 @@
 .my-btn {
   color: white;
   padding: 8px 24px;
-  border-radius: 35px;
+  border-radius: 5px;
   font-weight: bold;
   background-color: $my-green;
-  opacity: 0.9;
+  opacity: 1;
   transition: background 0.3s ease;
   border: 2px solid white ;
   width: 140px;
   height: 50px;
+  // box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+
 }
 .my-btn:hover {
   background-color: $my-green;
   opacity: 1;
   transition: background 0.3s ease;
   color: white;
+  background-image: radial-gradient(circle, #02c39a, #00c48a, #00c478, #00c462, #02c349);
 }
 
 .cancel-decline {
-  background-color: #847BA2;
-  opacity: 0.5;
+  background-color: $my-green;
+  opacity: 1;
+
   &:hover {
-    background-color: #847BA2;
-    opacity: 0.4;
+    background-color: $my-green;
+    opacity: 0.9;
+    background-image: radial-gradient(circle, #02c39a, #00c48a, #00c478, #00c462, #02c349);
   }
 }
 
@@ -39,6 +44,6 @@
 }
 
 
-
+// $my-pink;
 
 
