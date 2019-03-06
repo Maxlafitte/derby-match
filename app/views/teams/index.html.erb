@@ -1,22 +1,16 @@
-<div class="teams-search-container">
-  <div class="container">
-    <h2 class="text-center teams-index-title">LOOK FOR A TEAM TO PLAY AGAINST!!!</h2>
-    <p class="text-center my-ranking">Your ranking: <%= current_user.team.ranking %></p>
-    <div class="row form-search">
-      <%= simple_form_for :index, method: "GET", remote: true, url: teams_path, html: {class: "form-inline form-center"} do |f| %>
-        <%= f.input :start_date, as: :string, required: true, input_html: {class: "datepicker datepicker-margin", placeholder: "Start Date"} %>
-        <%= f.input :end_date, input_html: {class: "datepicker datepicker-margin", placeholder: "End Date"} %>
-        <%= f.input :distance, :collection => [["< 50 km", 50], ["< 100 km", 100], ["< 500 km", 500], ["Everywhere", 50000]], required: true %>
-        <%= f.button :submit, "Search",  class: 'my-btn my-btn-index-margin' %>
-      <% end %>
+<h2 class="text-center teams-index-title">LOOK FOR A TEAM TO PLAY AGAINST!!!</h2>
+<p class="text-center my-ranking">Your ranking: <%= current_user.team.ranking %></p>
+<div class="container teams-index-container">
+  <div class="row">
+    <div class="col-md-5">
+        <%= simple_form_for :index, method: "GET", remote: true, url: teams_path, html: {class: "form-inline form-center index-search"} do |f| %>
+          <%= f.input :start_date, as: :string, required: true, input_html: {class: "datepicker datepicker-margin index-field", placeholder: "Start Date"} %>
+          <%= f.input :distance, :collection => [["< 50 km", 50], ["< 100 km", 100], ["< 500 km", 500], ["Everywhere", 50000]], required: true %>
+          <%= f.button :submit, "Lets's roll",  class: 'my-btn my-btn-index-margin' %>
+        <% end %>
     </div>
-  </div>
-</div>
-
-<div class="background-color">
-  <div class="container">
-    <div class="row teams-flex">
-      <%= render 'result', teams: @teams %>
+    <div class="col-md-7 teams-flex">
+        <%= render 'result', teams: @teams %>
     </div>
   </div>
 </div>

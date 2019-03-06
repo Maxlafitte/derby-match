@@ -45,6 +45,7 @@ class RequestsController < ApplicationController
     else
       @request.at_home = false
     end
+    @request.end_date = @request.start_date
     @request.save
     @message.save
     if @message.save!
@@ -61,8 +62,7 @@ class RequestsController < ApplicationController
   end
 
   def update
-    case @request
-    when params[:commit] == "Accept"
+    if params[:commit] == "Accept"
       @request.update(status: params[:status])
       @game = Game.new
       @game.request = @request

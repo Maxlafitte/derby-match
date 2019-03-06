@@ -1,6 +1,7 @@
 .bg {
   background-image: asset-url('track.svg');
   background-repeat: no-repeat;
+  background-size: 100%;
 }
 
 .navbar-derby-match {
@@ -24,8 +25,7 @@
 }
 
 .navbar-light .navbar-nav .active > .nav-link {
-  // change to the color once chosen
-  color: $my-green;
+  color: #00e591;
 }
 
 .navbar-light .navbar-nav .nav-link {
@@ -33,9 +33,7 @@
   color: white;
 
   &:hover {
-    // change to the color once chosen
     color: #00e591;
-
   }
 }
 

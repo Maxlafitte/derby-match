@@ -29,7 +29,7 @@
       <p>Please contact <%= @team.user.derby_name %> through the form below for a game request.</p>
     </div>
     <div class="requesting-form text-center">
-      <%= render 'form', request: @request, team: @team %>
+      <%= render 'form', request: @request, team: @team, booking_start_date: @booking_start_date %>
   <% elsif current_user = @team.user %>
     <div class="contact-from your-team">
       <p>This is your own team, try inviting another team!</p>
