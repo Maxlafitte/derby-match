@@ -3,8 +3,16 @@
   background-repeat: no-repeat;
 }
 
-.navbar-lewagon {
+.navbar-derby-match {
   justify-content: space-between;
+}
+
+.navbar-derby-match .navbar-collapse {
+  flex-grow: 0;
+}
+
+.navbar-derby-match .navbar-brand img {
+  width: 40px;
 }
 
 .logged-nav {
@@ -13,29 +21,25 @@
 
 .navbar-light .navbar-nav .nav-link {
   margin-right: 25px;
-  border: 3px solid transparent;
+  color: white;
+  opacity: 0.9;
   &:hover {
-    border-bottom: 3px solid white;
+    // change to the color once chosen
+    color: yellow;
+    opacity: 0.8;
   }
 }
 
 .navbar-light .navbar-nav .nav-link .active {
-  color: white;
+  color: yellow;
 }
 
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
-
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
-}
 
 .log-in-nav {
   color: white;
   &:hover {
-    color: $my-yellow;
+    color: yellow;
   }
 }
 
@@ -44,8 +48,8 @@
 }
 
 .dropdown-menu.show {
-  background-color: #3e306e;
-  border: transparent;
+  background-color: #B33771;
+  border: 1px solid #6D214F;
   margin-right: -16px;
   // padding: 11px;
   text-align: right;
