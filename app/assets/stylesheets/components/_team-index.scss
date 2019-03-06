@@ -8,6 +8,13 @@
 //   position: sticky !important;
 //   left: 0 !important;
 // }
+.avatar-margin {
+  margin-right: 15px;
+}
+.name-photo {
+  display: flex;
+  justify-content: space-around;
+}
 .hover-search {
   transition: all .1s ease-in-out;
   &:hover {
