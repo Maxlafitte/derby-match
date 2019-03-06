@@ -4,19 +4,19 @@
     <%= simple_form_for [request.team, request], remote: true, :url => { action: "update" }, method: :patch do |f| %>
       <input type="hidden" value="<%= request.id %>" name="id">
       <input type="hidden" value="cancelled" name="status">
-      <%= f.button :submit, value: 'Cancel', class: "my-btn cancel-decline", id: "decline-button" %>
+      <%= f.button :submit, value: 'CANCEL', class: "my-btn cancel-decline", id: "decline-button" %>
     <% end %>
   <% else %>
     <%= simple_form_for [request.team, request], :url => { action: "update" }, remote: true, method: :patch do |f| %>
       <input type="hidden" value="<%= request.id %>" name="id">
       <input type="hidden" value="accepted" name="status">
-      <%= f.button :submit, value: 'Accept', class: "my-btn", id: "accept-button" %>
+      <%= f.button :submit, value: 'ACCEPT', class: "my-btn", id: "accept-button" %>
     <% end %>
 
     <%= simple_form_for [request.team, request], :url => { action: "update" }, remote: true, method: :patch do |f| %>
       <input type="hidden" value="<%= request.id %>" name="id">
       <input type="hidden" value="declined" name="status">
-      <%= f.button :submit, value: 'Decline', class:"my-btn cancel-decline", id: "decline-button" %>
+      <%= f.button :submit, value: 'DECLINE', class:"my-btn cancel-decline", id: "decline-button" %>
     <% end %>
   <% end %>
 <% end %>
