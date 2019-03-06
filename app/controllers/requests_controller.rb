@@ -45,6 +45,7 @@ class RequestsController < ApplicationController
     else
       @request.at_home = false
     end
+    @request.end_date = @request.start_date
     @request.save
     @message.save
     if @message.save!
