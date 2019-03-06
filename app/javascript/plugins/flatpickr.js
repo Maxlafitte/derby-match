@@ -1,12 +1,13 @@
 import flatpickr from "flatpickr"
 import "flatpickr/dist/flatpickr.min.css" // Note this is important!
 
-flatpickr(".datepicker", {})
+flatpickr(".datepicker", {inline:true})
 
 const disabled = document.querySelector(".datepicker-unavailable")
 
 if (disabled) {
   flatpickr(".datepicker-unavailable", {
-    disable: gon.unavailable_dates
+    disable: gon.unavailable_dates,
+    inline:true
   })
 }

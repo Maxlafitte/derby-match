@@ -35,7 +35,7 @@
   flex-direction: column;
   justify-content: space-between;
   background-color: white;
-  height: 350px;
+  height: 500px;
   box-shadow: 1px 1px 12px rgb(215, 215, 215);
   padding: 70px;
   position: fixed;
@@ -43,7 +43,7 @@
     display: none;
   }
   .index-field {
-    background-color: #F5F5F5;
+    display:none;
   }
 }
 .datepicker-margin {
@@ -84,4 +84,12 @@
   color: $my-gray;
   font-weight: bold;
   margin-bottom: 50px;
+}
+
+.form-flex {
+  display: flex;
+  flex-direction: column;
+  height: 580px;
+  justify-content: space-between;
+  align-items: center;
 }
