@@ -8,6 +8,8 @@ class TeamsController < ApplicationController
       end
       # get start_date from the form
       booking_start_date = Date.parse params[:index][:start_date]
+      # adding an info in session to display start_date in team show/ form
+      session[:booking_start_date] = booking_start_date
 
       # get all teams
       # reject user team & reject teams from league
@@ -68,6 +70,8 @@ class TeamsController < ApplicationController
     authorize @team
     @message = Message.new
     authorize @message
+    # giving the startdate to simple form to display it
+    @request.start_date = session[:booking_start_date]
   end
 
   # not sure that we need it since we won't have admin users
