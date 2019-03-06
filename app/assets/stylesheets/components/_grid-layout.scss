@@ -1,11 +1,13 @@
 .grid {
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;
   margin-top: 80px;
   grid-gap: 30px;
 }
-
+.team-show-padding {
+  padding: 10px;
+}
 .card-category {
   grid-row: 1 / span 4;
   grid-column: 1 / span 1;
@@ -13,10 +15,10 @@
 
 .contact-from {
   grid-row:  1 / span 1;
-  grid-column: 2 / span 1;
+  grid-column: 2 / span 3;
 }
 
 .requesting-form {
   grid-row:  2 / span 3;
-  grid-column: 2 / span 1;
+  grid-column: 2 / span 3;
 }
