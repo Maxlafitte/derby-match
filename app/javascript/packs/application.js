@@ -14,3 +14,7 @@ if (document.getElementById("request-sent")) {
     console.log(value);
   });
 }
+
+$(".alert" ).delay(2000).fadeOut(1000);
+$(".alert-success" ).delay(2000).fadeOut(1000);
+$(".alert-danger" ).delay(2000).fadeOut(1000);
