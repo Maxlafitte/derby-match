@@ -1,9 +1,9 @@
 <div class="container grid">
   <div class="card-category">
-    <div class="card-img text-center">
+    <div class="card-img text-center card-team-show">
+      <h3><%= @team.league.name.upcase %></h3>
+      <p><%= @team.name.upcase %></p>
       <p><%= cl_image_tag(@team.photo, height: 250, width: 250,crop: :fill) %></p>
-      <h1><%= @team.league.name.upcase %></h1>
-      <h2><%= @team.name.upcase %></h2>
       <p class="ranking"><%= @team.ranking %></p>
     </div>
 
@@ -28,12 +28,12 @@
       <% end %>
       <p>Please contact <%= @team.user.derby_name %> through the form below for a game request.</p>
     </div>
-    <div class="requesting-form text-center">
+    <div class="requesting-form">
       <%= render 'form', request: @request, team: @team %>
   <% elsif current_user = @team.user %>
     <div class="contact-from your-team">
       <p>This is your own team, try inviting another team!</p>
-      <%= link_to "Find a team", teams_path, class: "my-btn" %>
+      <%= link_to "FIND A TEAM", teams_path, class: "my-btn" %>
     </div>
   <% else %>
       <p class="contact-from">

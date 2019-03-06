@@ -8,11 +8,16 @@
 .team-show-padding {
   padding: 10px;
 }
+.card-team-show {
+  margin-top: 60px;
+}
 .card-category {
   grid-row: 1 / span 4;
   grid-column: 1 / span 1;
 }
-
+.team-show-search {
+  padding: 10px;
+}
 .contact-from {
   grid-row:  1 / span 1;
   grid-column: 2 / span 3;
@@ -22,3 +27,22 @@
   grid-row:  2 / span 3;
   grid-column: 2 / span 3;
 }
+.request_at_home {
+  display: flex;
+}
+.date-request {
+  .index-field {
+    background-color: #f5f5f5;
+  }
+  label {
+    display:none;
+  }
+}
+.form-check {
+  display: inline-flex;
+
+}
+.request_at_home {
+
+}
+
