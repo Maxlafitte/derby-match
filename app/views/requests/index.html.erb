@@ -8,10 +8,10 @@
     <div class="pending-requests">
       <h3>Pending requests:</h3>
       <% @pending_requests_received.each do |request| %>
-        <%= render 'pending-request-card', request: request %>
+        <%= render 'received', request: request %>
       <% end %>
       <% @pending_requests_sent.each do |request| %>
-        <%= render 'pending-request-card', request: request %>
+        <%= render 'sent', request: request %>
       <% end %>
     </div>
   <% else %>
@@ -23,19 +23,19 @@
     <% if @declined_requests_sent.present? || @declined_requests_received.present? || @cancelled_requests_sent.present? || @cancelled_requests_received.present? %>
       <h3>Cancelled & declined requests:</h3>
       <% @declined_requests_received.each do |request| %>
-        <%= render 'old-request-card', request: request %>
+        <%= render 'old-received', request: request %>
       <% end %>
 
       <% @declined_requests_sent.each do |request| %>
-        <%= render 'old-request-card', request: request %>
+        <%= render 'old-sent', request: request %>
       <% end %>
 
       <% @cancelled_requests_received.each do |request| %>
-        <%= render 'old-request-card', request: request %>
+        <%= render 'old-received', request: request %>
       <% end %>
 
       <% @cancelled_requests_sent.each do |request| %>
-        <%= render 'old-request-card', request: request %>
+        <%= render 'old-sent', request: request %>
       <% end %>
     <% end %>
   </div>
