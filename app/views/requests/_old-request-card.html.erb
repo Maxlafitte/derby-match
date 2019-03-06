@@ -1,0 +1,24 @@
+<div class="pending-received request-details">
+  <div class="dates">
+    <p><%= request.start_date.strftime('%a %d %b %Y') %></p>
+  </div>
+  <div class="request-content">
+    <div class="team">
+      <p><%= request.user.team.name %> - <%= request.user.team.league.name %> <br>
+        Ranking: <%= request.user.team.ranking %></p>
+    </div>
+    <div class="location">
+      <p>
+        Location: <br>
+        <% if request.at_home == false %>
+          <%= current_user.team.league.city %> - <%= current_user.team.league.country %>
+        <% else %>
+          <%= request.user.team.league.city %> - <%= request.user.team.league.country %>
+        <% end %>
+      </p>
+    </div>
+    <div class="status">
+      <p>Status: <br><%= request.status %> by you </p>
+    </div>
+  </div>
+</div>
