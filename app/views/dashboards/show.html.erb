@@ -29,11 +29,16 @@
             <div class="col-xs-11 col-sm-11 col-md-11">
               <% @team_one = @suggested_teams.first %>
               <div class="card-dashboard team-dashboard">
-                <div class="team-index-card team-name-location">
-                  <p class="teams-index-name"><%= link_to @team_one.league.name.upcase, team_path(@team_one) %></p>
-                  <p><%= link_to @team_one.name, team_path(@team_one) %></p>
-                  <p class="team-index-location"><%= @team_one.league.city %>, <%= @team_one.league.country %></p>
-                </div>
+                <div class="name-photo">
+                  <div class="logo-img-team">
+                    <%= cl_image_tag @team_one.photo, class: "avatar-large avatar-margin" %>
+                  </div>
+                  <div class="team-index-card team-name-location">
+                    <p class="teams-index-name"><%= link_to @team_one.league.name.upcase, team_path(@team_one) %></p>
+                    <p><%= link_to @team_one.name, team_path(@team_one) %></p>
+                    <p class="team-index-location"><%= @team_one.league.city %>, <%= @team_one.league.country %></p>
+                  </div>
+                  </div>
                 <div class="suggested-team-ranking">
                   <p class="teams-index-ranking text-center">Ranking: <span class="pink-ranking"><%= @team_one.ranking %></span></p>
                 </div>
@@ -42,11 +47,17 @@
             <div class="col-xs-11 col-sm-11 col-md-11">
               <% @team_two = @suggested_teams.second %>
               <div class="card-dashboard team-dashboard">
-                <div class="team-index-card team-name-location">
-                  <p class="teams-index-name"><%= link_to @team_two.league.name.upcase, team_path(@team_two) %></p>
-                  <p><%= link_to @team_two.name, team_path(@team_two) %></p>
-                  <p class="team-index-location"><%= @team_two.league.city %>, <%= @team_two.league.country %></p>
+                <div class="name-photo">
+                  <div class="logo-img-team">
+                    <%= cl_image_tag @team_two.photo, class: "avatar-large avatar-margin" %>
+                  </div>
+                  <div class="team-index-card team-name-location">
+                    <p class="teams-index-name"><%= link_to @team_two.league.name.upcase, team_path(@team_two) %></p>
+                    <p><%= link_to @team_two.name, team_path(@team_two) %></p>
+                    <p class="team-index-location"><%= @team_two.league.city %>, <%= @team_two.league.country %></p>
+                  </div>
                 </div>
+
                 <div class="suggested-team-ranking">
                   <p class="teams-index-ranking text-center">Ranking: <span class="pink-ranking"><%= @team_two.ranking %></span></p>
                 </div>
@@ -55,11 +66,18 @@
             <div class="col-xs-11 col-sm-11 col-md-11">
               <% @team_three = @suggested_teams.third %>
               <div class="card-dashboard team-dashboard">
-                <div class="team-index-card team-name-location">
-                  <p class="teams-index-name"><%= link_to @team_three.league.name.upcase, team_path(@team_two) %></p>
-                  <p><%= link_to @team_three.name, team_path(@team_two) %></p>
-                  <p class="team-index-location"><%= @team_three.league.city %>, <%= @team_three.league.country %></p>
+                <div class="name-photo">
+                  <div class="logo-img-team">
+                    <%= cl_image_tag @team_three.photo, class: "avatar-large avatar-margin" %>
+                  </div>
+                  <div class="team-index-card team-name-location">
+                    <p class="teams-index-name"><%= link_to @team_three.league.name.upcase, team_path(@team_two) %></p>
+                    <p><%= link_to @team_three.name, team_path(@team_two) %></p>
+                    <p class="team-index-location"><%= @team_three.league.city %>, <%= @team_three.league.country %></p>
+                  </div>
+
                 </div>
+
                 <div class="suggested-team-ranking">
                   <p class="teams-index-ranking text-center">Ranking: <span class="pink-ranking"><%= @team_three.ranking %></span></p>
                 </div>
