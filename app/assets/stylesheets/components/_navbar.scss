@@ -1,6 +1,10 @@
-.navbar-lewagon {
+.bg {
+  background-image: url(track.svg);
+  background-repeat: no-repeat;
+}
+
+.navbar-derby-match {
   justify-content: space-between;
-  background: $my-orange;
 }
 
 .logged-nav {
