@@ -67,7 +67,7 @@
 }
 
 .pink-ranking {
-  color: yellow;
+  color: $my-green;
   font-weight: bold;
 }
 
@@ -97,6 +97,71 @@
 //   a {
 //     text-decoration: none;
 //   }
+
+}
+.margin-left-title {
+  padding-left: 27px;
+
+}
+.upcoming-games-dashboard {
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  margin-bottom: 11px;
+  height: 56px;
+}
+.next-game-detail {
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  p {
+    margin-left: 20px;
+  }
+  h5 {
+    margin-left: 20px;
+    font-weight: lighter;
+  }
+  a:hover {
+    text-decoration: none;
+  }
+}
+.game-notification {
+  color: white;
+  background-color: $my-green;
+  margin-right: 10px;
+  position: relative;
+  margin-top: 7px;
+  a {
+    text-decoration: none;
+    color: white;
+    position: absolute;
+    right: 14px;
+    bottom: 6px;
+    font-weight: bold;
+  }
+}
+.games-count {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.team-against-avatar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.request-flex {
+  // display: flex;
+  align-items: center;
+  width: 100%;
+  h3 {
+    font-size: 24px;
+    margin: 25px 0px;
+  }
+}
+
 // }
 // .request-flex {
 //   // display: flex;
