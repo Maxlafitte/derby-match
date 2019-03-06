@@ -2,7 +2,7 @@
   <h2 class="text-center games-index-title">Upcoming Games</h2>
     <div class="row">
     <% @games.each do |game| %>
-      <div class="grey-card request-details">
+      <div class="request-details">
           <div class="photo">
             <%= cl_image_tag game.request.user.team.photo, class: "avatar-large"%>
           </div>
