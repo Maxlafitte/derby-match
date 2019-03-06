@@ -35,7 +35,7 @@
   }
   a {
     text-decoration: none;
-    color: black;
+    color: $my-gray;
   }
   .teams-index-ranking {
     font-size: 20px;
@@ -48,12 +48,12 @@
 
 .teams-index-title {
   text-transform: uppercase;
-  color: black;
+  color: $my-gray;
   font-weight: bold;
 }
 
 .my-ranking {
   font-size: 24px;
-  color: black;
+  color: $my-gray;
   font-weight: bold;
 }

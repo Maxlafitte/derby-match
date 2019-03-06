@@ -1,6 +1,6 @@
 .form-container {
   width: 400px;
-  color: black;
+  color: $my-gray;
 }
 
 .wrapper {
@@ -46,7 +46,7 @@
   margin-bottom: 30px;
 }
 
-.yellow-text {
-  color: #FFEB00;
+.green-text {
+  color: $my-green;
   font-weight: bold;
 }

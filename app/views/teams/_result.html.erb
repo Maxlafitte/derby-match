@@ -6,7 +6,7 @@
         <%= link_to team_path(team) do %>
           <%= cl_image_tag team.photo, class: "teams-index-photo" %>
         <% end %>
-        <p class="teams-index-ranking text-center">Ranking: <%= team.ranking %></p>
+        <p class="teams-index-ranking text-center">Ranking: <span class="pink-ranking"><%= team.ranking %></span></p>
       </div>
     </div>
   </div>
