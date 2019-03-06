@@ -1,1 +1,24 @@
-_sent.html.erb
+<div class="request-details">
+  <div class="dates text-center">
+    <p><%= request.start_date.strftime('%a %d %b %Y') %></p>
+  </div>
+  <div class="request-content">
+    <div class="team">
+      <p><%= request.team.league.name.upcase %> <%= request.team.name %></p>
+      <p>Ranking: <%= request.team.ranking %></p>
+    </div>
+    <div class="location">
+      <p>
+        Location: <br>
+        <% if request.at_home == false %>
+          <%= current_user.team.league.city %> - <%= current_user.team.league.country %>
+        <% else %>
+          <%= request.team.league.city %> - <%= request.team.league.country %>
+        <% end %>
+      </p>
+    </div>
+    <div class="link">
+      <p><%= link_to "Get more details", team_request_path(request.team, request), class:"my-btn" %></p>
+    </div>
+  </div>
+</div>
