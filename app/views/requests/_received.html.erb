@@ -1,4 +1,4 @@
-<div class="pending-received request-details">
+<div class="request-details">
   <div class="dates text-center">
     <p><%= request.start_date.strftime('%a %d %b %Y') %></p>
   </div>
@@ -13,7 +13,7 @@
         <% if request.at_home == false %>
           <%= current_user.team.league.city %> - <%= current_user.team.league.country %>
         <% else %>
-          <%= request.user.team.league.city %> - <%= request.user.team.league.country %>
+          <%= request.team.league.city %> - <%= request.team.league.country %>
         <% end %>
       </p>
     </div>

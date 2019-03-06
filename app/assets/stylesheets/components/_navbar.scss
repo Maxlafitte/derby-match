@@ -26,7 +26,7 @@
 
 .navbar-light .navbar-nav .active > .nav-link {
   // change to the color once chosen
-  color: yellow;
+  color: $my-green;
 }
 
 .navbar-light .navbar-nav .nav-link {
@@ -35,7 +35,7 @@
   opacity: 0.9;
   &:hover {
     // change to the color once chosen
-    color: yellow;
+    color: $my-green;
     opacity: 0.8;
   }
 }
@@ -44,7 +44,7 @@
 .log-in-nav {
   color: white;
   &:hover {
-    color: yellow;
+    color: $my-green;
   }
 }
 
