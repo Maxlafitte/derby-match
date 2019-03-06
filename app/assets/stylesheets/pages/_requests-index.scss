@@ -42,5 +42,7 @@
 .dates {
   width: 100px;
   height: 100px;
-  background-color: #FFEB00;
+  background-color: $my-green ;
+  display:flex;
+  align-items: center;
 }
