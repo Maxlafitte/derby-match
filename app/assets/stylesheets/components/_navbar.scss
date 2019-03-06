@@ -15,8 +15,17 @@
   width: 40px;
 }
 
+#logo {
+  width: 125px;
+}
+
 .logged-nav {
   font-weight: bold;
+}
+
+.navbar-light .navbar-nav .active > .nav-link {
+  // change to the color once chosen
+  color: yellow;
 }
 
 .navbar-light .navbar-nav .nav-link {
@@ -30,21 +39,12 @@
   }
 }
 
-.navbar-light .navbar-nav .nav-link .active {
-  color: yellow;
-}
-
-
 
 .log-in-nav {
   color: white;
   &:hover {
     color: yellow;
   }
-}
-
-#logo {
-  width: 125px;
 }
 
 .dropdown-menu.show {
