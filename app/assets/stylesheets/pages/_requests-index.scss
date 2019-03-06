@@ -12,16 +12,14 @@
 
 .request-details {
   width: 100%;
-  display: flex;
-  justify-content: space-between;
+  display:flex;
   align-items: center;
-  flex-direction: row;
-  position: relative;
+  justify-content: space-around;
   background-color: white;
   color: $my-gray;
   font-size: 24px;
   margin-bottom: 20px;
-  padding: 25px;
+  height: 100px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   p {
     font-size: 16px;
@@ -29,32 +27,20 @@
   }
 }
 
+.request-content {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  flex-grow: 1;
+}
+
 .grey-card {
   background-color: $opacity-gray;
 }
 
-.team {
-  padding: 10px;
-}
-
 .dates {
-  padding: 10px;
-  position: absolute;
-  left: 450px;
-}
-
-.location {
-  padding: 10px;
-  position: absolute;
-  left: 700px;
-}
-
-.link {
-  // padding: 10px;
-}
-
-.status {
-  padding: 10px;
-  position: absolute;
-  right: 40px;
+  width: 100px;
+  height: 100px;
+  background-color: #FFEB00;
 }
