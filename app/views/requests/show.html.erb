@@ -9,7 +9,7 @@
         </div>
         <div class="team-infos">
           <p>League: <%= @team.league.name %></p>
-          <p>Ranking: <%= @team.ranking %></p>
+          <p>#<%= @team.ranking %></p>
           <p>Location: <%= @team.league.city %>, <%= @team.league.country %></p>
           <p>Contact: <%= @team.user.derby_name %></p>
         </div>
@@ -58,7 +58,7 @@
         </div>
         <div class="team-infos">
           <p>League: <%= @request.user.team.league.name %></p>
-          <p>Ranking: <%= @request.user.team.ranking %></p>
+          <p>#<%= @request.user.team.ranking %></p>
           <p>Location: <%= @request.user.team.league.city %>, <%= @request.user.team.league.country %></p>
           <p>Contact: <%= @current_user.team.user.derby_name %></p>
         </div>

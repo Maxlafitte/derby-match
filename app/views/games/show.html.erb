@@ -16,7 +16,7 @@
                 <%= cl_image_tag @game.request.team.photo, class: "teams-index-photo" %>
               <% end %>
               <p class="teams-index-ranking text-center">
-                Ranking: <%= @game.request.team.ranking %>
+                #<%= @game.request.team.ranking %>
               </p>
             </div>
           </div>
@@ -57,7 +57,7 @@
                 <%= cl_image_tag @team.photo, class: "teams-index-photo" %>
               <% end %>
               <p class="teams-index-ranking text-center">
-                Ranking: <%= @team.ranking %>
+                #<%= @team.ranking %>
               </p>
             </div>
           </div>
@@ -93,7 +93,7 @@
                 <%= cl_image_tag @team.photo, class: "teams-index-photo" %>
               <% end %>
               <p class="teams-index-ranking text-center">
-                Ranking: <%= @team.ranking %>
+                #<%= @team.ranking %>
               </p>
             </div>
           </div>
@@ -134,7 +134,7 @@
                 <%= cl_image_tag @game.request.user.team.photo, class: "teams-index-photo" %>
               <% end %>
               <p class="teams-index-ranking text-center">
-                Ranking: <%= @game.request.user.team.ranking %>
+                #<%= @game.request.user.team.ranking %>
               </p>
             </div>
           </div>

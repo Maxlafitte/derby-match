@@ -33,7 +33,7 @@
   flex-direction: column;
   justify-content: center;
   background-color: rgba(245, 245, 245, 0.3);
-  align-items: center;
+  // align-items: center;
   border-radius: 5px;
   margin-bottom: 20px;
 }
@@ -43,6 +43,7 @@
   padding :20px 0px;
   display: flex;
   margin: 0 36px;
+  align-items: center;
   .from-user {
     float: right;
   }
