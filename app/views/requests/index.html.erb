@@ -1,12 +1,11 @@
 <div class="container">
-  <div class="row">
-    <h2 class="white">Requests for <%= current_user.team.name %></h2>
-    <br>
-  </div>
+  <<!-- div class="row text-center"> -->
+    <h2 class="text-center dashboard-title white">Requests for <%= current_user.team.name %></h2>
+  <!-- </div> -->
   <!-- pending requests: -->
   <% if @pending_requests_received.present? || @pending_requests_sent.present? %>
     <div class="pending-requests">
-      <h3 class="white">Pending requests:</h3>
+      <h3 class="text-center">Pending requests:</h3>
       <% @pending_requests_received.each do |request| %>
         <%= render 'received', request: request %>
       <% end %>
@@ -21,7 +20,7 @@
   <!-- cancelled & declined requests -->
   <div class="old-requests">
     <% if @declined_requests_sent.present? || @declined_requests_received.present? || @cancelled_requests_sent.present? || @cancelled_requests_received.present? %>
-      <h3 class="white">Cancelled & declined requests:</h3>
+      <h3 class="text-center">Cancelled & declined requests:</h3>
       <% @declined_requests_received.each do |request| %>
         <%= render 'old-received', request: request %>
       <% end %>
