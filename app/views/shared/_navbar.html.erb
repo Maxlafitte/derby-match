@@ -1,5 +1,6 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-derby-match">
   <%= link_to root_path, class: "navbar-brand" do %>
+    <h1>DERBY MATCH</h1>
     <%= image_tag "logo_roller.gif",  id: "logo" %>
   <% end %>
 
@@ -12,16 +13,16 @@
     <% if user_signed_in? %>
     <ul class="navbar-nav mr-auto">
       <li class="nav-item <%= "active" if controller_name == "dashboards" %>">
-        <%= link_to "Dashboard", dashboard_path, class: "nav-link logged-nav" %>
+        <%= link_to "DASHBOARD", dashboard_path, class: "nav-link logged-nav" %>
       </li>
       <li class="nav-item <%= "active" if controller_name == "teams" %>">
-        <%= link_to "Search", teams_path, class: "nav-link logged-nav" %>
+        <%= link_to "SEARCH", teams_path, class: "nav-link logged-nav" %>
       </li>
       <li class="nav-item <%= "active" if controller_name == "requests" %>">
-        <%= link_to "Requests", team_requests_path(current_user.team), class: "nav-link logged-nav" %>
+        <%= link_to "REQUESTS", team_requests_path(current_user.team), class: "nav-link logged-nav" %>
       </li>
       <li class="nav-item <%= "active" if controller_name == "games" %>">
-        <%= link_to "Games", team_games_path(current_user.team), class: "nav-link logged-nav" %>
+        <%= link_to "GAMES", team_games_path(current_user.team), class: "nav-link logged-nav" %>
       </li>
       <li class="nav-item dropdown">
         <% if current_user.photo? %>
