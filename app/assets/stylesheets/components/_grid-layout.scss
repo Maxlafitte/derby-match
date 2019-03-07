@@ -23,7 +23,12 @@
     display: none;
   }
 }
-
+.your-own-league {
+  height: 100px;
+  p {
+    margin-top: 15px;
+  }
+}
 textarea.form-control {
   height: 262px;
   width: 272px;
@@ -31,6 +36,7 @@ textarea.form-control {
 .requesting-form {
   grid-row:  1 / span 4;
   grid-column: 2 / span 2;
+  border-radius: 5px;
 }
 .calendar-radio {
   display: flex;

@@ -14,7 +14,7 @@
   </div>
 
   <% if current_user.team.league == @team.league %>
-    <div class="requesting-form text-center">
+    <div class="requesting-form text-center your-own-league">
       <p>This team is part of your league, try inviting another team!</p>
       <%= link_to "FIND A TEAM", teams_path, class: "my-btn" %>
     </div>
@@ -22,7 +22,7 @@
     <div class="requesting-form text-center">
       <%= render 'form', request: @request, team: @team, booking_start_date: @booking_start_date %>
   <% elsif current_user = @team.user %>
-    <div class="requesting-form text-center">
+    <div class="requesting-form text-center your-own-league">
       <p>This is your own team, try inviting another team!</p>
       <%= link_to "FIND A TEAM", teams_path, class: "my-btn" %>
     </div>
