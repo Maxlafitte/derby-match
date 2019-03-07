@@ -1,16 +1,20 @@
-<div class="container">
-  <div class="form-container body">
-    <div class="row form-center" >
-        <%= simple_form_for [team, request], remote: true do |f| %>
-          <div class="date-request">
-            <%= f.input :start_date, as: :string, required: true, input_html: {class: "datepicker-unavailable"} %>
-          </div>
-          <%= f.input :at_home, label: 'LOCATION', as: :radio_buttons, collection: [['0', "Home: #{current_user.team.league.city}, #{current_user.team.league.country}"], ['1', "Away: #{@team.league.city}, #{@team.league.country}" ]], label_method: :second, value_method: :first %>
+<div class="row form-center form-team-show" >
+    <%= simple_form_for [team, request], remote: true do |f| %>
+    <div class="calendar-radio">
+        <div class="date-request">
+          <%= f.input :start_date, as: :string, required: true, input_html: {class: "datepicker-unavailable"} %>
+        </div>
+        <div class="message-field">
           <%= f.simple_fields_for :message do |message| %>
-            <%= message.input :content, label: "Message" %>
+            <%= message.input :content, as: :text, label: false, placeholder: "Write your message...", class: "message-field" %>
           <% end %>
           <%= f.button :submit, "Send Request", class: 'my-btn', id: "request-sent" %>
-        <% end %>
+        </div>
     </div>
-  </div>
+    <div class="checkboxes">
+        <%= f.input :at_home, label: 'LOCATION', as: :radio_buttons, collection: [['0', "Home: #{current_user.team.league.city}, #{current_user.team.league.country}"], ['1', "Away: #{@team.league.city}, #{@team.league.country}" ]], label_method: :second, value_method: :first %>
+    </div>
+    <% end %>
 </div>
+
+

@@ -1,9 +1,9 @@
 <div class="container grid">
   <div class="card-category">
     <div class="card-img text-center">
+      <h2 class="team-show-title"><%= @team.league.name.upcase %></h2>
+      <p><%= @team.name.upcase %></p>
       <p><%= cl_image_tag(@team.photo, height: 250, width: 250,crop: :fill) %></p>
-      <h1><%= @team.league.name.upcase %></h1>
-      <h2><%= @team.name.upcase %></h2>
       <p class="ranking"><%= @team.ranking %></p>
     </div>
 
@@ -14,31 +14,22 @@
   </div>
 
   <% if current_user.team.league == @team.league %>
-    <div class="contact-from your-team">
+    <div class="requesting-form text-center">
       <p>This team is part of your league, try inviting another team!</p>
       <%= link_to "Find a team", teams_path, class: "my-btn" %>
     </div>
   <% elsif current_user != @team.user && @team.user.present? %>
-    <div class="contact-from">
-      <% if @team.user.photo? %>
-        <p><%= cl_image_tag(@team.user.photo, height: 50, width: 50,crop: :fill, class: 'avatar') %></p>
-        <p>Contact: <%= @team.user.derby_name %></p>
-      <% else %>
-        <p><%= image_tag 'avatar.png', height: 50, width: 50,crop: :fill, class: 'avatar' %></p>
-      <% end %>
-      <p>Please contact <%= @team.user.derby_name %> through the form below for a game request.</p>
-    </div>
     <div class="requesting-form text-center">
       <%= render 'form', request: @request, team: @team, booking_start_date: @booking_start_date %>
   <% elsif current_user = @team.user %>
-    <div class="contact-from your-team">
+    <div class="requesting-form text-center">
       <p>This is your own team, try inviting another team!</p>
       <%= link_to "Find a team", teams_path, class: "my-btn" %>
     </div>
   <% else %>
-      <p class="contact-from">
+      <div class="requesting-form text-center">
         No one has claimed this team yet. If you know them, let them know!
-      </p>
+      </div>
   <% end %>
 
   </div>
