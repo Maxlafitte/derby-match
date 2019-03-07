@@ -2,7 +2,7 @@
     <%= simple_form_for [team, request], remote: true do |f| %>
     <div class="calendar-radio">
         <div class="date-request">
-          <%= f.input :start_date, as: :string, required: true, input_html: {class: "datepicker-unavailable"} %>
+          <%= f.input :start_date, as: :string, required: true, input_html: {class: "datepicker-unavailable remove-field"} %>
         </div>
         <div class="message-field">
           <%= f.simple_fields_for :message do |message| %>
