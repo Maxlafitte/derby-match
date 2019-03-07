@@ -12,6 +12,6 @@ function wait(ms){
 }
 
 refreshPartial("<%= j render 'form-update-request', request: @request %>", '<%= "update-request-form-#{@request.id}" %>');
-<% if @request.status == "ACCEPTED" %>
+<% if @request.status == "accepted" %>
   window.location.pathname = '/teams/<%= current_user.team.id %>/games/<%= current_user.team.games.last.id %>'
 <% end %>
