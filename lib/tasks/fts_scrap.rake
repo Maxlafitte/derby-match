@@ -6,6 +6,8 @@ namespace :scrapp_data do
   task scrapp: :environment do
     #scrap of all pages of leagues (same as travel teams)
     puts "Destroying all leagues..."
+    Game.destroy_all
+    Request.destroy_all
     Team.destroy_all
     League.destroy_all
     puts "Ready to create leagues!"
@@ -67,7 +69,6 @@ namespace :scrapp_data do
                 if row.match(/\d+/)[0] == lead_team_number
                   lead_team_ranking = element.children.children[0].text.delete('.')
                   lead_team = Team.new(name: lead_team_name, league_id: league.id, ranking: lead_team_ranking)
-                  p lead_team
                   if lead_team.valid?
                     puts "Team created #{lead_team.name}"
                     lead_team.save!
