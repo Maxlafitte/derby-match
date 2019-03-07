@@ -62,7 +62,7 @@ class RequestsController < ApplicationController
   end
 
   def update
-    if params[:commit] == "Accept"
+    if params[:commit] == "ACCEPT"
       @request.update(status: params[:status])
       @game = Game.new
       @game.request = @request
