@@ -34,7 +34,7 @@ dublin_logo_url = 'http://flattrackstats.com/sites/default/files/imagecache/prof
 
 puts 'Creating leagues'
 league_1 = League.create!(name: 'Bear City Roller Derby', city: "Berlin", country: "Germany", logo: bear_city_logo_url, latitude: 52.52437, longitude: 13.41053, website: 'bearcityrollerderby.com/')
-league_2 = League.create!(name: 'Lomme Roller Girls', city: "Lomme", country: "France", logo: lrg_logo_url, latitude: 48.8648586, longitude: 2.3798648, website: 'https://www.lommerollergirls.com/')
+league_2 = League.create!(name: 'Lomme Roller Girls', city: "Lomme", country: "France", logo: lrg_logo_url, latitude: 50.6395, longitude: 3.011510000000044, website: 'https://www.lommerollergirls.com/')
 league_3 = League.create!(name: 'Paris Roller Girls', city: "Paris", country: "France", logo: prg_logo_url, latitude: 48.8566101, longitude: 2.3514992, website: 'www.parisrollergirls.com/')
 league_4 = League.create!(name: 'Roller Skating Montreuil', city: "Montreuil", country: "France",logo: montreuil_logo_url, latitude: 48.8603, longitude: 2.4429999999999836,website: 'https://www.facebook.com/lesnastypecheresses/')
 league_5 = League.create!(name: 'Beastie Derby Girls', city: "Reims", country: "France", logo: beastie_logo_url, latitude: 49.2577886, longitude: 4.031926, website: 'https://www.facebook.com/BeastieDerbyGirls/')
@@ -66,7 +66,6 @@ user_7 = User.create!(email: 'all_stars@prg.com', password: 'azerty', derby_name
 user_8 = User.create!(email: 'quedalles@prg.com', password: 'azerty', derby_name: 'La terreur des Quedalles', remote_photo_url: avatar_1)
 user_9 = User.create!(email: 'sans_culottes@prg.com', password: 'azerty', derby_name: 'La terreur de Sans culottes')
 user_10 = User.create!(email: 'nasty@montreuil.com', password: 'azerty', derby_name: 'La terreur des Nasty pécheresses')
-user_11 = User.create!(email: 'rsm_b@montreuil.com', password: 'azerty', derby_name: 'La terreur des RSM B')
 user_12 = User.create!(email: 'beastie@beaste.com', password: 'azerty', derby_name: 'La terreur des Beasties')
 user_13 = User.create!(email: 'atlantic_breakers_a@cornwall.com', password: 'azerty', derby_name: 'La terreur des Atlanti Breakers A')
 user_14 = User.create!(email: 'atlantic_breakers_b@cornwall.com', password: 'azerty', derby_name: 'La terreur des Atlanti Breakers B')
