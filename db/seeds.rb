@@ -124,6 +124,7 @@ user_47 = User.create!(email: 'miss@bordeaux.com', password: 'azerty', derby_nam
 user_48 = User.create!(email: 'road@bordeaux.com', password: 'azerty', derby_name: 'Bordeaux Road Rager')
 user_49 = User.create!(email: 'lord@lutece.com', password: 'azerty', derby_name: 'Lutece Lord of the Rink')
 user_50 = User.create!(email: 'chopbuster@lutece.com', password: 'azerty', derby_name: 'Lutece Chopbuster')
+user_51 = User.create!(email: 'jay@lutece.com', password: 'azerty', derby_name: 'Lutece Blockingjay')
 
 puts "#{User.count} users created"
 
@@ -177,6 +178,9 @@ teams = Team.create!([
   { name: 'Black Shucks', ranking: 398, league: league_20, user: user_46, photo: norwich2_logo_url},
   { name: 'Les Petites Morts', ranking: 96, league: league_21, user: user_47, photo: bordeaux_logo_url},
   { name: 'Compagnie Cruelle', ranking: 232, league: league_21, user: user_48, photo: bordeaux2_logo_url},
+  { name: 'Les Encastreuses', ranking: 51, league: league_22, user: user_49, photo: lutece_logo_url},
+  { name: 'Les Ptites Frappes', ranking: 192, league: league_22, user: user_50, photo: lutece_logo_url},
+  { name: 'Les Canailles', ranking: 455, league: league_22, user: user_51, photo: lutece_logo_url},
 ])
 
 puts "#{Team.count} teams created"
