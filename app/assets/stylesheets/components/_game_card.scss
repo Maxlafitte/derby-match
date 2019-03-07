@@ -1,3 +1,53 @@
+@keyframes fromLeft { from { transform: translateX(-1000px); } to { transform: translateX(50px); } }
+
+.from-left {
+   /* make things invisible upon start */
+  transform: translateX(-1000px);
+  animation:fromLeft cubic-bezier(0,1.75,.42,1.17); /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+
+  animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+
+  animation-duration:0.4s;
+  animation-delay: 0.5s;
+}
+
+@keyframes fromRight { from { transform: translateX(1000px); } to { transform: translateX(-50px); } }
+
+.from-right {
+   /* make things invisible upon start */
+  transform: translateX(1000px);
+  animation:fromRight cubic-bezier(0,1.75,.42,1.17); /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+
+  animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+
+  animation-duration:0.4s;
+  animation-delay: 0.5s;
+}
+
+@keyframes fadeStar { from { opacity:0; } to { opacity:0.8; } }
+
+.fade-star {
+  opacity:0;
+  animation: fadeStar ease-in 1; /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+
+  animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+
+  animation-duration:0.3s;
+  animation-delay: 0.8s;
+}
+
+@keyframes scaleStar { 0% { transform:scale(1); } 50% { transform:scale(1.3); } 100% { transform:scale(1); } }
+
+.scale-star {
+  transform: scale(1);  /* make things invisible upon start */
+  animation: scaleStar ease-in-out 1; /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+
+    /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+
+  animation-duration:0.3s;
+  animation-delay: 0.8s;
+}
+
 .games-flex {
   justify-content: space-around;
 }
@@ -5,6 +55,7 @@
 .games-index {
   margin-top: 15px;
   height: 350px;
+  z-index: 30;
 }
 
 .game-container {
