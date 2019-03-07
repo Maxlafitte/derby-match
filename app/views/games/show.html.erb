@@ -1,16 +1,16 @@
 <div class="container">
-  <h1 class=text-center>Upcoming game</h1>
+  <h1 class="text-center white">Upcoming game</h1>
 
   <!-- request sent -->
   <% if @game.request.user == current_user %>
-    <p class="text-center">Location:
+    <p class="text-center white">Location:
     <% if @game.request.at_home == false %>
       <%= current_user.team.league.city %>, <%= current_user.team.league.country %> (home)
     <% else %>
       <%= @game.request.team.league.city %>, <%= @game.request.team.league.country %> (away)
     <% end %>
     </p>
-    <p class="text-center">
+    <p class="text-center white">
       Dates: from <%= @game.request.start_date.strftime('%a %d %b %Y') %> to <%= @game.request.end_date.strftime('%a %d %b %Y') %>
     </p>
 
@@ -65,14 +65,14 @@
 
   <!-- request received -->
   <% else %>
-    <p class="text-center">Location:
+    <p class="text-center white">Location:
     <% if @game.request.at_home == false %>
       <%= current_user.team.league.city %>, <%= current_user.team.league.country %> (away)
     <% else %>
       <%= @game.request.team.league.city %>, <%= @game.request.team.league.country %> (home)
     <% end %>
     </p>
-    <p class="text-center">
+    <p class="text-center white">
       Dates: from <%= @game.request.start_date.strftime('%a %d %b %Y') %> to <%= @game.request.end_date.strftime('%a %d %b %Y') %>
     </p>
 
