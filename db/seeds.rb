@@ -31,6 +31,14 @@ brussels_logo_url = 'http://flattrackstats.com/sites/default/files/imagecache/pr
 brussels_b_logo_url = 'http://flattrackstats.com/sites/default/files/imagecache/profile/logos/Atomium%20Kittens.jpg'
 turku_logo_url = 'http://flattrackstats.com/sites/default/files/imagecache/profile/logos/15895313_1186430301406834_1278590317176866953_n.jpg'
 dublin_logo_url = 'http://flattrackstats.com/sites/default/files/imagecache/profile/logos/26804382_1719333051462362_6492099404738294748_n.jpg'
+gent_logo_url = 'http://flattrackstats.com/sites/default/files/imagecache/profile/logos/15272144_1112881932173777_308482559445748074_o.png'
+strasbourg_logo_url = 'http://flattrackstats.com/sites/default/files/imagecache/profile/logos/strasbourg.png'
+thonon_logo_url = 'http://flattrackstats.com/sites/default/files/imagecache/profile/logos/26758202_1581180461966250_5353295191094500607_o.jpg'
+pigalle_logo_url = 'http://flattrackstats.com/sites/default/files/imagecache/profile/logos/lesgueuses.png'
+london_logo_url = 'http://flattrackstats.com/sites/default/files/imagecache/profile/logos/londonrollergirls.png'
+manchester_logo_url =
+
+
 
 puts 'Creating leagues'
 league_1 = League.create!(name: 'Bear City Roller Derby', city: "Berlin", country: "Germany", logo: bear_city_logo_url, latitude: 52.52437, longitude: 13.41053, website: 'bearcityrollerderby.com/')
@@ -41,12 +49,17 @@ league_5 = League.create!(name: 'Beastie Derby Girls', city: "Reims", country: "
 league_6 = League.create!(name: 'Cornwall Roller Derby', city: "Newquay", country: "UK", logo: cornwall_logo_url, latitude: 50.4156, longitude: -5.073190000000068, website: 'www.cornwallrollerderby.com/')
 league_7 = League.create!(name: 'Stockholm Roller Derby', city: "Stockholm", country: "Sweden", logo: stockholm_logo_url, latitude: 59.3251172, longitude: 18.0710935, website: 'rollerderby.se/')
 league_8 = League.create!(name: 'Liverpool Roller Birds', city: "Liverpool", country: "UK", logo: liverpool_logo_url, latitude: 53.4106, longitude: 2.9779399999999896, website: 'www.liverpoolrollerbirds.co.uk/')
-
 league_9 = League.create!(name: 'Amsterdam Roller Derby', city: "Amsterdam", country: "Netherlands", logo: amsterdam_logo_url, latitude: 48.8648405, longitude: 2.3798485, website: 'www.amsterdamrollerderby.nl')
 league_10 = League.create!(name: 'B.M.O. Roller Derby Girls', city: "Brest", country: "France", logo: brest_logo_url, latitude: 48.3905283, longitude: -4.4860088, website: 'https://www.facebook.com/BMO.RDG/')
 league_11 = League.create!(name: 'Brussels Derby Pixies', city: "Brussels", country: "Belgium", logo: brussels_logo_url, latitude: 50.8465573, longitude: 4.351697, website: 'www.facebook.com/BrusselsDerbyPixies')
 league_12 = League.create!(name: 'Dirty River Roller Derby', city: "Turku", country: "Finland", logo: turku_logo_url, latitude: 60.4518, longitude: 22.267100000000028, website: 'turkurollerderby.com')
 league_13 = League.create!(name: 'Dublin Roller Derby', city: "Dublin", country: "Ireland", logo: dublin_logo_url, latitude: 53.3498, longitude: -6.260269999999991, website: 'www.dublinrollerderby.com')
+league_14 = League.create!(name: 'GO-GO Gent Roller Derby', city: "Gent", country: "Belgium", logo: gent_logo_url, latitude: 51.0538, longitude: 3.7250099999999975, website: 'www.gogogent.be')
+league_15 = League.create!(name: 'Hells Ass Derby Girls', city: "Strasbourg", country: "France", logo: strasbourg_logo_url, latitude: 48.5733, longitude: 7.752280000000042, website: 'hellsassderbygirls.com')
+league_16 = League.create!(name: 'Les Biches Roller Derby', city: "Thonon-les-Bains", country: "France", logo: thonon_logo_url , latitude: 46.3705, longitude: 6.479820000000018, website: 'https://www.facebook.com/taxiderbiches')
+league_17 = League.create!(name: 'Les Gueuses de Pigalle', city: "Paris", country: "France", logo: pigalle_logo_url, latitude: 48.8566101, longitude: 2.3514992, website: 'https://www.facebook.com/pages/Les-Gueuses-de-Pigalle/119934614845676?f')
+league_18 = League.create!(name: 'London Rollergirls', city: "London", country: "UK", logo: london_logo_url, latitude: 51.4893335, longitude: -0.1440551, website: 'www.londonrollergirls.com')
+league_19 = League.create!(name: 'Manchester Roller Derby', city: "Manchester", country: "UK", logo: manchester_logo_url, latitude: 51.4893335, longitude: -0.1440551, website: 'www.londonrollergirls.com')
 
 
 puts 'Leagues created'
@@ -84,10 +97,20 @@ user_25 = User.create!(email: 'max@brussels.com', password: 'azerty', derby_name
 user_26 = User.create!(email: 'indominous@brussels.com', password: 'azerty', derby_name: 'Brussels Indominous')
 user_27 = User.create!(email: 'mascara@turku.com', password: 'azerty', derby_name: 'Turku Bleeding Mascara')
 user_28 = User.create!(email: 'devil@turku.com', password: 'azerty', derby_name: 'Turku Derby Devil')
-
 user_29 = User.create!(email: 'nine@dublin.com', password: 'azerty', derby_name: 'Dublin Nine Inch Nails')
 user_30 = User.create!(email: 'spandex@dublin.com', password: 'azerty', derby_name: 'Dublin Spandex')
 user_31 = User.create!(email: 'big@dublin.com', password: 'azerty', derby_name: 'Dublin Big Rig')
+user_32 = User.create!(email: 'banshee@dublin.com', password: 'azerty', derby_name: 'Gent Banshee')
+user_33 = User.create!(email: 'cherry@dublin.com', password: 'azerty', derby_name: 'Gent Cherry Choker')
+user_34 = User.create!(email: 'deathrow@strasbourg.com', password: 'azerty', derby_name: 'Strasbourg Deathrow Roller')
+user_35 = User.create!(email: 'biohazard@strasbourg.com', password: 'azerty', derby_name: 'Strasbourg Biohazard')
+user_36 = User.create!(email: 'contagious@thonon.com', password: 'azerty', derby_name: 'Thonon Contagious')
+user_37 = User.create!(email: 'shock@thonon.com', password: 'azerty', derby_name: 'Thonon Shock')
+user_38 = User.create!(email: 'sabotage@paris.com', password: 'azerty', derby_name: 'Pigalle Sabotage')
+user_39 = User.create!(email: 'bitchy@paris.com', password: 'azerty', derby_name: 'Pigalle Bitchy Butcher')
+user_40 = User.create!(email: 'pepper@London.com', password: 'azerty', derby_name: 'London Pepper Spray')
+user_41 = User.create!(email: 'rita@London.com', password: 'azerty', derby_name: 'London Rita Skater')
+user_42 = User.create!(email: 'mummy@London.com', password: 'azerty', derby_name: 'London MadMummy')
 
 
 puts "#{User.count} users created"
@@ -125,6 +148,17 @@ teams = Team.create!([
   { name: 'Dublin Roller Derby A', ranking: 12, league: league_13, user: user_29, photo: dublin_logo_url},
   { name: 'Dublin Roller Derby B', ranking: 79, league: league_13, user: user_30, photo: dublin_logo_url},
   { name: 'Dublin Roller Derby C', ranking: 219, league: league_13, user: user_31, photo: dublin_logo_url},
+  { name: 'All stars', ranking: 65, league: league_14, user: user_32, photo: gent_logo_url},
+  { name: 'The Cubs', ranking: 166, league: league_14, user: user_33, photo: gent_logo_url},
+  { name: 'All stars', ranking: 127, league: league_15, user: user_34, photo: strasbourg_logo_url},
+  { name: 'The Team B East', ranking: 471, league: league_15, user: user_35, photo: strasbourg_logo_url},
+  { name: 'Les Biches Deluxe', ranking: 93, league: league_16, user: user_36, photo: thonon_logo_url},
+  { name: 'Les Taxider Biches', ranking: 355, league: league_16, user: user_37, photo: thonon_logo_url},
+  { name: 'Les Sacrées sans Coeur', ranking: 243, league: league_17, user: user_37, photo: pigalle_logo_url},
+  { name: 'Les Buttées de Montmartre', ranking: 417, league: league_17, user: user_38, photo: pigalle_logo_url},
+  { name: 'London Brawling', ranking: 1, league: league_18, user: user_39, photo: london_logo_url},
+  { name: 'London Batter C Power', ranking: 42, league: league_18, user: user_40, photo: london_logo_url},
+  { name: 'London Brawl Saints', ranking: 16, league: league_18, user: user_41, photo: london_logo_url},
 ])
 
 puts "#{Team.count} teams created"
