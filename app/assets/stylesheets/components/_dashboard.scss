@@ -72,6 +72,14 @@ body {
   align-items: center;
 }
 
+.card-link {
+  text-decoration:none;
+  color: #4f4f4f;
+  &:hover {
+  color: #4f4f4f;
+  }
+}
+
 .pink-ranking {
   color: $my-green;
   font-weight: bold;
