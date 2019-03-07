@@ -14,6 +14,7 @@
 }
 .my-btn:hover {
   background-color: $my-green;
+  text-decoration: none;
   opacity: 1;
   transition: background 0.3s ease;
   color: white;
@@ -22,11 +23,10 @@
 
 .cancel-decline {
   background-color: $my-green;
-  opacity: 1;
-
+  opacity: 0.4;
   &:hover {
     background-color: $my-green;
-    opacity: 0.9;
+    opacity: 0.3;
     background-image: radial-gradient(circle, #02c39a, #00c48a, #00c478, #00c462, #02c349);
   }
 }
@@ -42,8 +42,5 @@
     opacity: 0.9;
   }
 }
-
-
-// $my-pink;
 
 

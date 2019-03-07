@@ -25,15 +25,15 @@
 }
 
 .navbar-light .navbar-nav .active > .nav-link {
-  color: #00e591;
+  color: $my-green;
 }
 
 .navbar-light .navbar-nav .nav-link {
   margin-right: 25px;
   color: white;
-
   &:hover {
-    color: #00e591;
+    color: $my-green;
+    opacity: 0.9;
   }
 }
 

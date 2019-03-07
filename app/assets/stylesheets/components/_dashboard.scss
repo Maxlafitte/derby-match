@@ -20,7 +20,7 @@ body {
 .team-dashboard {
   background-color: #F5F5F5;
   margin-bottom: 8px;
-  border-radius: 4px;
+  border-radius: 5px;
 }
 .team-sample {
   display: flex;
@@ -29,15 +29,16 @@ body {
 }
 .sample-dashboard-center {
   background-color: white;
-  box-shadow: 5px 4px 15px rgba(225,224,221,1);
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   padding: 12px 0px;
+  border-radius: 5px;
 }
 .card-dashboard {
     display: flex;
     justify-content: space-between;
     flex-direction: row;
     align-items: center;
-    box-shadow: 0 0 15px rgba(235, 235, 235, 0.2);
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
     padding: 8px;
 }
 .team-name-location p {
@@ -110,14 +111,14 @@ body {
 }
 .upcoming-games-dashboard {
   background-color: white;
-  border-radius: 4px;
+  border-radius: 5px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   margin-bottom: 11px;
   height: 56px;
 }
 .next-game-detail {
   background-color: white;
-  border-radius: 4px;
+  border-radius: 5px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   padding: 10px;
   p {

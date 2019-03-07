@@ -1,26 +1,26 @@
 <div class="container games-index-container">
-  <h2 class="text-center games-index-title">Upcoming Games</h2>
+  <h2 class="games-index-title white">Upcoming Games</h2>
     <div class="row">
     <% @games.each do |game| %>
       <div class="request-details">
-          <div class="photo">
-            <%= cl_image_tag game.request.user.team.photo, class: "avatar-large"%>
-          </div>
-            <p>Rival Team: <%=  game.request.user.team.name %> <br> League: <%= game.request.user.team.league.name %> <br>
-            Ranking: <%= game.request.user.team.ranking %></p>
-            <p>From <%= game.request.start_date %><br>
-            To <%= game.request.end_date %></p>
-            <p>Location: <br>
-            <% if game.request.at_home == false %>
-              <%= current_user.team.league.city %> - <%= current_user.team.league.country %>
-            <% else %>
-              <%= game.request.user.team.league.city %> - <%= game.request.user.team.league.country %>
-            <% end %>
-            </p>
-
-        <div class="link">
-            <%= link_to "Get details", team_game_path(@games, game), class: "my-btn games-index-btn" %>
+        <div class="photo">
+          <%= cl_image_tag game.request.user.team.photo, class: "avatar-large"%>
         </div>
+          <p>Rival Team: <%=  game.request.user.team.name %> <br> League: <%= game.request.user.team.league.name %> <br>
+          Ranking: <%= game.request.user.team.ranking %></p>
+          <p>From <%= game.request.start_date %><br>
+          To <%= game.request.end_date %></p>
+          <p>Location: <br>
+          <% if game.request.at_home == false %>
+            <%= current_user.team.league.city %> - <%= current_user.team.league.country %>
+          <% else %>
+            <%= game.request.user.team.league.city %> - <%= game.request.user.team.league.country %>
+          <% end %>
+          </p>
+
+      <div class="link">
+          <%= link_to "GET DETAILS", team_game_path(@games, game), class: "my-btn" %>
+      </div>
       </div>
   <% end %>
   </div>
