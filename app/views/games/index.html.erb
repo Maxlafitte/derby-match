@@ -7,7 +7,7 @@
           <%= cl_image_tag game.request.user.team.photo, class: "avatar-large"%>
         </div>
           <p>Rival Team: <%=  game.request.user.team.name %> <br> League: <%= game.request.user.team.league.name %> <br>
-          Ranking: <%= game.request.user.team.ranking %></p>
+          #<%= game.request.user.team.ranking %></p>
           <p>From <%= game.request.start_date %><br>
           To <%= game.request.end_date %></p>
           <p>Location: <br>

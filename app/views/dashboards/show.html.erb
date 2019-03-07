@@ -9,7 +9,7 @@
             <p><%= current_user.team.name %></p>
           </div>
           <div class="star-ranking">
-            <p class="ranking"><%= current_user.team.ranking %></p>
+            <p class="ranking">#<%= current_user.team.ranking %></p>
           </div>
         </div>
         <div class="card-img logo-img">
@@ -40,7 +40,7 @@
                   </div>
                   </div>
                 <div class="suggested-team-ranking">
-                  <p class="teams-index-ranking text-center">Ranking: <span class="pink-ranking"><%= @team_one.ranking %></span></p>
+                  <p class="teams-index-ranking text-center"><span class="pink-ranking">#<%= @team_one.ranking %></span></p>
                 </div>
               </div>
             </div>
@@ -59,7 +59,7 @@
                 </div>
 
                 <div class="suggested-team-ranking">
-                  <p class="teams-index-ranking text-center">Ranking: <span class="pink-ranking"><%= @team_two.ranking %></span></p>
+                  <p class="teams-index-ranking text-center"><span class="pink-ranking">#<%= @team_two.ranking %></span></p>
                 </div>
               </div>
             </div>
@@ -79,7 +79,7 @@
                 </div>
 
                 <div class="suggested-team-ranking">
-                  <p class="teams-index-ranking text-center">Ranking: <span class="pink-ranking"><%= @team_three.ranking %></span></p>
+                  <p class="teams-index-ranking text-center"><span class="pink-ranking">#<%= @team_three.ranking %></span></p>
                 </div>
               </div>
             </div>
