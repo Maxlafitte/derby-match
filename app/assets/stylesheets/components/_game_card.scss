@@ -1,5 +1,5 @@
 .games-flex {
-  justify-content: center;
+  justify-content: space-around;
 }
 
 .games-index {
@@ -22,5 +22,25 @@
   justify-content: center;
 }
 
+.no-background {
+  background-color: transparent;
+  box-shadow: none;
+  border: none;
+}
 
+.star {
+  position:relative;
+  text-align: center;
+}
 
+.centered {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.image {
+  opacity: 0.8;
+  width: 380px;
+}
