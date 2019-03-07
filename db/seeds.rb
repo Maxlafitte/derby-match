@@ -74,6 +74,9 @@ puts 'Creating users'
 
 avatar_1 = "https://res.cloudinary.com/dq5pqhr4o/image/upload/v1551450831/Derby\%20Match/avatar2.jpg"
 avatar_2 = "https://res.cloudinary.com/dq5pqhr4o/image/upload/v1551450831/Derby\%20Match/avatar1.jpg"
+nutcracker ="https://res.cloudinary.com/dq5pqhr4o/image/upload/v1551967570/Derby\%20Match/nutcracker.png"
+missbordeaux = "https://res.cloudinary.com/dq5pqhr4o/image/upload/v1551966546/Derby\%20Match/missbordeaux.png"
+
 
 user_1 = User.create!(email: 'bomb@bear.com', password: 'azerty', derby_name: 'Berlin PowerTower')
 user_2 = User.create!(email: 'wallbreakers@bear.com', password: 'azerty', derby_name: 'Wallbreakers Big Red')
@@ -120,7 +123,7 @@ user_43 = User.create!(email: 'zombie@manchester.com', password: 'azerty', derby
 user_44 = User.create!(email: 'smasher@manchester.com', password: 'azerty', derby_name: 'Manchester Pumpkin Smasher')
 user_45 = User.create!(email: 'indominous@norwich.com', password: 'azerty', derby_name: 'Norwich Indominous')
 user_46 = User.create!(email: 'big@norwich.com', password: 'azerty', derby_name: 'Norwich Big Rig')
-user_47 = User.create!(email: 'miss@bordeaux.com', password: 'azerty', derby_name: 'Bordeaux Miss Fortune')
+user_47 = User.create!(email: 'miss@bordeaux.com', password: 'azerty', derby_name: 'Bordeaux Miss Fortune', remote_photo_url: missbordeaux)
 user_48 = User.create!(email: 'road@bordeaux.com', password: 'azerty', derby_name: 'Bordeaux Road Rager')
 user_49 = User.create!(email: 'lord@lutece.com', password: 'azerty', derby_name: 'Lutece Lord of the Rink')
 user_50 = User.create!(email: 'chopbuster@lutece.com', password: 'azerty', derby_name: 'Lutece Chopbuster')
