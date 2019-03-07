@@ -9,6 +9,7 @@
         <p>Find a <span class="green-text">team</span>, play a game</p>
       </div>
       <div class="form-container">
+        <div class="bg-white">
         <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <h2 class="text-center">Log in</h2>
           <div class="form-inputs">
@@ -24,10 +25,13 @@
             <%= f.input :remember_me, :as => :hidden, :value => true %>
           </div>
           <div class="form-actions">
-            <%= f.button :submit, "Log in", class: "my-btn" %>
+            <%= f.button :submit, "LOG IN", class: "my-btn" %>
           </div>
+        </div>
         <% end %>
-        <%= render "devise/shared/forgottenpw" %>
+        <div class="bg-transparent">
+          <%= render "devise/shared/forgottenpw" %>
+        </div>
       </div>
     </div>
   </div>
