@@ -63,8 +63,8 @@ league_16 = League.create!(name: 'Les Biches Roller Derby', city: "Thonon-les-Ba
 league_17 = League.create!(name: 'Les Gueuses de Pigalle', city: "Paris", country: "France", logo: pigalle_logo_url, latitude: 48.8566101, longitude: 2.3514992, website: 'https://www.facebook.com/pages/Les-Gueuses-de-Pigalle/119934614845676?f')
 league_18 = League.create!(name: 'London Rollergirls', city: "London", country: "UK", logo: london_logo_url, latitude: 51.4893335, longitude: -0.1440551, website: 'www.londonrollergirls.com')
 league_19 = League.create!(name: 'Manchester Roller Derby', city: "Manchester", country: "UK", logo: manchester_logo_url, latitude: 53.4791301, longitude: -2.2441009, website: 'manchesterrollerderby.com/teams/checkerbroads')
-league_20 = League.create!(name: 'Norfolk Roller Derby', city: "Norwich", country: "UK", logo: norwich_logo_url, latitude: 44.841225, longitude: 1.29227, website: 'www.norfolkbrawds.com')
-league_21 = League.create!(name: 'Roller Derby Bordeaux', city: "Bordeaux", country: "France", logo: bordeaux_logo_url, latitude: 52.628606, longitude: -0.5800364, website: 'rollerderbybordeaux.fr')
+league_20 = League.create!(name: 'Norfolk Roller Derby', city: "Norwich", country: "UK", logo: norwich_logo_url, latitude: 52.628606, longitude: 1.29227, website: 'www.norfolkbrawds.com')
+league_21 = League.create!(name: 'Roller Derby Bordeaux', city: "Bordeaux", country: "France", logo: bordeaux_logo_url, latitude: 44.841225, longitude: -0.5800364, website: 'rollerderbybordeaux.fr')
 league_22 = League.create!(name: 'Lutece Destroyeuses Roller Derby', city: "Paris", country: "France", logo: lutece_logo_url, latitude: 48.8566101, longitude: 2.3514992, website: 'lutecedestroyeuses.com')
 
 
@@ -82,7 +82,7 @@ user_4 = User.create!(email: 'bunnies@lrg.com', password: 'azerty', derby_name: 
 user_5 = User.create!(email: 'batardes@lrg.com', password: 'azerty', derby_name: 'Jelly Roll')
 user_6 = User.create!(email: 'tetons@lrg.com', password: 'azerty', derby_name: 'Assaulted Peanut')
 user_7 = User.create!(email: 'all_stars@prg.com', password: 'azerty', derby_name: 'CrazySkates')
-user_8 = User.create!(email: 'quedalles@prg.com', password: 'azerty', derby_name: 'Intoxiskate', remote_photo_url: avatar_1)
+user_8 = User.create!(email: 'quedalles@prg.com', password: 'azerty', derby_name: 'Nutcracker', remote_photo_url: nutcracker)
 user_9 = User.create!(email: 'sans_culottes@prg.com', password: 'azerty', derby_name: 'Bambi Hunter')
 user_10 = User.create!(email: 'nasty@montreuil.com', password: 'azerty', derby_name: 'Rusty Razor Blades')
 user_12 = User.create!(email: 'beastie@beaste.com', password: 'azerty', derby_name: 'Blockingjay')
