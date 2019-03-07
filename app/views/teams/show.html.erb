@@ -4,7 +4,7 @@
       <h2 class="team-show-title"><%= @team.league.name.upcase %></h2>
       <p><%= @team.name.upcase %></p>
       <p><%= cl_image_tag(@team.photo, height: 250, width: 250,crop: :fill) %></p>
-      <p class="ranking"><%= @team.ranking %></p>
+      <p class="ranking">#<%= @team.ranking %></p>
     </div>
 
     <div class="card-team-infos">
