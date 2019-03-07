@@ -1,7 +1,7 @@
 <!-- if it's a request i've sent -->
 <div class="container">
   <% if @request.user == current_user %>
-    <h2 class="text-center title-request">Requests to <%= @team.name.upcase %></h2>
+    <h2 class="text-center title-request white">Requests to <%= @team.name.upcase %></h2>
     <div class="grid-request">
       <div class="card">
         <div class="team-img">
