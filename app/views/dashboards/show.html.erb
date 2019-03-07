@@ -4,19 +4,19 @@
     <div class="col-md-4">
       <div class="card-category">
         <div class="team-name-ranking">
-          <div class="team-name">
-            <p><%= current_user.team.league.name.upcase %></p>
+          <div class="team-name text-center">
+            <h2><%= current_user.team.league.name.upcase %></h2>
             <p><%= current_user.team.name %></p>
           </div>
           <div class="star-ranking">
-            <p class="ranking"><%= current_user.team.ranking %></p>
+            </p>
           </div>
         </div>
         <div class="card-img logo-img">
           <p><%= cl_image_tag(current_user.team.photo, height: 250, width: 250,crop: :fill, class: 'logo') %></p>
         </div>
         <div class="team-content text-center">
-          <p><%= current_user.team.league.city %>, <%= current_user.team.league.country %></p>
+          <p class="ranking">#<%= current_user.team.ranking %>
         </div>
       </div>
     </div>
@@ -40,7 +40,7 @@
                   </div>
                   </div>
                 <div class="suggested-team-ranking">
-                  <p class="teams-index-ranking text-center">Ranking: <span class="pink-ranking"><%= @team_one.ranking %></span></p>
+                  <p class="teams-index-ranking text-center"><span class="pink-ranking">#<%= @team_one.ranking %></span></p>
                 </div>
               </div>
             </div>
@@ -59,7 +59,7 @@
                 </div>
 
                 <div class="suggested-team-ranking">
-                  <p class="teams-index-ranking text-center">Ranking: <span class="pink-ranking"><%= @team_two.ranking %></span></p>
+                  <p class="teams-index-ranking text-center"><span class="pink-ranking">#<%= @team_two.ranking %></span></p>
                 </div>
               </div>
             </div>
@@ -79,7 +79,7 @@
                 </div>
 
                 <div class="suggested-team-ranking">
-                  <p class="teams-index-ranking text-center">Ranking: <span class="pink-ranking"><%= @team_three.ranking %></span></p>
+                  <p class="teams-index-ranking text-center"><span class="pink-ranking">#<%= @team_three.ranking %></span></p>
                 </div>
               </div>
             </div>
