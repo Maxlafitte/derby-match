@@ -187,4 +187,3 @@ teams = Team.create!([
 ])
 
 puts "#{Team.count} teams created"
-
