@@ -3,13 +3,6 @@
 
   <!-- request sent -->
   <% if @game.request.user == current_user %>
-    <p class="text-center">Location:
-    <% if @game.request.at_home == false %>
-      <%= current_user.team.league.city %>, <%= current_user.team.league.country %> (home)
-    <% else %>
-      <%= @game.request.team.league.city %>, <%= @game.request.team.league.country %> (away)
-    <% end %>
-    </p>
     <p class="text-center"><%= @game.request.start_date.strftime('%a %d %b %Y') %></p>
     <div class="row games-flex">
       <div class="col-md-3">
@@ -26,6 +19,27 @@
               <p class="teams-index-ranking text-center">
                 Ranking: <%= @game.request.team.ranking %>
               </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card games-index no-background">
+          <div class="team-index-card">
+            <div class="teams-index-name text-center">
+              <div class="star">
+                <%= image_tag 'green_star.png', class: 'image' %>
+                <div class= "centered">
+                  <% if @game.request.at_home == false %>
+                    <h2><%= current_user.team.league.city.upcase %></h2>
+                    <h2><%= current_user.team.league.country.upcase %></h2>
+                  <% else %>
+                    <h2><%= current_user.team.league.city.upcase %></h2>
+                    <h2><%= current_user.team.league.country.upcase %></h2>
+                  <% end %>
+                  <h2><%= @game.request.start_date.strftime('%a %d %b %Y') %></h2>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -65,14 +79,6 @@
 
   <!-- request received -->
   <% else %>
-    <p class="text-center">Location:
-    <% if @game.request.at_home == false %>
-      <%= current_user.team.league.city %>, <%= current_user.team.league.country %> (away)
-    <% else %>
-      <%= @game.request.team.league.city %>, <%= @game.request.team.league.country %> (home)
-    <% end %>
-    </p>
-    <p class="text-center"><%= @game.request.start_date.strftime('%a %d %b %Y') %></p>
 
     <div class="row games-flex">
       <div class="col-md-3">
@@ -89,6 +95,27 @@
               <p class="teams-index-ranking text-center">
                 Ranking: <%= @team.ranking %>
               </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card games-index no-background">
+          <div class="team-index-card">
+            <div class="teams-index-name text-center">
+              <div class="star">
+                <%= image_tag 'green_star.png', class: 'image' %>
+                <div class= "centered">
+                  <% if @game.request.at_home == false %>
+                    <h2><%= current_user.team.league.city.upcase %></h2>
+                    <h2><%= current_user.team.league.country.upcase %></h2>
+                  <% else %>
+                    <h2><%= current_user.team.league.city.upcase %></h2>
+                    <h2><%= current_user.team.league.country.upcase %></h2>
+                  <% end %>
+                  <h2><%= @game.request.start_date.strftime('%a %d %b %Y') %></h2>
+                </div>
+              </div>
             </div>
           </div>
         </div>
