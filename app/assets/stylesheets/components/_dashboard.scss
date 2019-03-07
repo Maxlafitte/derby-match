@@ -20,7 +20,7 @@ body {
 .team-dashboard {
   background-color: #F5F5F5;
   margin-bottom: 8px;
-  border-radius: 4px;
+  border-radius: 5px;
 }
 .team-sample {
   display: flex;
@@ -110,15 +110,15 @@ body {
 }
 .upcoming-games-dashboard {
   background-color: white;
-  border-radius: 4px;
-  box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   margin-bottom: 11px;
   height: 56px;
 }
 .next-game-detail {
   background-color: white;
-  border-radius: 4px;
-  box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   padding: 10px;
   p {
     margin-left: 20px;

@@ -16,7 +16,7 @@
   <% if current_user.team.league == @team.league %>
     <div class="contact-from your-team">
       <p>This team is part of your league, try inviting another team!</p>
-      <%= link_to "Find a team", teams_path, class: "my-btn" %>
+      <%= link_to "FIND A TEAM", teams_path, class: "my-btn" %>
     </div>
   <% elsif current_user != @team.user && @team.user.present? %>
     <div class="contact-from">
@@ -33,7 +33,7 @@
   <% elsif current_user = @team.user %>
     <div class="contact-from your-team">
       <p>This is your own team, try inviting another team!</p>
-      <%= link_to "Find a team", teams_path, class: "my-btn" %>
+      <%= link_to "FIND A TEAM", teams_path, class: "my-btn" %>
     </div>
   <% else %>
       <p class="contact-from">
