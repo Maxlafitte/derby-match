@@ -1,6 +1,6 @@
 .grid {
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;
   margin-top: 80px;
   grid-gap: 30px;
@@ -10,14 +10,55 @@
   grid-row: 1 / span 4;
   grid-column: 1 / span 1;
 }
-
-.contact-from {
-  grid-row:  1 / span 1;
-  grid-column: 2 / span 1;
+.btn-padding {
+  padding: 0px 0px;
 }
 
+// .contact-from {
+//   grid-row:  1 / span 1;
+//   grid-column: 2 / span 1;
+// }
+.date-request {
+  label {
+    display: none;
+  }
+}
+.your-own-league {
+  height: 100px;
+  p {
+    margin-top: 15px;
+  }
+}
+textarea.form-control {
+  height: 262px;
+  width: 272px;
+}
 .requesting-form {
-  grid-row:  2 / span 3;
-  grid-column: 2 / span 1;
+  grid-row:  1 / span 4;
+  grid-column: 2 / span 2;
   border-radius: 5px;
 }
+.calendar-radio {
+  display: flex;
+  justify-content: space-evenly;
+
+}
+#new_request {
+  justify-content: center;
+  width: 100%
+}
+.team-show-title {
+  margin-top: 80px;
+}
+.message-field {
+  height: 300px;
+  // margin-right: 45px;
+  margin-top: 18px;
+}
+.checkboxes {
+  margin-top: 25px;
+  display: flex;
+  margin-left: 65px;
+  text-align: left;
+}
+
