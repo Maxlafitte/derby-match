@@ -8,7 +8,7 @@
       <p>#<%= request.team.ranking %></p>
     </div>
     <div class="location">
-      <p>
+      <p style="padding-right: 71px;"">
         <% if request.at_home == false %>
           <i class="fas fa-plane"></i> <%= request.user.team.league.city %>, <%= request.user.team.league.country %>
         <% else %>
@@ -17,7 +17,7 @@
       </p>
     </div>
     <div class="status">
-      <p>Status: <br><%= request.status %> by you </p>
+      <p><%= request.status.capitalize %> by you </p>
     </div>
   </div>
 </div>
