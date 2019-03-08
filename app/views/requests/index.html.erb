@@ -18,7 +18,7 @@
   <!-- cancelled & declined requests -->
   <div class="old-requests">
     <% if @declined_requests_sent.present? || @declined_requests_received.present? || @cancelled_requests_sent.present? || @cancelled_requests_received.present? %>
-      <h3 class="text-center">Cancelled and declined requests</h3>
+      <h3 class="text-center margin">Cancelled and declined requests</h3>
       <% @declined_requests_received.each do |request| %>
         <%= render 'old-received', request: request %>
       <% end %>
