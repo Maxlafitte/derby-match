@@ -61,6 +61,10 @@
 
 .team-index-card {
   margin-bottom: 15px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
   .teams-index-name {
     font-size: 18px;
     font-weight: bold;
@@ -70,7 +74,10 @@
     color: $my-gray;
   }
   .teams-index-ranking {
-    font-size: 20px;
+    font-size: 30px;
+    color: $my-green;
+    font-weight: bold;
+    padding-top: 7px;
   }
 }
 
