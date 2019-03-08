@@ -15,6 +15,10 @@ if (document.getElementById("request-sent")) {
   });
 }
 
+import {activeLabels} from '../plugins/active-label';
+activeLabels();
+
+
 $(".alert" ).delay(2000).fadeOut(1000);
 $(".alert-success" ).delay(2000).fadeOut(1000);
 $(".alert-danger" ).delay(2000).fadeOut(1000);

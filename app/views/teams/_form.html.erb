@@ -12,7 +12,25 @@
         </div>
     </div>
     <div class="checkboxes">
-        <%= f.input :at_home, label: 'LOCATION', as: :radio_buttons, collection: [['0', "Home: #{current_user.team.league.city}, #{current_user.team.league.country}"], ['1', "Away: #{@team.league.city}, #{@team.league.country}" ]], label_method: :second, value_method: :first %>
+        <%#= f.input :at_home, label: 'LOCATION', as: :radio_buttons, collection: [['0', "<i class='fas fa-home'></i>.html_safe #{current_user.team.league.city}, #{current_user.team.league.country}"], ['1', "Away: #{@team.league.city}, #{@team.league.country}" ]], label_method: :second, value_method: :first %>
+        <fieldset class="form-group radio_buttons optional request_at_home">
+          <legend class="col-form-label pt-0">LOCATION</legend>
+          <input type="hidden" name="request[at_home]" value="">
+          <div class="form-check p-0">
+            <input class="form-check-input radio_buttons optional" type="radio" value="0" name="request[at_home]" id="request_at_home_0">
+            <label class="collection_radio_buttons" for="request_at_home_0">
+              <i class='fas fa-home'></i>
+              <%= "#{current_user.team.league.city}, #{current_user.team.league.country}" %>
+            </label>
+          </div>
+          <div class="form-check p-0">
+            <input class="form-check-input radio_buttons optional" type="radio" value="1" name="request[at_home]" id="request_at_home_1">
+            <label class="collection_radio_buttons" for="request_at_home_1">
+              <i class="fas fa-plane"></i>
+              <%= "#{@team.league.city}, #{@team.league.country}"  %>
+            </label>
+          </div>
+        </fieldset>
     </div>
     <% end %>
 </div>

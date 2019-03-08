@@ -107,6 +107,6 @@ class RequestsController < ApplicationController
   end
 
   def request_message_params
-    params.require(:request).require(:message).permit(:content)
+    params.require(:request).dig(:message).permit(:content)
   end
 end
