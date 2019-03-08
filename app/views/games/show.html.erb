@@ -15,7 +15,7 @@
               <%= link_to team_path(@game.request.team) do %>
                 <%= cl_image_tag @game.request.team.photo, class: "teams-index-photo" %>
               <% end %>
-              <p class="teams-index-ranking text-center">
+              <p class="teams-index-ranking text-center ranking">
                 #<%= @game.request.team.ranking %>
               </p>
             </div>
@@ -56,7 +56,7 @@
               <%= link_to team_path(@team) do %>
                 <%= cl_image_tag @team.photo, class: "teams-index-photo" %>
               <% end %>
-              <p class="teams-index-ranking text-center">
+              <p class="teams-index-ranking text-center ranking">
                 #<%= @team.ranking %>
               </p>
             </div>
@@ -92,7 +92,7 @@
               <%= link_to team_path(@team) do %>
                 <%= cl_image_tag @team.photo, class: "teams-index-photo" %>
               <% end %>
-              <p class="teams-index-ranking text-center">
+              <p class="teams-index-ranking text-center ranking">
                 #<%= @team.ranking %>
               </p>
             </div>
@@ -133,7 +133,7 @@
               <%= link_to team_path(@game.request.user.team) do %>
                 <%= cl_image_tag @game.request.user.team.photo, class: "teams-index-photo" %>
               <% end %>
-              <p class="teams-index-ranking text-center">
+              <p class="teams-index-ranking text-center ranking">
                 #<%= @game.request.user.team.ranking %>
               </p>
             </div>
