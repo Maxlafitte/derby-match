@@ -3,7 +3,7 @@
   <!-- pending requests: -->
   <% if @pending_requests_received.present? || @pending_requests_sent.present? %>
     <div class="pending-requests">
-      <h3 class="text-center">Pending requests</h3>
+      <h3 class="text-center white">Pending requests</h3>
       <% @pending_requests_received.each do |request| %>
         <%= render 'received', request: request %>
       <% end %>
