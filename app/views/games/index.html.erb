@@ -6,15 +6,15 @@
         <div class="photo">
           <%= cl_image_tag game.request.user.team.photo, class: "avatar-large"%>
         </div>
-          <p>Rival Team: <%=  game.request.user.team.name %> <br> League: <%= game.request.user.team.league.name %> <br>
-          #<%= game.request.user.team.ranking %></p>
-          <p>From <%= game.request.start_date %><br>
-          To <%= game.request.end_date %></p>
-          <p>Location: <br>
+          <p><span class="vtks"><%= game.request.user.team.league.name %></span>  <br>
+            <%= game.request.user.team.name %>
+            (#<%= game.request.user.team.ranking %>)</p>
+          <p><i class="far fa-calendar-alt"></i> <%= game.request.start_date.strftime('%a %d %b %Y') %></p>
+          <p>
           <% if game.request.at_home == false %>
-            <%= current_user.team.league.city %> - <%= current_user.team.league.country %>
+             <i class="fas fa-plane"></i> <%= current_user.team.league.city %> - <%= current_user.team.league.country %>
           <% else %>
-            <%= game.request.user.team.league.city %> - <%= game.request.user.team.league.country %>
+            <i class="fas fa-home"></i> <%= game.request.user.team.league.city %> - <%= game.request.user.team.league.country %>
           <% end %>
           </p>
 
