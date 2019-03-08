@@ -10,18 +10,16 @@
         <div class="team-infos">
           <p>League: <%= @team.league.name %></p>
           <p>#<%= @team.ranking %></p>
-          <p>Location: <%= @team.league.city %>, <%= @team.league.country %></p>
-          <p>Contact: <%= @team.user.derby_name %></p>
+          <p><i class="far fa-user"></i> <%= @team.user.derby_name %></p>
         </div>
 
         <div class="request-infos">
-          <p><%= @request.start_date.strftime('%a %d %b %Y') %></p>
+          <p><i class="far fa-calendar-alt"></i> <%= @request.start_date.strftime('%a %d %b %Y') %></p>
           <p>
-            Location:
             <% if @request.at_home == true %>
-              <%= current_user.team.league.city %>, <%= current_user.team.league.country %> (home)
+              <i class="fas fa-home"></i> <%= current_user.team.league.city %>, <%= current_user.team.league.country %>
             <% else %>
-              <%= @team.league.city %>, <%= @team.league.country %> (away)
+              <i class="fas fa-plane"></i> <%= @team.league.city %>, <%= @team.league.country %>
             <% end %>
           </p>
         </div>
@@ -59,18 +57,17 @@
         <div class="team-infos">
           <p>League: <%= @request.user.team.league.name %></p>
           <p>#<%= @request.user.team.ranking %></p>
-          <p>Location: <%= @request.user.team.league.city %>, <%= @request.user.team.league.country %></p>
-          <p>Contact: <%= @current_user.team.user.derby_name %></p>
+          <br>
+          <p><i class="far fa-user"></i> <%= @current_user.team.user.derby_name %></p>
         </div>
 
         <div class="request-infos">
-          <p><%= @request.start_date.strftime('%a %d %b %Y') %></p>
+          <p><i class="far fa-calendar-alt"></i> <%= @request.start_date.strftime('%a %d %b %Y') %></p>
           <p>
-            Location:
              <% if @request.at_home == true %>
-            <%= @current_user.team.league.city %>, <%= @current_user.team.league.country %> (home)
+              <i class="fas fa-home"></i> <%= @current_user.team.league.city %>, <%= @current_user.team.league.country %>
             <% else %>
-            <%= @current_user.team.league.city %>, <%= @current_user.team.league.country %> (away)
+              <i class="fas fa-plane"></i> <%= @current_user.team.league.city %>, <%= @current_user.team.league.country %>
             <% end %>
           </p>
         </div>

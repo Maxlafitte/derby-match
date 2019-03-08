@@ -9,11 +9,10 @@
     </div>
     <div class="location">
       <p>
-        Location: <br>
         <% if request.at_home == false %>
-          <%= current_user.team.league.city %> - <%= current_user.team.league.country %>
+          <i class="fas fa-plane"></i> <%= request.user.team.league.city %>, <%= request.user.team.league.country %>
         <% else %>
-          <%= request.user.team.league.city %> - <%= request.user.team.league.country %>
+          <i class="fas fa-home"></i> <%= current_user.team.league.city %>, <%= current_user.team.league.country %>
         <% end %>
       </p>
     </div>
