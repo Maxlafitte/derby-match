@@ -8,8 +8,9 @@
           <p><%= image_tag(@team.photo, height: 250, width: 250,crop: :fill) %></p>
         </div>
         <div class="team-infos">
-          <p>League: <%= @team.league.name %></p>
-          <p>#<%= @team.ranking %></p>
+          <h2><%= @team.league.name.upcase %></h2>
+          <p><%= @team.name %> <span class="">(#<%= @team.ranking %>)</span></p>
+          <br>
           <p><i class="far fa-user"></i> <%= @team.user.derby_name %></p>
         </div>
 
@@ -55,10 +56,10 @@
           <p><%= image_tag(@request.user.team.photo, height: 250, width: 250,crop: :fill) %></p>
         </div>
         <div class="team-infos">
-          <p>League: <%= @request.user.team.league.name %></p>
-          <p>#<%= @request.user.team.ranking %></p>
+          <h2><%= @request.user.team.league.name.upcase %></h2>
+          <p><%= @request.user.team.name %> <span class="">(#<%= @request.user.team.ranking %>)</span></p>
           <br>
-          <p><i class="far fa-user"></i> <%= @current_user.team.user.derby_name %></p>
+          <p><i class="far fa-user"></i> <%= @request.user.team.user.derby_name %></p>
         </div>
 
         <div class="request-infos">
