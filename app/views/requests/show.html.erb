@@ -8,8 +8,9 @@
           <p><%= image_tag(@team.photo, height: 250, width: 250,crop: :fill) %></p>
         </div>
         <div class="team-infos">
-          <p>League: <%= @team.league.name %></p>
-          <p>#<%= @team.ranking %></p>
+          <h2><%= @team.league.name.upcase %></h2>
+          <p><%= @team.name %> <span class="">(#<%= @team.ranking %>)</span></p>
+          <br>
           <p><i class="far fa-user"></i> <%= @team.user.derby_name %></p>
         </div>
 
