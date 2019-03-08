@@ -12,7 +12,7 @@
         <% if request.at_home == false %>
           <i class="fas fa-home"></i> <%= current_user.team.league.city %>, <%= current_user.team.league.country %>
         <% else %>
-          <i class="fas fa-plane"></i> <%= request.team.league.city %>, <%= request.team.league.country %>
+          <i class="fas fa-plane"></i> <%= request.user.team.league.city %>, <%= request.user.team.league.country %>
         <% end %>
       </p>
     </div>
