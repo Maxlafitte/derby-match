@@ -28,8 +28,9 @@
   // opacity: 0.4;
   &:hover {
     background-color: white;
+    opacity: 0.5;
     border: 1px solid $my-green;
-    color: $my-green;
+    color: $light-gray;
   }
 }
 
