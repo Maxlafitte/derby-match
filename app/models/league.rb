@@ -1,8 +1,14 @@
 class League < ApplicationRecord
-  has_many :teams, dependent: :destroy
+
+  geocoded_by :address
+  has_many :teams
 
   validates :name, presence: true, uniqueness: true
   validates :logo, presence: true
   validates :city, presence: true
   validates :country, presence: true
+
+  def address
+    "#{city}, #{country}"
+  end
 end

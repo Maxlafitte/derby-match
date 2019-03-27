@@ -16,9 +16,12 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="<%= request.original_url %>" />
     <meta property="og:image" content="<%= meta_image %>" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:description" content="<%= meta_description %>" />
     <meta property="og:site_name" content="<%= meta_title %>" />
     <meta property="fb:app_id" content="<%= ENV["FACEBOOK_APP_ID"] %>"/>
+
 
     <!-- Twitter Card data -->
     <meta name="twitter:card" content="summary_large_image">
@@ -32,10 +35,14 @@
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= stylesheet_pack_tag 'application', media: 'all' %>
   </head>
-  <body>
-    <%= render 'shared/navbar' %>
+  <body class="bg">
+    <% unless controller_name == "sessions" && action_name == 'new' %>
+      <%= render 'shared/navbar' %>
+    <% end %>
     <%= render 'shared/flashes' %>
-    <%= yield %>
+    <div class="fade-in">
+      <%= yield %>
+    </div>
     <%#= render 'shared/footer' %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>

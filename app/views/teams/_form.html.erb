@@ -1,17 +1,36 @@
-<div class="container">
-  <div class="form-container body">
-    <div class="row form-center" >
-        <%= simple_form_for ([@team, @request]) do |f| %>
-          <div class="date-request">
-            <%= f.input :start_date, as: :string, required: true, input_html: {class: "datepicker-unavailable"} %>
-            <%= f.input :end_date, as: :string, required: true, input_html: {class: "datepicker-unavailable"} %>
-          </div>
-          <%= f.input :at_home, label: 'LOCATION', as: :radio_buttons, collection: [['0', "Home: #{current_user.team.league.city}, #{current_user.team.league.country}"], ['1', "Away: #{@team.league.city}, #{@team.league.country}" ]], label_method: :second, value_method: :first %>
+<div class="row form-center form-team-show" >
+    <%= simple_form_for [team, request], remote: true do |f| %>
+    <div class="calendar-radio">
+        <div class="date-request">
+          <%= f.input :start_date, as: :string, required: true, input_html: {class: "datepicker-unavailable remove-field"} %>
+        </div>
+        <div class="message-field">
           <%= f.simple_fields_for :message do |message| %>
-            <%= message.input :content, label: "Message" %>
+            <%= message.input :content, as: :text, label: false, placeholder: "Write your message...", class: "message-field" %>
           <% end %>
-          <%= f.button :submit, "Send Request", class: 'my-btn' %>
-        <% end %>
+          <%= f.button :submit, "GO GET THEM", class: 'my-btn btn btn-padding', id: "request-sent" %>
+        </div>
     </div>
-  </div>
+    <div class="checkboxes">
+        <%#= f.input :at_home, label: 'LOCATION', as: :radio_buttons, collection: [['0', "<i class='fas fa-home'></i>.html_safe #{current_user.team.league.city}, #{current_user.team.league.country}"], ['1', "Away: #{@team.league.city}, #{@team.league.country}" ]], label_method: :second, value_method: :first %>
+        <fieldset class="form-group radio_buttons optional request_at_home">
+          <legend class="col-form-label pt-0">LOCATION</legend>
+          <input type="hidden" name="request[at_home]" value="">
+          <div class="form-check p-0">
+            <input class="form-check-input radio_buttons optional" type="radio" value="0" name="request[at_home]" id="request_at_home_0">
+            <label class="collection_radio_buttons" for="request_at_home_0">
+              <i class='fas fa-home'></i>
+              <%= "#{current_user.team.league.city}, #{current_user.team.league.country}" %>
+            </label>
+          </div>
+          <div class="form-check p-0">
+            <input class="form-check-input radio_buttons optional" type="radio" value="1" name="request[at_home]" id="request_at_home_1">
+            <label class="collection_radio_buttons" for="request_at_home_1">
+              <i class="fas fa-plane"></i>
+              <%= "#{@team.league.city}, #{@team.league.country}"  %>
+            </label>
+          </div>
+        </fieldset>
+    </div>
+    <% end %>
 </div>

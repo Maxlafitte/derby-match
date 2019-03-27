@@ -1,5 +1,5 @@
 .title-request {
-  margin: 70px 0px;
+  margin: 30px 0px 40px 0px;
 }
 .grid-request {
   display: grid;
@@ -14,7 +14,8 @@
   justify-content: space-around;
   flex-direction: row;
   align-items: center;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
 .message-form {
   padding: 20px;
@@ -32,7 +33,9 @@
   flex-direction: column;
   justify-content: center;
   background-color: rgba(245, 245, 245, 0.3);
-  align-items: center;
+  // align-items: center;
+  border-radius: 5px;
+  margin-bottom: 20px;
 }
 
 .one-message {
@@ -40,11 +43,13 @@
   padding :20px 0px;
   display: flex;
   margin: 0 36px;
+  align-items: center;
   .from-user {
     float: right;
   }
   .message-content {
-    text-align: justify;
+    margin-left: 80px;
+    text-align: center;
   }
 }
 .user-message-name {
@@ -52,7 +57,6 @@
   }
 .message-content {
   justify-content: space-between;
-
   width: 70%;
   padding-left: 40px;
   .from-user {
@@ -64,7 +68,7 @@
   margin-top: 70px;
   width: 650px;
   margin: 100px auto;
-  border: solid 1px #ccc;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   border-radius: 5px;
   overflow: hidden;
   background-color: white;
@@ -72,6 +76,7 @@
 .message-author {
   text-align: center;
   width: 30%;
+  margin-left: 50px;
 }
 .italic-date {
   font-style: italic;

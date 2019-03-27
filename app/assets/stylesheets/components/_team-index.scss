@@ -1,20 +1,52 @@
-.teams-search-container {
-  margin-top: 100px;
+// .teams-index-container {
+//   display: flex;
+
+// }
+// .teams-search {
+//   flex: 0 0 300px;
+//   height: 30vh;
+//   position: sticky !important;
+//   left: 0 !important;
+// }
+.avatar-margin {
+  margin-right: 15px;
 }
+.name-photo {
+  display: flex;
+  justify-content: space-around;
+}
+.hover-search {
+  transition: all .1s ease-in-out;
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+.teams-index-title {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
 
 .search-title {
   margin-top: 50px;
 }
-
-.form-search {
+.index-search {
   display: flex;
+  align-items: center;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
+  background-color: white;
+  height: 500px;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  padding: 25px;
+  position: fixed;
   label {
     display: none;
   }
+  .index-field {
+    display:none;
+  }
 }
-
 .datepicker-margin {
   margin: 0px 10px;
 }
@@ -29,31 +61,45 @@
 
 .team-index-card {
   margin-bottom: 15px;
+  // align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
   .teams-index-name {
     font-size: 18px;
     font-weight: bold;
   }
   a {
     text-decoration: none;
-    color: black;
+    color: $my-gray;
   }
   .teams-index-ranking {
-    font-size: 20px;
+    font-size: 30px;
+    color: $my-green;
+    font-weight: bold;
+    padding-top: 7px;
   }
-}
-
-.background-color {
-  margin-top: 30px;
 }
 
 .teams-index-title {
   text-transform: uppercase;
-  color: black;
+  color: $my-gray;
   font-weight: bold;
 }
 
 .my-ranking {
   font-size: 24px;
-  color: black;
+  color: $my-gray;
   font-weight: bold;
+}
+
+// .form-flex {
+//   display: flex;
+//   flex-direction: column;
+//   height: 580px;
+//   justify-content: space-between;
+//   align-items: center;
+// }
+.remove-field {
+  display:none;
 }

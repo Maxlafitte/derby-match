@@ -1,0 +1,16 @@
+function refreshForm(form) {
+  const newMessageForm = document.getElementById('new_message');
+  newMessageForm.innerHTML = form;
+}
+
+function addMessage(messageHTML) {
+  const messages = document.querySelector('.messages');
+  messages.insertAdjacentHTML('afterbegin', messageHTML);
+}
+
+<% if @message.errors.any? %>
+  refreshForm('<%= j render "requests/form-message", request: @request, message: @message %>');
+<% else %>
+  addMessage('<%= j render "requests/one-message", team: @team, message: @message %>');
+  refreshForm('<%= j render "requests/form-message", request: @request, message: Message.new %>');
+<% end %>

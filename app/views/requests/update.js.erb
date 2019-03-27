@@ -1,0 +1,17 @@
+function refreshPartial(html, form_id) {
+  const partial = document.getElementById(form_id);
+  partial.innerHTML = html;
+}
+
+function wait(ms){
+   var start = new Date().getTime();
+   var end = start;
+   while(end < start + ms) {
+     end = new Date().getTime();
+  }
+}
+
+refreshPartial("<%= j render 'form-update-request', request: @request %>", '<%= "update-request-form-#{@request.id}" %>');
+<% if @request.status == "accepted" %>
+  window.location.pathname = '/teams/<%= current_user.team.id %>/games/<%= current_user.team.games.last.id %>'
+<% end %>

@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_one :team
   has_many :requests
-  has_many :messages
+  has_many :messages, dependent: :destroy
 
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true

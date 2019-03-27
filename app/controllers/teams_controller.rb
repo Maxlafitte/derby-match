@@ -2,8 +2,14 @@ class TeamsController < ApplicationController
   def index
     @teams = policy_scope(Team)
     if params[:index]
+      if params[:index][:distance].present?
+        leagues = League.near(current_user.team.league.to_coordinates, params[:index][:distance])
+        @teams = @teams.where(league_id: leagues.map(&:id))
+      end
       # get start_date from the form
       booking_start_date = Date.parse params[:index][:start_date]
+      # adding an info in session to display start_date in team show/ form
+      session[:booking_start_date] = booking_start_date
 
       # get all teams
       # reject user team & reject teams from league
@@ -43,6 +49,17 @@ class TeamsController < ApplicationController
       end
       @teams = final_ranked_teams
     end
+    if params[:index]
+      respond_to do |format|
+        format.html { redirect_to teams_path }
+        format.js
+      end
+    else
+      respond_to do |format|
+        format.html { render 'teams/index' }
+        format.js
+      end
+    end
   end
 
   def show
@@ -53,6 +70,8 @@ class TeamsController < ApplicationController
     authorize @team
     @message = Message.new
     authorize @message
+    # giving the startdate to simple form to display it
+    @request.start_date = session[:booking_start_date]
   end
 
   # not sure that we need it since we won't have admin users
@@ -69,5 +88,11 @@ class TeamsController < ApplicationController
 
   # not sure that we need it since we won't have admin users
   def update
+  end
+
+  private
+
+  def teams_params
+    params.require(:index).permit(:start_date, :end_date, :distance)
   end
 end

@@ -1,44 +1,49 @@
 .my-btn {
   color: white;
   padding: 8px 24px;
-  border-radius: 35px;
+  border-radius: 5px;
   font-weight: bold;
-  background-color: $my-pink;
+  background-color: $my-green;
   opacity: 1;
   transition: background 0.3s ease;
-  border: 2px solid white ;
   width: 140px;
   height: 50px;
+  margin: 2px;
+  // box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+
 }
 .my-btn:hover {
-  background-color: $my-pink;
-  opacity: 0.8;
+  background-color: $my-green;
+  text-decoration: none;
+  opacity: 1;
   transition: background 0.3s ease;
   color: white;
+  background-image: radial-gradient(circle, #02c39a, #00c48a, #00c478, #00c462, #02c349);
 }
 
 .cancel-decline {
-  background-color: #847BA2;
-  opacity: 0.5;
+  background-color: white;
+  border: 1px solid $my-green;
+  color: $my-green;
+  // opacity: 0.4;
   &:hover {
-    background-color: #847BA2;
-    opacity: 0.4;
+    background-color: white;
+    opacity: 0.5;
+    border: 1px solid $my-green;
+    color: $light-gray;
   }
 }
 
 .pink-link {
   font-style: italic;
-  color: $my-pink;
+  color: $my-green;
   text-decoration: none;
   font-size: 18px;
   &:hover {
     text-decoration: none;
-    color: $my-pink;
+    color: $my-green;
     opacity: 0.9;
   }
 }
-
-
-
 
 

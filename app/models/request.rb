@@ -8,5 +8,6 @@ class Request < ApplicationRecord
   validates :user_id, presence: true
   validates :status, presence: true
   validates :start_date, presence: true
-  validates :end_date, presence: true
+
+  scope :accepted, -> { where(status: "accepted") }
 end

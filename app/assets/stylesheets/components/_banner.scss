@@ -1,0 +1,62 @@
+.bg-transparent {
+  background: transparent;
+}
+
+.bg-white {
+  background: white;
+  border-radius: 5px;
+}
+
+.form-container {
+  width: 400px;
+  color: $my-gray;
+}
+
+.wrapper {
+  color: white;
+  text-align: center;
+  padding-top: 100px;
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  justify-content: space-around;
+}
+
+.banner {
+  height: 100vh;
+  background-size: cover !important;
+}
+
+.top-btn {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  font-weight: bold;
+}
+
+.main-container a {
+  color: white !important;
+}
+
+.main-container a {
+  text-decoration: none;
+}
+
+.banner h1 {
+  font-size: 100px;
+  font-weight: bold;
+  text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+}
+.banner p {
+  font-size: 40px;
+  font-weight: lighter;
+  color: white;
+  opacity: 0.6;
+  margin-bottom: 30px;
+}
+
+.green-text {
+  color: $my-green;
+  font-weight: bold;
+}
+

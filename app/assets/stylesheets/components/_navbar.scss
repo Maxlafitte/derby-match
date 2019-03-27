@@ -1,47 +1,55 @@
-.navbar-lewagon {
+.bg {
+  background-image: asset-url('track.svg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.navbar-derby-match {
   justify-content: space-between;
-  background: $my-orange;
 }
 
-.logged-nav {
-  font-weight: bold;
-}
-
-.navbar-light .navbar-nav .nav-link {
-  margin-right: 25px;
-  border: 3px solid transparent;
-  &:hover {
-    border-bottom: 3px solid white;
-  }
-}
-
-.navbar-light .navbar-nav .nav-link .active {
-  color: white;
-}
-
-
-.navbar-lewagon .navbar-collapse {
+.navbar-derby-match .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
+.navbar-derby-match .navbar-brand img {
   width: 40px;
-}
-
-.log-in-nav {
-  color: white;
-  &:hover {
-    color: $my-yellow;
-  }
 }
 
 #logo {
   width: 125px;
 }
 
+.logged-nav {
+  font-weight: bold;
+}
+
+.navbar-light .navbar-nav .active > .nav-link {
+  color: $my-green;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  margin-right: 25px;
+  color: white;
+  font-family: "vtks";
+  letter-spacing: 1.5px;
+  &:hover {
+    color: $my-green;
+    opacity: 0.9;
+  }
+}
+
+
+.log-in-nav {
+  color: white;
+  &:hover {
+    color: $my-green;
+  }
+}
+
 .dropdown-menu.show {
-  background-color: #3e306e;
-  border: transparent;
+  background-color: #B33771;
+  border: 1px solid #6D214F;
   margin-right: -16px;
   // padding: 11px;
   text-align: right;

@@ -1,38 +1,36 @@
-
+  <h2 class="text-center dashboard-title white">Fight this team!</h2>
 <div class="container grid">
   <div class="card-category">
-    <div class="card-img">
-      <h2 class="text-center"><%= @team.name.upcase %></h2>
-      <p><%= cl_image_tag(@team.photo, height: 250, width: 250,crop: :fill) %></p>
+    <div class="card-img text-center">
+      <h2 class="team-show-title"><%= @team.league.name.upcase %></h2>
+      <p><%= @team.name.upcase %></p>
+      <p><%= cl_image_tag(@team.photo, height: 250,crop: :fill) %></p>
+      <p class="ranking">#<%= @team.ranking %></p>
     </div>
 
     <div class="card-team-infos">
-      <div class="team-content">
-        <p><%= @team.league.name %></p>
-        <p><%= @team.league.city %>, <%= @team.league.country %></p>
-      </div>
       <div class="star-ranking">
-        <p class="ranking"><%= @team.ranking %></p>
       </div>
     </div>
   </div>
-  <% if @team.user %>
-    <div class="contact-from">
-      <% if @team.user.photo? %>
-        <p><%= cl_image_tag(@team.user.photo, height: 50, width: 50,crop: :fill, class: 'avatar') %></p>
-        <p>Contact: <%= @team.user.derby_name %></p>
-      <% else %>
-        <p><%= image_tag 'avatar.png', height: 50, width: 50,crop: :fill, class: 'avatar' %></p>
-      <% end %>
-      <p>Please contact <%= @team.user.derby_name %> to make a game request.</p>
-    </div>
 
-    <% if current_user != @team.user %>
+  <% if current_user.team.league == @team.league %>
+    <div class="requesting-form text-center your-own-league">
+      <p>This team is part of your league, try inviting another team!</p>
+      <%= link_to "FIND A TEAM", teams_path, class: "my-btn" %>
+    </div>
+  <% elsif current_user != @team.user && @team.user.present? %>
+    <div class="requesting-form text-center">
+      <%= render 'form', request: @request, team: @team, booking_start_date: @booking_start_date %>
+  <% elsif current_user = @team.user %>
+    <div class="requesting-form text-center your-own-league">
+      <p>This is your own team, try inviting another team!</p>
+      <%= link_to "FIND A TEAM", teams_path, class: "my-btn" %>
+    </div>
+  <% else %>
       <div class="requesting-form text-center">
-      <%= render 'form', request: @request, team: @team %>
-    <% end %>
-    <% else %>
-      <p class="contact-from">No one has claimed this team yet. If you know them, let them know!</p>
+        No one has claimed this team yet. If you know them, let them know!
+      </div>
   <% end %>
 
   </div>

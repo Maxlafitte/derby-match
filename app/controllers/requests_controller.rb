@@ -1,4 +1,6 @@
 class RequestsController < ApplicationController
+  before_action :set_request, only: [:show, :update]
+
   def index
     @requests_sent = policy_scope(Request).where(user: current_user)
     @pending_requests_sent = @requests_sent.where(status: "pending")
@@ -25,13 +27,7 @@ class RequestsController < ApplicationController
 
   def show
     @team = Team.find(params[:team_id])
-    @request = Request.find(params[:id])
-    authorize @request
     @message = Message.new(request: @request)
-  end
-
-  def new
-    # authorize @request
   end
 
   def create
@@ -49,51 +45,68 @@ class RequestsController < ApplicationController
     else
       @request.at_home = false
     end
+    @request.end_date = @request.start_date
     @request.save
     @message.save
-    redirect_to dashboard_path
-  end
-
-  def edit
-    # authorize @request
+    if @message.save!
+      respond_to do |format|
+        format.html { redirect_to team_requests_path(current_user.team) }
+        format.js
+      end
+    else
+      respond_to do |format|
+        format.html { render 'teams/show' }
+        format.js
+      end
+    end
   end
 
   def update
-    @request = Request.find(params[:id])
-    authorize @request
-    if params[:commit] == "Accept"
-      if @request.update(status: "accepted")
-        @game = Game.new
-        @game.request = @request
-        @game.start_date = @request.start_date
-        @game.end_date = @request.end_date
-        @game.save!
-        redirect_to dashboard_path
+    if params[:commit] == "ACCEPT"
+      @request.update(status: params[:status])
+      @game = Game.new
+      @game.request = @request
+      @game.start_date = @request.start_date
+      @game.end_date = @request.end_date
+      if @game.save!
+        respond_to do |format|
+          format.html { redirect_to dashboard_path }
+          format.js
+        end
       else
-        render :my_bookings
+        respond_to do |format|
+          format.html { redirect_to 'teams/show' }
+          format.js
+        end
       end
-    elsif params[:commit] == "Decline"
-      if @request.update(status: "declined")
-        redirect_to dashboard_path
+    else
+      @request.update(status: params[:status])
+      if @request.save!
+        respond_to do |format|
+          format.html { redirect_to dashboard_path }
+          format.js
+        end
       else
-        render :my_bookings
-      end
-    elsif params[:commit] == "Cancel"
-      if @request.update(status: "cancelled")
-        redirect_to dashboard_path
-      else
-        render :show
+        respond_to do |format|
+          format.html { redirect_to 'teams/show' }
+          format.js
+        end
       end
     end
   end
 
   private
 
+  def set_request
+    @request = Request.find(params[:id])
+    authorize @request
+  end
+
   def request_params
     params.require(:request).permit(:start_date, :end_date, :team_id, :user_id, :at_home)
   end
 
   def request_message_params
-    params.require(:request).require(:message).permit(:content)
+    params.require(:request).dig(:message).permit(:content)
   end
 end

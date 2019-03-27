@@ -1,2 +1,29 @@
-<h1>Games#index</h1>
-<p>Find me in app/views/games/index.html.erb</p>
+<div class="container games-index-container">
+  <h2 class="text-center dashboard-title white">Upcoming Games</h2>
+    <div class="row">
+    <% @games.each do |game| %>
+      <div class="request-details">
+        <div class="photo">
+          <%= cl_image_tag game.request.user.team.photo, class: "avatar-large"%>
+        </div>
+          <p><span class="vtks"><%= game.request.user.team.league.name %></span>  <br>
+            <%= game.request.user.team.name %>
+            (#<%= game.request.user.team.ranking %>)</p>
+          <p><i class="far fa-calendar-alt"></i> <%= game.request.start_date.strftime('%a %d %b %Y') %></p>
+          <p>
+          <% if game.request.at_home == false %>
+             <i class="fas fa-plane"></i> <%= current_user.team.league.city %> - <%= current_user.team.league.country %>
+          <% else %>
+            <i class="fas fa-home"></i> <%= game.request.user.team.league.city %> - <%= game.request.user.team.league.country %>
+          <% end %>
+          </p>
+
+      <div class="link">
+          <%= link_to "GET DETAILS", team_game_path(@games, game), class: "my-btn btn-size" %>
+      </div>
+      </div>
+  <% end %>
+  </div>
+</div>
+
+
