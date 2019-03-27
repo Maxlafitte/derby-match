@@ -1,6 +1,6 @@
 class League < ApplicationRecord
-  geocoded_by :address
 
+  geocoded_by :address
   has_many :teams
 
   validates :name, presence: true, uniqueness: true
