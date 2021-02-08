@@ -12,7 +12,7 @@ gem 'dotenv-rails', groups: [:development, :test]
 
 gem 'autoprefixer-rails'
 gem 'cloudinary', '~> 1.9.1'
-gem 'carrierwave', '~> 1.2'
+gem 'carrierwave', '~> 1.3'
 gem 'font-awesome-sass', '~> 5.5.0'
 gem 'geocoder'
 gem 'gon', '~> 6.2'
